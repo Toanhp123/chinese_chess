@@ -1,2 +1,3 @@
-img {
+.chinese-chess__board--background {
+    background: url('../../assets/img/board.jpg');
 }

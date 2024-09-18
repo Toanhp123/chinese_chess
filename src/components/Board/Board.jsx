@@ -3,7 +3,7 @@ import './Board.css';
 const Board = () => {
     return (
         <div className="game">
-            <img src="../assets/board.jpg" alt="board" />
+            <div className="chinese-chess__board--background"></div>
         </div>
     );
 };

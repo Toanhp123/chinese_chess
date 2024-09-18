@@ -1,4 +1,5 @@
 import { Board } from './components';
+import './App.css';
 
 function App() {
     return (
