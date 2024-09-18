@@ -1,3 +1,8 @@
-.chinese-chess__board--background {
-    background: url('../../assets/img/board.jpg');
+.chinese-chess {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chinese-chess__board {
 }
