@@ -5,12 +5,16 @@ const Chess = ({ id, typeChess, handleDragStart }) => {
         <>
             {typeChess && (
                 <div
-                    id={'chess-' + id}
+                    id={typeChess.color + '-' + id}
                     className="chinese__chess--piece"
                     onDragStart={handleDragStart}
                     draggable={true}
                 >
-                    <img src={typeChess} alt={typeChess} draggable={false} />
+                    <img
+                        src={typeChess.image}
+                        alt={typeChess}
+                        draggable={false}
+                    />
                 </div>
             )}
         </>
