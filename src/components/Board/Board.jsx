@@ -15,7 +15,6 @@ import {
     rn,
     rp,
     rr,
-    thinking,
 } from './import';
 import Square from '../Square/Square';
 
