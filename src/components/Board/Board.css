@@ -15,11 +15,4 @@
     background: url('../../assets/img/board.jpg') no-repeat center;
 }
 
-.chinese-chess__board--square {
-    width: calc(100% / 9);
-    height: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
+

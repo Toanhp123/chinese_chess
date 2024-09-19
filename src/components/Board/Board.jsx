@@ -22,6 +22,7 @@ import {
     rr,
     thinking,
 } from './import';
+import Square from '../Square/Square';
 
 const chessOnBoard = [
     br,
@@ -122,8 +123,8 @@ const Board = () => {
             <div className="chinese-chess__board">
                 {/* Render chess on board */}
                 {chessOnBoard.map((chess, index) => (
-                    <div key={index} className="chinese-chess__board--square">
-                        <Chess typeChess={chess} />
+                    <div key={index}>
+                        <Square />
                     </div>
                 ))}
             </div>
