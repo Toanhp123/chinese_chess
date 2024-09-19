@@ -117,13 +117,37 @@ const chessOnBoard = [
 ];
 
 const Board = () => {
+    let dragged = null;
+
+    function handleDragOver(e) {
+        e.preventDefault();
+    }
+
+    function handleDrop(e) {
+        e.preventDefault();
+        console.log(e.target.parentNode);
+        if (e.target.className === 'chinese-chess__board--square') {
+            dragged.parentNode.removeChild(dragged);
+            e.target.appendChild(dragged);
+        }
+    }
+
+    function handleDragStart(e) {
+        dragged = e.target;
+    }
+
     return (
         <div className="chinese-chess section__padding">
             <div className="chinese-chess__board">
                 {/* Render chess on board */}
                 {chessOnBoard.map((chess, index) => (
                     <div key={index}>
-                        <Square typeChess={chess} />
+                        <Square
+                            typeChess={chess}
+                            handleDragOver={handleDragOver}
+                            handleDragStart={handleDragStart}
+                            handleDrop={handleDrop}
+                        />
                     </div>
                 ))}
             </div>
