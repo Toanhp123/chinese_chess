@@ -117,14 +117,12 @@ const chessOnBoard = [
 ];
 
 const Board = () => {
-    function setupBoardSquares() {}
-
     return (
         <div className="chinese-chess section__padding">
             <div className="chinese-chess__board">
                 {/* Render chess on board */}
-                {chessOnBoard.map((chess) => (
-                    <div className="chinese-chess__board--square">
+                {chessOnBoard.map((chess, index) => (
+                    <div key={index} className="chinese-chess__board--square">
                         <Chess typeChess={chess} />
                     </div>
                 ))}
