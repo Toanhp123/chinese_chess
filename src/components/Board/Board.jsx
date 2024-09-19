@@ -1,5 +1,6 @@
 import './Board.css';
 
+import Square from '../Square/Square';
 import {
     obj_ba,
     obj_bb,
@@ -16,7 +17,6 @@ import {
     obj_rp,
     obj_rr,
 } from './import';
-import Square from '../Square/Square';
 
 const chessOnBoard = [
     obj_br,
