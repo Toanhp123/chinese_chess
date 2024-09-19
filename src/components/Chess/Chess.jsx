@@ -1,9 +1,16 @@
 import './Chess.css';
 
-const Chess = ({ typeChess }) => {
+const Chess = ({ id, typeChess, handleDragStart }) => {
     return (
-        <div className="chinese__chess--piece">
-            <img src={typeChess} alt={typeChess} />
+        <div
+            id={'chess-' + id}
+            className="chinese__chess--piece"
+            onDragStart={handleDragStart}
+            draggable={true}
+        >
+            {typeChess && (
+                <img src={typeChess} alt={typeChess} draggable={false} />
+            )}
         </div>
     );
 };

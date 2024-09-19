@@ -33,78 +33,78 @@ const chessOnBoard = [
     bb,
     bn,
     br,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
     bc,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
+    null,
+    null,
+    null,
+    null,
+    null,
     bc,
-    oo,
+    null,
     bp,
-    oo,
+    null,
     bp,
-    oo,
+    null,
     bp,
-    oo,
+    null,
     bp,
-    oo,
+    null,
     bp,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
     rp,
-    oo,
+    null,
     rp,
-    oo,
+    null,
     rp,
-    oo,
+    null,
     rp,
-    oo,
+    null,
     rp,
-    oo,
+    null,
     rc,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
+    null,
+    null,
+    null,
+    null,
+    null,
     rc,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
-    oo,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
     rr,
     rn,
     rb,
@@ -117,35 +117,44 @@ const chessOnBoard = [
 ];
 
 const Board = () => {
-    let dragged = null;
-
     function handleDragOver(e) {
         e.preventDefault();
     }
 
     function handleDrop(e) {
         e.preventDefault();
-        console.log(e.target.parentNode);
-        if (e.target.className === 'chinese-chess__board--square') {
-            dragged.parentNode.removeChild(dragged);
-            e.target.appendChild(dragged);
-        }
+        let data = e.dataTransfer.getData('text');
+
+        const piece = document.getElementById(data);
+
+        const destinationSquare = e.currentTarget;
+
+        // let destinationSquareId = destinationSquare.id;
+
+        destinationSquare.appendChild(piece);
     }
 
-    function handleDragStart(e) {
-        dragged = e.target;
+    function handleDragStart(e, chess) {
+        const piece = e.target;
+        const img = new Image();
+        img.src = chess;
+
+        e.dataTransfer.setData('text', piece.id);
+        e.dataTransfer.setDragImage(img, 24, 24);
     }
 
     return (
         <div className="chinese-chess section__padding">
             <div className="chinese-chess__board">
+                <img src="" alt="" />
                 {/* Render chess on board */}
                 {chessOnBoard.map((chess, index) => (
                     <div key={index}>
                         <Square
+                            id={index}
                             typeChess={chess}
                             handleDragOver={handleDragOver}
-                            handleDragStart={handleDragStart}
+                            handleDragStart={(e) => handleDragStart(e, chess)}
                             handleDrop={handleDrop}
                         />
                     </div>

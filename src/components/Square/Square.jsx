@@ -2,15 +2,25 @@ import './Square.css';
 
 import Chess from '../Chess/Chess';
 
-const Square = ({ typeChess, handleDragOver, handleDrop, handleDragStart }) => {
+const Square = ({
+    id,
+    typeChess,
+    handleDragOver,
+    handleDrop,
+    handleDragStart,
+}) => {
     return (
         <div
+            id={id}
             className="chinese-chess__board--square"
             onDragOver={handleDragOver}
             onDrop={handleDrop}
-            onDragStart={handleDragStart}
         >
-            <Chess typeChess={typeChess} />
+            <Chess
+                id={id}
+                typeChess={typeChess}
+                handleDragStart={handleDragStart}
+            />
         </div>
     );
 };

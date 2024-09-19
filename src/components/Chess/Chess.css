@@ -1,7 +1,10 @@
 .chinese__chess--piece {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .chinese__chess--piece img {
-    height: 50px;
-    width: 50px;
+    height: 48px;
+    width: 48px;
 }
