@@ -7,12 +7,13 @@ const Chess = ({ id, typeChess, handleDragStart }) => {
                 <div
                     id={typeChess.color + '-' + id}
                     className="chinese__chess--piece"
+                    color={typeChess.color}
                     onDragStart={handleDragStart}
                     draggable={true}
                 >
                     <img
                         src={typeChess.image}
-                        alt={typeChess}
+                        alt={typeChess.image}
                         draggable={false}
                     />
                 </div>

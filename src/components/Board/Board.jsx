@@ -111,6 +111,8 @@ const chessOnBoard = [
     obj_rr,
 ];
 
+var isRedTurn = true;
+
 const Board = () => {
     function handleDragOver(e) {
         e.preventDefault();
@@ -123,6 +125,8 @@ const Board = () => {
 
         const piece = document.getElementById(data);
 
+        console.log(piece);
+
         const destinationSquare = e.currentTarget;
 
         if (destinationSquare.firstChild) {
@@ -130,15 +134,26 @@ const Board = () => {
         }
 
         destinationSquare.appendChild(piece);
+
+        isRedTurn = !isRedTurn;
     }
 
     function handleDragStart(e, chess) {
         const piece = e.target;
+        const pieceColor = piece.getAttribute('color');
         const img = new Image();
+
         img.src = chess.image;
 
-        e.dataTransfer.setData('text', piece.id);
-        e.dataTransfer.setDragImage(img, 24, 24);
+        if (
+            (isRedTurn && pieceColor === 'red') ||
+            (!isRedTurn && pieceColor === 'black')
+        ) {
+            e.dataTransfer.setData('text', piece.id);
+            e.dataTransfer.setDragImage(img, 24, 24);
+        } else {
+            e.preventDefault();
+        }
     }
 
     return (
