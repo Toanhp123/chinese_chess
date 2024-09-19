@@ -1,6 +1,5 @@
 import './Board.css';
 
-import Chess from '../Chess/Chess';
 import {
     ba,
     bb,
