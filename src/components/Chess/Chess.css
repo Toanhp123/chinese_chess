@@ -1,4 +1,7 @@
-.chinese__chess {
-    position: absolute;
-    top: 0;
+.chinese__chess--piece {
+}
+
+.chinese__chess--piece img {
+    height: 50px;
+    width: 50px;
 }
