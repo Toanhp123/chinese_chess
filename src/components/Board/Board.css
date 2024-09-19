@@ -5,5 +5,27 @@
 }
 
 .chinese-chess__board {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 577px;
+    width: 521px;
+    background: url('../../assets/img/board.jpg') no-repeat center;
+}
+
+.chinese-chess__board--square__row {
+    height: 57.7px;
+    width: 521px;
+    display: flex;
+    flex-direction: row;
+}
+
+.chinese-chess__board--square {
+    width: calc(100% / 9);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
 }
