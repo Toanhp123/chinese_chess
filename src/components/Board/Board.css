@@ -5,4 +5,5 @@
 }
 
 .chinese-chess__board {
+    position: relative;
 }
