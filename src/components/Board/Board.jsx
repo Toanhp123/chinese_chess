@@ -44,23 +44,14 @@ const Board = () => {
     }
 
     function handleDrop(e, row, col) {
-        e.preventDefault();
-
-        let data = e.dataTransfer.getData('text');
-        const piece = document.getElementById(data);
-
         if (draggedPiece) {
-            // Tạo một bản sao mới của bàn cờ.
             const newBoard = board.map((row) => [...row]);
 
-            // Di chuyển quân cờ từ vị trí cũ đến vị trí mới.
             newBoard[row][col] = board[draggedPiece.row][draggedPiece.col];
             newBoard[draggedPiece.row][draggedPiece.col] = null;
 
-            // Cập nhật lại bàn cờ.
             setBoard(newBoard);
 
-            // Xóa vị trí quân cờ đã kéo.
             setDraggedPiece(null);
         }
     }
