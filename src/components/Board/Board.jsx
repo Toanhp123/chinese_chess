@@ -17,151 +17,78 @@ import {
     obj_rp,
     obj_rr,
 } from './import';
+import { useState } from 'react';
 
 const chessOnBoard = [
-    obj_br,
-    obj_bn,
-    obj_bb,
-    obj_ba,
-    obj_bk,
-    obj_ba,
-    obj_bb,
-    obj_bn,
-    obj_br,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    obj_bc,
-    null,
-    null,
-    null,
-    null,
-    null,
-    obj_bc,
-    null,
-    obj_bp,
-    null,
-    obj_bp,
-    null,
-    obj_bp,
-    null,
-    obj_bp,
-    null,
-    obj_bp,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    obj_rp,
-    null,
-    obj_rp,
-    null,
-    obj_rp,
-    null,
-    obj_rp,
-    null,
-    obj_rp,
-    null,
-    obj_rc,
-    null,
-    null,
-    null,
-    null,
-    null,
-    obj_rc,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    obj_rr,
-    obj_rn,
-    obj_rb,
-    obj_ra,
-    obj_rk,
-    obj_ra,
-    obj_rb,
-    obj_rn,
-    obj_rr,
+    [obj_br, obj_bn, obj_bb, obj_ba, obj_bk, obj_ba, obj_bb, obj_bn, obj_br],
+    ['', '', '', '', '', '', '', '', ''],
+    ['', obj_bc, '', '', '', '', '', obj_bc, ''],
+    [obj_bp, '', obj_bp, '', obj_bp, '', obj_bp, '', obj_bp],
+    ['', '', '', '', '', '', '', '', ''],
+    ['', '', '', '', '', '', '', '', ''],
+    [obj_rp, '', obj_rp, '', obj_rp, '', obj_rp, '', obj_rp],
+    ['', obj_rc, '', '', '', '', '', obj_rc, ''],
+    ['', '', '', '', '', '', '', '', ''],
+    [obj_rr, obj_rn, obj_rb, obj_ra, obj_rk, obj_ra, obj_rb, obj_rn, obj_rr],
 ];
 
 var isRedTurn = true;
 
 const Board = () => {
+    const [board, setBoard] = useState(chessOnBoard);
+
+    const [draggedPiece, setDraggedPiece] = useState(null);
+
     function handleDragOver(e) {
         e.preventDefault();
     }
 
-    function handleDrop(e) {
+    function handleDrop(e, row, col) {
         e.preventDefault();
 
-        const data = e.dataTransfer.getData('text');
+        let data = e.dataTransfer.getData('text');
         const piece = document.getElementById(data);
-        const destinationSquare = e.currentTarget;
 
-        destinationSquare.appendChild(piece);
+        if (draggedPiece) {
+            // Tạo một bản sao mới của bàn cờ.
+            const newBoard = board.map((row) => [...row]);
 
-        isRedTurn = !isRedTurn;
+            // Di chuyển quân cờ từ vị trí cũ đến vị trí mới.
+            newBoard[row][col] = board[draggedPiece.row][draggedPiece.col];
+            newBoard[draggedPiece.row][draggedPiece.col] = null;
+
+            // Cập nhật lại bàn cờ.
+            setBoard(newBoard);
+
+            // Xóa vị trí quân cờ đã kéo.
+            setDraggedPiece(null);
+        }
     }
 
-    function handleDragStart(e, chess) {
-        const piece = e.target;
-        const pieceColor = piece.getAttribute('color');
-        const img = new Image();
-
-        img.src = chess.image;
-
-        if (
-            (isRedTurn && pieceColor === 'red') ||
-            (!isRedTurn && pieceColor === 'black')
-        ) {
-            e.dataTransfer.setData('text', piece.id);
-            e.dataTransfer.setDragImage(img, 24, 24);
-        } else {
-            e.preventDefault();
-        }
+    function handleDragStart(e, row, col) {
+        setDraggedPiece({ row, col });
     }
 
     return (
         <div className="chinese-chess section__padding">
             <div className="chinese-chess__board">
-                <img src="" alt="" />
                 {/* Render chess on board */}
-                {chessOnBoard.map((chess, index) => (
-                    <div key={index}>
-                        <Square
-                            id={index}
-                            typeChess={chess}
-                            handleDragOver={handleDragOver}
-                            handleDragStart={(e) => handleDragStart(e, chess)}
-                            handleDrop={handleDrop}
-                        />
+                {board.map((row, indexRow) => (
+                    <div key={indexRow} className="chinese-chess__board--row">
+                        {row.map((col, indexCol) => (
+                            <Square
+                                key={indexCol}
+                                id={indexRow + '-' + indexCol}
+                                typeChess={col}
+                                handleDragOver={handleDragOver}
+                                handleDrop={(e) =>
+                                    handleDrop(e, indexRow, indexCol)
+                                }
+                                handleDragStart={(e) =>
+                                    handleDragStart(e, indexRow, indexCol)
+                                }
+                            />
+                        ))}
                     </div>
                 ))}
             </div>

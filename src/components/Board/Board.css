@@ -8,9 +8,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
     flex-wrap: wrap;
     height: 577px;
     width: 521px;
     background: url('../../assets/img/board.jpg') no-repeat center;
+}
+
+.chinese-chess__board--row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
