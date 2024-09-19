@@ -121,17 +121,9 @@ const Board = () => {
     function handleDrop(e) {
         e.preventDefault();
 
-        let data = e.dataTransfer.getData('text');
-
+        const data = e.dataTransfer.getData('text');
         const piece = document.getElementById(data);
-
-        console.log(piece);
-
         const destinationSquare = e.currentTarget;
-
-        if (destinationSquare.firstChild) {
-            destinationSquare.removeChild(destinationSquare.firstChild);
-        }
 
         destinationSquare.appendChild(piece);
 
