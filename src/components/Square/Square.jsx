@@ -1,7 +1,13 @@
 import './Square.css';
 
-const Square = () => {
-    return <div className="chinese-chess__board--square"></div>;
+import Chess from '../Chess/Chess';
+
+const Square = ({ typeChess }) => {
+    return (
+        <div className="chinese-chess__board--square">
+            <Chess typeChess={typeChess} />
+        </div>
+    );
 };
 
 export default Square;

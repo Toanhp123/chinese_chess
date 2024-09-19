@@ -124,7 +124,7 @@ const Board = () => {
                 {/* Render chess on board */}
                 {chessOnBoard.map((chess, index) => (
                     <div key={index}>
-                        <Square />
+                        <Square typeChess={chess} />
                     </div>
                 ))}
             </div>
