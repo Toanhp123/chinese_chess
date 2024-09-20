@@ -10,8 +10,6 @@ const isSoldierMoveValid = (pieceColor, fromRow, fromCol, toRow, toCol) => {
         return true;
     }
 
-    console.log(fromRow);
-
     // Khi qua sông
     if (isAcrossRiver) {
         // Đi thẳng hoặc ngang 1 ô.
