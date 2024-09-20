@@ -16,7 +16,7 @@ import {
     obj_rn,
     obj_rp,
     obj_rr,
-} from '../../services/typeChess';
+} from '../../services/dataChess';
 import { useState } from 'react';
 
 const chessOnBoard = [
