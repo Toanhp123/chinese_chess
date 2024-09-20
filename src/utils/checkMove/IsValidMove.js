@@ -18,7 +18,7 @@ const isValidMove = (piece, fromRow, fromCol, toRow, toCol, board) => {
         case 'mã':
             return Horse(fromRow, fromCol, toRow, toCol, board);
         case 'tịnh':
-            return Elephant(fromRow, fromCol, toRow, toCol, board);
+            return Elephant(pieceColor, fromRow, fromCol, toRow, toCol, board);
         default:
             return false;
     }
