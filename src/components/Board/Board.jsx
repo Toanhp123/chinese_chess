@@ -30,12 +30,10 @@ const Board = () => {
                 newBoard[row][col] = piece;
                 newBoard[fromRow][fromCol] = '';
 
-                console.log(board);
-
-                console.log(newBoard);
-
                 // Render lại bảng
                 setBoard(newBoard);
+
+                // Chuyển turn
                 setIsRedTurn((prev) => !prev);
             }
 
