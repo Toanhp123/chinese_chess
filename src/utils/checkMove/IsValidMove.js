@@ -4,14 +4,15 @@ const isValidMove = (piece, fromRow, fromCol, toRow, toCol) => {
     // Không cho ở lại vị trí cũ
     if (fromRow === toRow && fromCol === toCol) return false;
 
-    let namePiece = piece.name;
+    let pieceName = piece.name;
+    let pieceColor = piece.color;
 
-    switch (namePiece) {
+    switch (pieceName) {
         // Quy tắc di chuyển của quân Xe (Rook)
         case 'xe':
             return Rook(fromRow, fromCol, toRow, toCol);
         case 'tốt':
-            return Soldier(fromRow, fromCol, toRow, toCol);
+            return Soldier(pieceColor, fromRow, fromCol, toRow, toCol);
         default:
             return false;
     }

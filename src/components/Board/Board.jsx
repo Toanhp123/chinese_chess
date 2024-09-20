@@ -67,7 +67,7 @@ const Board = () => {
                         {row.map((col, indexCol) => (
                             <Square
                                 key={indexCol}
-                                id={indexRow + 1 + '-' + (indexCol + 1)}
+                                id={indexRow + '-' + indexCol}
                                 typeChess={col}
                                 handleDragOver={handleDragOver}
                                 handleDrop={(e) =>
