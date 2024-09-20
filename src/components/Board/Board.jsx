@@ -44,20 +44,40 @@ const Board = () => {
     }
 
     function handleDrop(e, row, col) {
-        if (draggedPiece) {
+        if (
+            draggedPiece &&
+            (draggedPiece.row !== row || draggedPiece.col !== col)
+        ) {
             const newBoard = board.map((row) => [...row]);
 
-            newBoard[row][col] = board[draggedPiece.row][draggedPiece.col];
-            newBoard[draggedPiece.row][draggedPiece.col] = null;
+            if (
+                newBoard[row][col].color !==
+                board[draggedPiece.row][draggedPiece.col].color
+            ) {
+                newBoard[row][col] = board[draggedPiece.row][draggedPiece.col];
+                newBoard[draggedPiece.row][draggedPiece.col] = null;
 
-            setBoard(newBoard);
+                isRedTurn = !isRedTurn;
 
-            setDraggedPiece(null);
+                setBoard(newBoard);
+                setDraggedPiece(null);
+            }
         }
     }
 
     function handleDragStart(e, row, col) {
-        setDraggedPiece({ row, col });
+        const pieceColor = e.target.getAttribute('color');
+        const img = new Image();
+
+        img.src = board[row][col].image;
+        e.dataTransfer.setDragImage(img, 24, 24);
+
+        if (
+            (isRedTurn && pieceColor === 'red') ||
+            (!isRedTurn && pieceColor === 'black')
+        ) {
+            setDraggedPiece({ row, col });
+        }
     }
 
     return (
@@ -69,7 +89,7 @@ const Board = () => {
                         {row.map((col, indexCol) => (
                             <Square
                                 key={indexCol}
-                                id={indexRow + '-' + indexCol}
+                                id={indexRow + 1 + '-' + (indexCol + 1)}
                                 typeChess={col}
                                 handleDragOver={handleDragOver}
                                 handleDrop={(e) =>
