@@ -17,7 +17,10 @@ const isRookMoveValid = (fromRow, fromCol, toRow, toCol) => {
         const [min, max] = [Math.min(fromRow, toRow), Math.max(fromRow, toRow)];
 
         for (let row = min + 1; row < max; row++) {
-            if (chessOnBoard[row][fromCol] !== '') return false;
+            if (chessOnBoard[row][fromCol] !== '') {
+                console.log(row + '-' + fromCol + ' block');
+                return false;
+            }
         }
     }
     return true;
