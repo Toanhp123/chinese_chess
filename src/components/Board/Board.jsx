@@ -32,11 +32,9 @@ const chessOnBoard = [
     [obj_rr, obj_rn, obj_rb, obj_ra, obj_rk, obj_ra, obj_rb, obj_rn, obj_rr],
 ];
 
-var isRedTurn = true;
-
 const Board = () => {
     const [board, setBoard] = useState(chessOnBoard);
-
+    const [isRedTurn, setIsRedTurn] = useState(true);
     const [draggedPiece, setDraggedPiece] = useState(null);
 
     function handleDragOver(e) {
@@ -55,12 +53,11 @@ const Board = () => {
                 board[draggedPiece.row][draggedPiece.col].color
             ) {
                 newBoard[row][col] = board[draggedPiece.row][draggedPiece.col];
-                newBoard[draggedPiece.row][draggedPiece.col] = null;
-
-                isRedTurn = !isRedTurn;
+                newBoard[draggedPiece.row][draggedPiece.col] = '';
 
                 setBoard(newBoard);
                 setDraggedPiece(null);
+                setIsRedTurn((prev) => !prev);
             }
         }
     }
