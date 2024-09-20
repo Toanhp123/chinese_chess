@@ -5,7 +5,7 @@ const Chess = ({ id, typeChess, handleDragStart }) => {
         <>
             {typeChess && (
                 <div
-                    id={typeChess.color + '-' + id}
+                    id={typeChess.name + '-' + typeChess.color + '-' + id}
                     className="chinese__chess--piece"
                     color={typeChess.color}
                     onDragStart={handleDragStart}

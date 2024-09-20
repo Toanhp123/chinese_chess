@@ -22,101 +22,121 @@ import thinking from '../assets/img/thinking.gif';
 const obj_ba = {
     image: ba,
     color: 'black',
+    name: 'sĩ',
 };
 
 const obj_bb = {
     image: bb,
     color: 'black',
+    name: 'tịnh',
 };
 
 const obj_bc = {
     image: bc,
     color: 'black',
+    name: 'pháo',
 };
 
 const obj_bk = {
     image: bk,
     color: 'black',
+    name: 'tướng',
 };
 
 const obj_bkm = {
     image: bkm,
     color: 'black',
+    name: 'tướng thua',
 };
 
 const obj_bn = {
     image: bn,
     color: 'black',
+    name: 'mã',
 };
 
 const obj_board = {
     image: board,
     color: null,
+    name: null,
 };
 
 const obj_bp = {
     image: bp,
     color: 'black',
+    name: 'tốt',
 };
 
 const obj_br = {
     image: br,
     color: 'black',
+    name: 'xe',
 };
 
 const obj_oo = {
     image: oo,
     color: null,
+    name: null,
 };
 
 const obj_oos = {
     image: oos,
     color: null,
+    name: null,
 };
 
 const obj_ra = {
     image: ra,
     color: 'red',
+    name: 'sĩ',
 };
 
 const obj_rb = {
     image: rb,
     color: 'red',
+    name: 'tịnh',
 };
 
 const obj_rc = {
     image: rc,
     color: 'red',
+    name: 'pháo',
 };
 
 const obj_rk = {
     image: rk,
     color: 'red',
+    name: 'tướng',
 };
 
 const obj_rkm = {
     image: rkm,
     color: 'red',
+    name: 'tướng thua',
 };
 
 const obj_rn = {
     image: rn,
     color: 'red',
+    name: 'mã',
 };
 
 const obj_rp = {
     image: rp,
     color: 'red',
+    name: 'tốt',
 };
 
 const obj_rr = {
     image: rr,
     color: 'red',
+    name: 'xe',
 };
 
 const obj_thinking = {
     image: thinking,
     color: null,
+    name: null,
 };
 
 export {
