@@ -1,36 +1,8 @@
 import './Board.css';
 
 import Square from '../Square/Square';
-import {
-    obj_ba,
-    obj_bb,
-    obj_bc,
-    obj_bk,
-    obj_bn,
-    obj_bp,
-    obj_br,
-    obj_ra,
-    obj_rb,
-    obj_rc,
-    obj_rk,
-    obj_rn,
-    obj_rp,
-    obj_rr,
-} from '../../services/dataChess';
 import { useState } from 'react';
-
-const chessOnBoard = [
-    [obj_br, obj_bn, obj_bb, obj_ba, obj_bk, obj_ba, obj_bb, obj_bn, obj_br],
-    ['', '', '', '', '', '', '', '', ''],
-    ['', obj_bc, '', '', '', '', '', obj_bc, ''],
-    [obj_bp, '', obj_bp, '', obj_bp, '', obj_bp, '', obj_bp],
-    ['', '', '', '', '', '', '', '', ''],
-    ['', '', '', '', '', '', '', '', ''],
-    [obj_rp, '', obj_rp, '', obj_rp, '', obj_rp, '', obj_rp],
-    ['', obj_rc, '', '', '', '', '', obj_rc, ''],
-    ['', '', '', '', '', '', '', '', ''],
-    [obj_rr, obj_rn, obj_rb, obj_ra, obj_rk, obj_ra, obj_rb, obj_rn, obj_rr],
-];
+import { chessOnBoard } from '../../utils/';
 
 const Board = () => {
     const [board, setBoard] = useState(chessOnBoard);
@@ -77,45 +49,6 @@ const Board = () => {
             setDraggedPiece({ row, col });
         }
     }
-
-    const isValidMove = (piece, fromRow, fromCol, toRow, toCol) => {
-        // Không cho ở lại vị trí cũ
-        if (fromRow === toRow && fromCol === toCol) return false;
-        switch (piece) {
-            case 'R': // Quy tắc di chuyển của quân Xe (Rook)
-                return isRookMoveValid(fromRow, fromCol, toRow, toCol);
-            // Thêm quy tắc di chuyển cho các quân cờ khác.
-            default:
-                return false;
-        }
-    };
-
-    const isRookMoveValid = (fromRow, fromCol, toRow, toCol) => {
-        // Quân Xe di chuyển theo hàng ngang hoặc dọc.
-        if (fromRow !== toRow && fromCol !== toCol) return false;
-
-        // Kiểm tra đường đi không bị chặn.
-        if (fromRow === toRow) {
-            // Di chuyển ngang.
-            const [min, max] = [
-                Math.min(fromCol, toCol),
-                Math.max(fromCol, toCol),
-            ];
-            for (let col = min + 1; col < max; col++) {
-                if (board[fromRow][col] !== '') return false;
-            }
-        } else {
-            // Di chuyển dọc.
-            const [min, max] = [
-                Math.min(fromRow, toRow),
-                Math.max(fromRow, toRow),
-            ];
-            for (let row = min + 1; row < max; row++) {
-                if (board[row][fromCol] !== '') return false;
-            }
-        }
-        return true;
-    };
 
     return (
         <div className="chinese-chess">
