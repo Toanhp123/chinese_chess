@@ -49,6 +49,7 @@ const Board = () => {
             (isRedTurn && pieceColor === 'red') ||
             (!isRedTurn && pieceColor === 'black')
         ) {
+            // Set vị trí cho quân được kéo
             setDraggedPiece({ row, col });
         }
     }
