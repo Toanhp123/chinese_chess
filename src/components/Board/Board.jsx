@@ -20,7 +20,7 @@ const Board = () => {
 
             //Kiểm tra nước đi có hợp lý không
             if (
-                isValidMove(piece, fromRow, fromCol, row, col) &&
+                isValidMove(piece, fromRow, fromCol, row, col, board) &&
                 !isSameColor(piece, board[row][col])
             ) {
                 // Tạo bản sao bảng
@@ -29,6 +29,10 @@ const Board = () => {
                 // Setup vị trí ở bảng mới
                 newBoard[row][col] = piece;
                 newBoard[fromRow][fromCol] = '';
+
+                console.log(board);
+
+                console.log(newBoard);
 
                 // Render lại bảng
                 setBoard(newBoard);

@@ -1,6 +1,6 @@
 import { Rook, Soldier, Advisor } from '../setupMove';
 
-const isValidMove = (piece, fromRow, fromCol, toRow, toCol) => {
+const isValidMove = (piece, fromRow, fromCol, toRow, toCol, board) => {
     // Không cho ở lại vị trí cũ
     if (fromRow === toRow && fromCol === toCol) return false;
 
@@ -10,7 +10,7 @@ const isValidMove = (piece, fromRow, fromCol, toRow, toCol) => {
     switch (pieceName) {
         // Quy tắc di chuyển của quân Xe (Rook)
         case 'xe':
-            return Rook(fromRow, fromCol, toRow, toCol);
+            return Rook(fromRow, fromCol, toRow, toCol, board);
         case 'tốt':
             return Soldier(pieceColor, fromRow, fromCol, toRow, toCol);
         case 'sĩ':
