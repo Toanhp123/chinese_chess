@@ -2,7 +2,7 @@ import './Board.css';
 
 import Square from '../Square/Square';
 import { useState } from 'react';
-import { chessOnBoard, isValidMove } from '../../utils/';
+import { chessOnBoard, isValidMove, isSameColor } from '../../utils/';
 
 const Board = () => {
     const [board, setBoard] = useState(chessOnBoard);
@@ -18,7 +18,11 @@ const Board = () => {
             const { row: fromRow, col: fromCol } = draggedPiece;
             const piece = board[fromRow][fromCol];
 
-            if (isValidMove(piece, fromRow, fromCol, row, col)) {
+            //Kiểm tra nước đi có hợp lý không
+            if (
+                isValidMove(piece, fromRow, fromCol, row, col) &&
+                !isSameColor(piece, board[row][col])
+            ) {
                 // Tạo bản sao bảng
                 const newBoard = board.map((row) => [...row]);
 
