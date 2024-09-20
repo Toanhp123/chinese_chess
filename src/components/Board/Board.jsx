@@ -81,7 +81,7 @@ const Board = () => {
     }
 
     return (
-        <div className="chinese-chess section__padding">
+        <div className="chinese-chess">
             <div className="chinese-chess__board">
                 {/* Render chess on board */}
                 {board.map((row, indexRow) => (
