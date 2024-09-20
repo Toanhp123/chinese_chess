@@ -1,4 +1,4 @@
-import { Rook, Soldier } from '../setupMove';
+import { Rook, Soldier, Advisor } from '../setupMove';
 
 const isValidMove = (piece, fromRow, fromCol, toRow, toCol) => {
     // Không cho ở lại vị trí cũ
@@ -13,6 +13,8 @@ const isValidMove = (piece, fromRow, fromCol, toRow, toCol) => {
             return Rook(fromRow, fromCol, toRow, toCol);
         case 'tốt':
             return Soldier(pieceColor, fromRow, fromCol, toRow, toCol);
+        case 'sĩ':
+            return Advisor();
         default:
             return false;
     }
