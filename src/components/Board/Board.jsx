@@ -2,7 +2,7 @@ import './Board.css';
 
 import Square from '../Square/Square';
 import { useState } from 'react';
-import { chessOnBoard } from '../../utils/';
+import { chessOnBoard, isValidMove } from '../../utils/';
 
 const Board = () => {
     const [board, setBoard] = useState(chessOnBoard);
@@ -15,21 +15,24 @@ const Board = () => {
 
     function handleDrop(e, row, col) {
         if (draggedPiece) {
-            const newBoard = board.map((row) => [...row]);
+            const { row: fromRow, col: fromCol } = draggedPiece;
+            const piece = board[fromRow][fromCol];
 
-            if (
-                newBoard[row][col].color !==
-                board[draggedPiece.row][draggedPiece.col].color
-            ) {
+            if (isValidMove(piece, fromRow, fromCol, row, col)) {
+                // Tạo bản sao bảng
+                const newBoard = board.map((row) => [...row]);
+
                 // Setup vị trí ở bảng mới
-                newBoard[row][col] = board[draggedPiece.row][draggedPiece.col];
-                newBoard[draggedPiece.row][draggedPiece.col] = '';
+                newBoard[row][col] = piece;
+                newBoard[fromRow][fromCol] = '';
 
                 // Render lại bảng
                 setBoard(newBoard);
-                setDraggedPiece(null);
                 setIsRedTurn((prev) => !prev);
             }
+
+            // Xóa quân cờ được kéo
+            setDraggedPiece(null);
         }
     }
 
