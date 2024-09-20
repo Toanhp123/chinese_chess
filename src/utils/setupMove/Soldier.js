@@ -1,5 +1,3 @@
-import chessOnBoard from '../setupBoard/chessOnBoard';
-
 const isSoldierMoveValid = (pieceColor, fromRow, fromCol, toRow, toCol) => {
     // Quân đỏ hướng -1 đen hướng 1 chiều dọc
     const direction = pieceColor === 'red' ? -1 : 1;
