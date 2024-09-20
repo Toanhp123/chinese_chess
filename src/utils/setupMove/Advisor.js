@@ -1,7 +1,10 @@
 const isAdvisorMoveValid = (pieceColor, fromRow, fromCol, toRow, toCol) => {
+    // Tính toán khoảng cách hàng và cột.
+    const rowDiff = Math.abs(toRow - fromRow);
+    const colDiff = Math.abs(toCol - fromCol);
+
     // Quân Sĩ chỉ đi chéo 1 ô.
-    if (Math.abs(toRow - fromRow) !== 1 || Math.abs(toCol - fromCol) !== 1)
-        return false;
+    if (rowDiff !== 1 || colDiff !== 1) return false;
 
     // Phạm vi cung cho từng bên.
     const palaceRange =

@@ -22,7 +22,7 @@ import thinking from '../assets/img/thinking.gif';
 const obj_ba = {
     image: ba,
     color: 'black',
-    name: 'sĩ',
+    name: ' ',
 };
 
 const obj_bb = {

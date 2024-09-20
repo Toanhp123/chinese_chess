@@ -1,4 +1,4 @@
-import { Rook, Soldier, Advisor, Horse, Elephant } from '../setupMove';
+import { Rook, Soldier, Advisor, Horse, Elephant, King } from '../setupMove';
 
 const isValidMove = (piece, fromRow, fromCol, toRow, toCol, board) => {
     // Không cho ở lại vị trí cũ
@@ -19,6 +19,8 @@ const isValidMove = (piece, fromRow, fromCol, toRow, toCol, board) => {
             return Horse(fromRow, fromCol, toRow, toCol, board);
         case 'tịnh':
             return Elephant(pieceColor, fromRow, fromCol, toRow, toCol, board);
+        case 'tướng':
+            return King(pieceColor, fromRow, fromCol, toRow, toCol, board);
         default:
             return false;
     }

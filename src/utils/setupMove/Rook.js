@@ -1,6 +1,10 @@
 const isRookMoveValid = (fromRow, fromCol, toRow, toCol, board) => {
+    // Tính toán khoảng cách hàng và cột.
+    const rowDiff = Math.abs(toRow - fromRow);
+    const colDiff = Math.abs(toCol - fromCol);
+
     // Quân Xe di chuyển theo hàng ngang hoặc dọc.
-    if (fromRow !== toRow && fromCol !== toCol) return false;
+    if (rowDiff !== 0 && colDiff !== 0) return false;
 
     // Kiểm tra đường đi không bị chặn.
     if (fromRow === toRow) {
