@@ -14,7 +14,7 @@ const isSoldierMoveValid = (pieceColor, fromRow, fromCol, toRow, toCol) => {
 
     // Khi qua sông
     if (isAcrossRiver) {
-        // Đã qua sông, đi thẳng hoặc ngang 1 ô.
+        // Đi thẳng hoặc ngang 1 ô.
         const rowMove = Math.abs(toRow - fromRow) === 1 && toCol === fromCol;
         const colMove = toRow === fromRow && Math.abs(toCol - fromCol) === 1;
         return rowMove || colMove;
