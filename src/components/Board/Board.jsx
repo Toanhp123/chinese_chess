@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import './Board.css';
 
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { isValidMove, isSameColor, chessOnBoard } from '../../utils/';
 import { StoreContext } from '../../store';
 import findBestMove from '../../utils/AI/makeAiMove';
@@ -12,14 +12,27 @@ const Board = () => {
     const [board, setBoard] = useState(chessOnBoard);
     const [draggedPiece, setDraggedPiece] = useState(null);
 
+    const isFirstRender = useRef(true);
+
     // Giám sát sự thay đổi bàn cờ
     useEffect(() => {
+        // Bỏ lần đầu chạy strict
+        if (isFirstRender.current) {
+            isFirstRender.current = false;
+            return;
+        }
+
         setIsRedTurn((prev) => !prev);
     }, [board]);
 
     // Giám sát sự thay đổi lượt chơi
     useEffect(() => {
-        AI();
+        // Đặt thời gian hợp lý để delay
+        const timer = setTimeout(() => {
+            AI();
+        }, 100);
+
+        return () => clearTimeout(timer);
     }, [isRedTurn]);
 
     // Update state game
