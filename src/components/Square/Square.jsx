@@ -2,13 +2,7 @@ import './Square.css';
 
 import Chess from '../Chess/Chess';
 
-const Square = ({
-    id,
-    chess,
-    handleDragOver,
-    handleDrop,
-    handleDragStart,
-}) => {
+const Square = ({ id, chess, handleDragOver, handleDrop, handleDragStart }) => {
     return (
         <div
             id={id}
@@ -16,11 +10,7 @@ const Square = ({
             onDragOver={handleDragOver}
             onDrop={handleDrop}
         >
-            <Chess
-                id={id}
-                chess={chess}
-                handleDragStart={handleDragStart}
-            />
+            <Chess id={id} chess={chess} handleDragStart={handleDragStart} />
         </div>
     );
 };

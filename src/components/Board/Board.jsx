@@ -2,14 +2,15 @@
 import './Board.css';
 
 import { useContext, useEffect, useRef, useState } from 'react';
-import { isValidMove, isSameColor, chessOnBoard } from '../../utils/';
+import { isValidMove, isSameColor, renderBoard } from '../../utils/';
 import { StoreContext } from '../../store';
 import findBestMove from '../../utils/AI/makeAiMove';
 import Square from '../Square/Square';
+import { coordinatesX, coordinatesY } from '../../utils/setupBoard/renderBoard';
 
 const Board = () => {
     const { isRedTurn, setIsRedTurn } = useContext(StoreContext);
-    const [board, setBoard] = useState(chessOnBoard);
+    const [board, setBoard] = useState(renderBoard);
     const [draggedPiece, setDraggedPiece] = useState(null);
 
     const isFirstRender = useRef(true);
@@ -99,29 +100,32 @@ const Board = () => {
     }
 
     return (
-            <div className="chinese-chess__board">
-                {board.map((row, indexRow) => (
-                    <div
-                        key={indexRow}
-                        className="chinese-chess__board--row"
-                    >
-                        {row.map((col, indexCol) => (
-                            <Square
-                                key={indexCol}
-                                id={indexRow + '-' + indexCol}
-                                chess={col}
-                                handleDragOver={handleDragOver}
-                                handleDrop={() =>
-                                    handleDrop(indexRow, indexCol)
-                                }
-                                handleDragStart={() =>
-                                    handleDragStart(indexRow, indexCol)
-                                }
-                            />
-                        ))}
-                    </div>
+        <div className="chinese-chess__board">
+            {board.map((row, indexRow) => (
+                <div key={indexRow} className="chinese-chess__board--row">
+                    <h2 className="coordinationsY">{coordinatesY[indexRow]}</h2>
+
+                    {row.map((col, indexCol) => (
+                        <Square
+                            key={indexCol}
+                            id={indexRow + '-' + indexCol}
+                            chess={col}
+                            handleDragOver={handleDragOver}
+                            handleDrop={() => handleDrop(indexRow, indexCol)}
+                            handleDragStart={() =>
+                                handleDragStart(indexRow, indexCol)
+                            }
+                        />
+                    ))}
+                </div>
+            ))}
+
+            <dir className="coordinationsX">
+                {coordinatesX.map((col, indexCol) => (
+                    <h2 key={indexCol}>{col}</h2>
                 ))}
-            </div>
+            </dir>
+        </div>
     );
 };
 

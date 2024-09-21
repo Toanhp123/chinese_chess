@@ -13,3 +13,17 @@
     align-items: center;
     justify-content: center;
 }
+
+.coordinationsX {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    transform: translateY(-100%);
+    opacity: 0.4;
+}
+
+.coordinationsY {
+    transform: translate(-80%, -130%);
+    opacity: 0.4;
+}
