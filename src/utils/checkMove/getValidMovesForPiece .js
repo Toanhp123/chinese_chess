@@ -32,9 +32,11 @@ export const getAllValidMovesForAI = (color, board) => {
         // Cờ tướng có 9 cột.
         for (let col = 0; col < 9; col++) {
             const piece = board[row][col];
+            // Chỉ xét quân cờ của phe máy.
             if (piece && piece.color === color) {
-                // Chỉ xét quân cờ của phe máy.
-                validMoves.push(...getValidMovesForPiece(piece, row, col));
+                validMoves.push(
+                    ...getValidMovesForPiece(piece, row, col, board),
+                );
             }
         }
     }
