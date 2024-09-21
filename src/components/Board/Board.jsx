@@ -36,7 +36,7 @@ const Board = () => {
         if (isRedTurn === null || isRedTurn) return;
 
         const timer = setTimeout(() => {
-            // AI();
+            AI();
         }, 100);
 
         return () => clearTimeout(timer);
