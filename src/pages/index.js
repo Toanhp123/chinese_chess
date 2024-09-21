@@ -1,4 +1,4 @@
 import { default as Game } from './Game/Game';
-import { default as Heading } from './Heading/Heading';
+import { default as Sidebar } from './Sidebar/Sidebar';
 
-export { Game, Heading };
+export { Game, Sidebar };

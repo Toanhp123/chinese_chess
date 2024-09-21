@@ -1,9 +1,10 @@
-import { Game, Heading } from './pages';
+import { Game, Sidebar } from './pages';
+import './App.css';
 
 function App() {
     return (
         <div className="chinese-chess">
-            <Heading />
+            <Sidebar />
             <Game />
         </div>
     );
