@@ -10,13 +10,24 @@ const Chess = ({ id, chess, handleDragStart }) => {
                     color={chess.color}
                     onDragStart={handleDragStart}
                     draggable={true}
-                >
-                    <img
-                        src={chess.image}
-                        alt={chess.image}
-                        draggable={false}
-                    />
-                </div>
+                    style={
+                        chess.color === 'red'
+                            ? {
+                                  backgroundImage: `url('${chess.image}')`,
+                                  backgroundSize: '60% 60%',
+                                  backgroundRepeat: 'no-repeat',
+                                  backgroundColor: '#b22222',
+                                  backgroundPosition: 'center',
+                              }
+                            : {
+                                  backgroundImage: `url('${chess.image}')`,
+                                  backgroundSize: '60% 60%',
+                                  backgroundRepeat: 'no-repeat',
+                                  backgroundColor: 'black',
+                                  backgroundPosition: 'center',
+                              }
+                    }
+                ></div>
             )}
         </>
     );

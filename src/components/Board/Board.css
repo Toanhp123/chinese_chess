@@ -11,9 +11,10 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    height: 577px;
-    width: 521px;
-    background: url('../../assets/img/chess/board.jpg') no-repeat center;
+    height: 630px;
+    width: 568px;
+    background: url('../../assets/img/board/Board.svg') no-repeat center;
+
 }
 
 .chinese-chess__board--row {

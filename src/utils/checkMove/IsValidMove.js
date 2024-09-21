@@ -17,19 +17,19 @@ const isValidMove = (piece, fromRow, fromCol, toRow, toCol, board) => {
 
     switch (pieceType) {
         // Quy tắc di chuyển của quân Xe (Rook)
-        case 'Rook':
+        case 'rook':
             return Rook(fromRow, fromCol, toRow, toCol, board);
-        case 'Solder':
+        case 'pawn':
             return Soldier(pieceColor, fromRow, fromCol, toRow, toCol);
-        case 'Advisor':
+        case 'advisor':
             return Advisor(pieceColor, fromRow, fromCol, toRow, toCol);
-        case 'Horse':
+        case 'horse':
             return Horse(fromRow, fromCol, toRow, toCol, board);
-        case 'Elephant':
+        case 'elephant':
             return Elephant(pieceColor, fromRow, fromCol, toRow, toCol, board);
-        case 'King':
+        case 'king':
             return King(pieceColor, fromRow, fromCol, toRow, toCol, board);
-        case 'Cannon':
+        case 'cannon':
             return Cannon(fromRow, fromCol, toRow, toCol, board);
         default:
             return false;

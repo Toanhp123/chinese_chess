@@ -31,6 +31,7 @@ const minimax = (board, depth, alpha, beta, maximizingPlayer, aiColor) => {
             alpha = Math.max(alpha, eva);
             if (beta <= alpha) break; // Cắt tỉa alpha-beta.
         }
+
         return maxEval;
     } else {
         let minEval = Infinity;
@@ -49,6 +50,7 @@ const minimax = (board, depth, alpha, beta, maximizingPlayer, aiColor) => {
             beta = Math.min(beta, eva);
             if (beta <= alpha) break; // Cắt tỉa alpha-beta.
         }
+
         return minEval;
     }
 };

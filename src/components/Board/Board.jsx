@@ -21,6 +21,9 @@ const Board = () => {
             isFirstRender.current = false;
             return;
         }
+
+        // setIsRedTurn(true);
+
         const timer = setTimeout(() => {
             setIsRedTurn((prev) => !prev);
         }, 100);
@@ -52,7 +55,7 @@ const Board = () => {
 
     // Lượt đi của AI
     const AI = () => {
-        if (isRedTurn === false) {
+        if (!isRedTurn && isRedTurn === false) {
             const aiMove = findBestMove('black', board);
 
             if (aiMove) {
@@ -87,13 +90,7 @@ const Board = () => {
         }
     }
 
-    function handleDragStart(e, row, col) {
-        const img = new Image();
-
-        // Giúp kéo theo cả ảnh
-        img.src = board[row][col].image;
-        e.dataTransfer.setDragImage(img, 24, 24);
-
+    function handleDragStart(row, col) {
         // Kiểm tra đang ở lượt bên nào
         if (isRedTurn) {
             // Set vị trí cho quân được kéo
@@ -115,8 +112,8 @@ const Board = () => {
                                 handleDrop={() =>
                                     handleDrop(indexRow, indexCol)
                                 }
-                                handleDragStart={(e) =>
-                                    handleDragStart(e, indexRow, indexCol)
+                                handleDragStart={() =>
+                                    handleDragStart(indexRow, indexCol)
                                 }
                             />
                         ))}
