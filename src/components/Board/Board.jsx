@@ -3,7 +3,7 @@ import './Board.css';
 import Square from '../Square/Square';
 import { useEffect, useState } from 'react';
 import { chessOnBoard, isValidMove, isSameColor } from '../../utils/';
-import findBestMove from '../../utils/AI/makeMove';
+import findBestMove from '../../utils/AI/makeAiMove';
 
 const Board = () => {
     const [board, setBoard] = useState(chessOnBoard);
@@ -14,7 +14,21 @@ const Board = () => {
         if (!isRedTurn) {
             const aiMove = findBestMove('black', board);
             if (aiMove) {
-                console.log('AI');
+                const { from, to } = aiMove;
+                const piece = board[from.row][from.col];
+
+                // Tạo bản sao bảng
+                const newBoard = board.map((row) => [...row]);
+
+                // Setup vị trí ở bảng mới
+                newBoard[to.row][to.col] = piece;
+                newBoard[from.row][from.col] = '';
+
+                // Render lại bảng
+                setBoard(newBoard);
+
+                // Chuyển turn
+                setIsRedTurn((prev) => !prev);
             }
         }
     };

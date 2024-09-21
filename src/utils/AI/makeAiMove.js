@@ -72,18 +72,18 @@ const findBestMove = (aiColor, board) => {
 
     for (const move of allMoves) {
         const newBoard = simulateMove(board, move);
-        // const moveValue = minimax(
-        //     newBoard,
-        //     3,
-        //     -Infinity,
-        //     Infinity,
-        //     false,
-        //     aiColor,
-        // ); // Sâu tìm kiếm là 3.
-        // if (moveValue > bestValue) {
-        //     bestValue = moveValue;
-        //     bestMove = move;
-        // }
+        const moveValue = minimax(
+            newBoard,
+            3,
+            -Infinity,
+            Infinity,
+            false,
+            aiColor,
+        ); // Sâu tìm kiếm là 3.
+        if (moveValue > bestValue) {
+            bestValue = moveValue;
+            bestMove = move;
+        }
     }
 
     return bestMove;
