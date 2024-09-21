@@ -57,15 +57,13 @@ const Board = () => {
 
     // Lượt đi của AI
     const AI = () => {
-        {
-            const aiMove = findBestMove('black', board);
+        const aiMove = findBestMove('black', board);
 
-            if (aiMove) {
-                const { from, to } = aiMove;
+        if (aiMove) {
+            const { from, to } = aiMove;
 
-                // Cập nhật trạng thái bàn cờ
-                updateGameState(from.row, from.col, to.row, to.col);
-            }
+            // Cập nhật trạng thái bàn cờ
+            updateGameState(from.row, from.col, to.row, to.col);
         }
     };
 
