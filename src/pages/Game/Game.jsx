@@ -6,8 +6,7 @@ import { useContext } from 'react';
 import { StoreContext } from '../../store';
 
 const Game = () => {
-    const { coordination, isRedTurn } = useContext(StoreContext);
-    const { from, to } = coordination;
+    const { coordination } = useContext(StoreContext);
 
     return (
         <div className="chinese-chess__game">
@@ -19,7 +18,7 @@ const Game = () => {
                 <div className="chinese-chess__game--right--header"></div>
 
                 <div className="chinese-chess__game--right--contain">
-                    <BackStack index={1} from={from} to={to} turn={isRedTurn} />
+                    <BackStack coordination={coordination} />
                 </div>
 
                 <div className="chinese-chess__game--right--controller"></div>

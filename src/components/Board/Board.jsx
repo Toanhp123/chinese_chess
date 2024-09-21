@@ -13,7 +13,6 @@ const Board = () => {
         useContext(StoreContext);
     const [board, setBoard] = useState(renderBoard);
     const [draggedPiece, setDraggedPiece] = useState(null);
-
     const isFirstRender = useRef(true);
 
     // Giám sát sự thay đổi bàn cờ
