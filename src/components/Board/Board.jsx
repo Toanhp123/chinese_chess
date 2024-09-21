@@ -4,6 +4,7 @@ import Square from '../Square/Square';
 import { useState } from 'react';
 import { chessOnBoard, isValidMove, isSameColor } from '../../utils/';
 import { getAllValidMovesForAI } from '../../utils/checkMove/getValidMovesForPiece ';
+import findBestMove from '../../utils/AI/makeMove';
 
 const Board = () => {
     const [board, setBoard] = useState(chessOnBoard);
@@ -52,12 +53,11 @@ const Board = () => {
         e.dataTransfer.setDragImage(img, 24, 24);
 
         // Kiểm tra đang ở lượt bên nào
-        if (
-            (isRedTurn && pieceColor === 'red') ||
-            (!isRedTurn && pieceColor === 'black')
-        ) {
+        if (isRedTurn && pieceColor === 'red') {
             // Set vị trí cho quân được kéo
             setDraggedPiece({ row, col });
+        } else if (!isRedTurn && pieceColor === 'black') {
+            findBestMove('black', board);
         }
     }
 
