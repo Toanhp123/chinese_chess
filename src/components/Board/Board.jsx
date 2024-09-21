@@ -21,13 +21,15 @@ const Board = () => {
             isFirstRender.current = false;
             return;
         }
+        const timer = setTimeout(() => {
+            setIsRedTurn((prev) => !prev);
+        }, 100);
 
-        setIsRedTurn((prev) => !prev);
+        return () => clearTimeout(timer);
     }, [board]);
 
     // Giám sát sự thay đổi lượt chơi
     useEffect(() => {
-        // Đặt thời gian hợp lý để delay
         const timer = setTimeout(() => {
             AI();
         }, 100);
