@@ -9,7 +9,8 @@ import findBestMove from '../../utils/AI/makeAiMove';
 import Square from '../Square/Square';
 
 const Board = () => {
-    const { isRedTurn, setIsRedTurn } = useContext(StoreContext);
+    const { isRedTurn, setIsRedTurn, coordination, setCoordination } =
+        useContext(StoreContext);
     const [board, setBoard] = useState(renderBoard);
     const [draggedPiece, setDraggedPiece] = useState(null);
 
@@ -76,6 +77,12 @@ const Board = () => {
         if (draggedPiece) {
             const { row: fromRow, col: fromCol } = draggedPiece;
             const piece = board[fromRow][fromCol];
+
+            setCoordination((prev) => ({
+                ...prev,
+                from: { row: fromRow, col: fromCol },
+                to: { row: toRow, col: toCol },
+            }));
 
             //Kiểm tra nước đi có hợp lý không
             if (

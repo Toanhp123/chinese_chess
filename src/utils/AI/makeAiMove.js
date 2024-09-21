@@ -27,9 +27,12 @@ const minimax = (board, depth, alpha, beta, maximizingPlayer, aiColor) => {
                 false,
                 aiColor,
             );
+
             maxEval = Math.max(maxEval, eva);
             alpha = Math.max(alpha, eva);
-            if (beta <= alpha) break; // Cắt tỉa alpha-beta.
+
+            // Cắt tỉa alpha-beta
+            if (beta <= alpha) break;
         }
 
         return maxEval;
@@ -48,7 +51,9 @@ const minimax = (board, depth, alpha, beta, maximizingPlayer, aiColor) => {
 
             minEval = Math.min(minEval, eva);
             beta = Math.min(beta, eva);
-            if (beta <= alpha) break; // Cắt tỉa alpha-beta.
+
+            // Cắt tỉa alpha-beta
+            if (beta <= alpha) break;
         }
 
         return minEval;
@@ -82,6 +87,7 @@ const findBestMove = (aiColor, board) => {
             false,
             aiColor,
         ); // Sâu tìm kiếm là 3.
+
         if (moveValue > bestValue) {
             bestValue = moveValue;
             bestMove = move;
