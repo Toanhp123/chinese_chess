@@ -1,18 +1,19 @@
 import './Board.css';
 
 import Square from '../Square/Square';
-import { useEffect, useState } from 'react';
-import { chessOnBoard, isValidMove, isSameColor } from '../../utils/';
+import { useContext, useEffect, useState } from 'react';
+import { isValidMove, isSameColor } from '../../utils/';
 import findBestMove from '../../utils/AI/makeAiMove';
+import { StoreContext } from '../../store';
 
 const Board = () => {
-    const [board, setBoard] = useState(chessOnBoard);
-    const [isRedTurn, setIsRedTurn] = useState(true);
+    const [board, setBoard, isRedTurn, setIsRedTurn] = useContext(StoreContext);
     const [draggedPiece, setDraggedPiece] = useState(null);
 
     // Giám sát bàn cờ có sự thay đổi không
     useEffect(() => {
         setIsRedTurn((prev) => !prev);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [board]);
 
     // Giám sát lượt thuộc về AI không
@@ -25,7 +26,7 @@ const Board = () => {
     const AI = () => {
         if (isRedTurn === false) {
             const aiMove = findBestMove('black', board);
-            
+
             if (aiMove) {
                 const { from, to } = aiMove;
                 const piece = board[from.row][from.col];
