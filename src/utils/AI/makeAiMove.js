@@ -1,4 +1,4 @@
-import { evaluateBoard } from '../../services/dataPieceValue';
+import { evaluateBoard } from '../setupBoard/evaluateBoard';
 import { getAllValidMovesForAI } from '../checkMove/getValidMovesForPiece ';
 
 // Thuật toán Minimax kết hợp Alpha-Beta Pruning.
