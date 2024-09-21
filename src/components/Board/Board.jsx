@@ -64,7 +64,7 @@ const Board = () => {
     return (
         <div className="chinese-chess__board">
             <div className="chinese-chess__board--content">
-                {/* Render chess on board */}
+                {/*Render các ô cờ và các quân cờ */}
                 {board.map((row, indexRow) => (
                     <div key={indexRow} className="chinese-chess__board--row">
                         {row.map((col, indexCol) => (
