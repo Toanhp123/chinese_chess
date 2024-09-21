@@ -7,7 +7,7 @@ function Provider({ children }) {
     const [isRedTurn, setIsRedTurn] = useState(true);
 
     return (
-        <Context.Provider value={[board, setBoard, isRedTurn, setIsRedTurn]}>
+        <Context.Provider value={{ board, setBoard, isRedTurn, setIsRedTurn }}>
             {children}
         </Context.Provider>
     );
