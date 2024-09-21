@@ -1,9 +1,9 @@
-import { Board, Navbar } from './components';
+import { Board, Heading } from './components';
 
 function App() {
     return (
         <div className="chinese-chess">
-            <Navbar />
+            <Heading />
             <Board />
         </div>
     );
