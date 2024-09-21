@@ -1,13 +1,17 @@
+import isSameColor from './isSameColor';
 import isValidMove from './IsValidMove';
 
-const getValidMovesForPiece = (piece, fromRow, fromCol, board) => {
+export const getValidMovesForPiece = (piece, fromRow, fromCol, board) => {
     const validMoves = [];
 
     // Cờ tướng có 10 hàng.
     for (let row = 0; row < 10; row++) {
         // Cờ tướng có 9 cột.
         for (let col = 0; col < 9; col++) {
-            if (isValidMove(piece, fromRow, fromCol, row, col, board)) {
+            if (
+                isValidMove(piece, fromRow, fromCol, row, col, board) &&
+                !isSameColor(board[fromRow][fromCol], board[row][col])
+            ) {
                 validMoves.push({
                     from: { row: fromRow, col: fromCol },
                     to: { row, col },
@@ -16,9 +20,24 @@ const getValidMovesForPiece = (piece, fromRow, fromCol, board) => {
         }
     }
 
-    console.log(validMoves);
-
     return validMoves;
 };
 
-export default getValidMovesForPiece;
+// Hàm tìm tất cả các nước đi hợp lệ cho phe máy.
+export const getAllValidMovesForAI = (color, board) => {
+    const validMoves = [];
+
+    // Cờ tướng có 10 hàng.
+    for (let row = 0; row < 10; row++) {
+        // Cờ tướng có 9 cột.
+        for (let col = 0; col < 9; col++) {
+            const piece = board[row][col];
+            if (piece && piece.color === color) {
+                // Chỉ xét quân cờ của phe máy.
+                validMoves.push(...getValidMovesForPiece(piece, row, col));
+            }
+        }
+    }
+
+    return validMoves;
+};
