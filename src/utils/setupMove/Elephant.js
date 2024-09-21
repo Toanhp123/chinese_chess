@@ -1,3 +1,5 @@
+import countPiecesInDiagonal from '../checkMove/countPieceInDiagonal';
+
 const isElephantMoveValid = (
     pieceColor,
     fromRow,
@@ -15,12 +17,12 @@ const isElephantMoveValid = (
         return false;
     }
 
-    // Kiểm tra Tịnh có bị cản không.
-    const legRow = (fromRow + toRow) / 2;
-    const legCol = (fromCol + toCol) / 2;
-    if (board[legRow][legCol] !== '') {
-        return false; // Tịnh bị cản.
-    }
+    // Kiểm tra đường đi có bị chặn không
+    const pieceInDiagonal =
+        countPiecesInDiagonal(fromRow, fromCol, toRow, toCol, board) > 0;
+
+    // Quân bị chặn
+    if (pieceInDiagonal) return false;
 
     // Ranh giới sông
     const isAcrossRiver = pieceColor === 'red' ? fromRow < 5 : fromRow > 4;
