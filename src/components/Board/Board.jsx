@@ -8,12 +8,13 @@ import findBestMove from '../../utils/AI/makeAiMove';
 import Square from '../Square/Square';
 
 const Board = () => {
-    const { board, setBoard, isRedTurn, setIsRedTurn } =
+    const { board, setBoard, isRedTurn, setIsRedTurn, setWhoTurn } =
         useContext(StoreContext);
     const [draggedPiece, setDraggedPiece] = useState(null);
 
     // Giám sát sự thay đổi bàn cờ
     useEffect(() => {
+        setWhoTurn((prev) => !prev);
         setIsRedTurn((prev) => !prev);
     }, [board]);
 
