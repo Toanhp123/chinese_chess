@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import './Board.css';
 
 import { useContext, useEffect, useState } from 'react';
@@ -13,13 +14,11 @@ const Board = () => {
     // Giám sát sự thay đổi bàn cờ
     useEffect(() => {
         setIsRedTurn((prev) => !prev);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [board]);
 
     // Giám sát sự thay đổi lượt chơi
     useEffect(() => {
         AI();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isRedTurn]);
 
     // Update state game
