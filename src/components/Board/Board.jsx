@@ -3,10 +3,10 @@ import './Board.css';
 
 import { useContext, useEffect, useRef, useState } from 'react';
 import { isValidMove, isSameColor, renderBoard } from '../../utils/';
+import { coordinatesX, coordinatesY } from '../../utils/setupBoard/renderBoard';
 import { StoreContext } from '../../store';
 import findBestMove from '../../utils/AI/makeAiMove';
 import Square from '../Square/Square';
-import { coordinatesX, coordinatesY } from '../../utils/setupBoard/renderBoard';
 
 const Board = () => {
     const { isRedTurn, setIsRedTurn } = useContext(StoreContext);
