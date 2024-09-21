@@ -4,7 +4,7 @@
     width: 100%;
 }
 
-.chinese-chess__game--board {
+.chinese-chess__game--left {
     display: flex;
     flex: 1;
     justify-content: center;
@@ -12,10 +12,20 @@
     background-color: rgb(255, 251, 242);
 }
 
-.chinese-chess__game--sidebar {
+.chinese-chess__game--right {
     display: flex;
     flex: 0.7;
     height: 100%;
     width: 50%;
     background-color: rgb(246, 241, 232);
+    border-left: solid 1px red;
+}
+
+.chinese-chess__game--right--header {
+}
+
+.chinese-chess__game--right--contain {
+}
+
+.chinese-chess__game--right--footer {
 }

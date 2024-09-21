@@ -9,7 +9,7 @@ import findBestMove from '../../utils/AI/makeAiMove';
 import Square from '../Square/Square';
 
 const Board = () => {
-    const { isRedTurn, setIsRedTurn, coordination, setCoordination } =
+    const { isRedTurn, setIsRedTurn, setCoordination } =
         useContext(StoreContext);
     const [board, setBoard] = useState(renderBoard);
     const [draggedPiece, setDraggedPiece] = useState(null);
@@ -38,7 +38,7 @@ const Board = () => {
         if (isRedTurn === null || isRedTurn) return;
 
         const timer = setTimeout(() => {
-            // AI();
+            AI();
         }, 100);
 
         return () => clearTimeout(timer);
@@ -63,6 +63,12 @@ const Board = () => {
 
         if (aiMove) {
             const { from, to } = aiMove;
+
+            setCoordination((prev) => ({
+                ...prev,
+                from: from,
+                to: to,
+            }));
 
             // Cập nhật trạng thái bàn cờ
             updateGameState(from.row, from.col, to.row, to.col);

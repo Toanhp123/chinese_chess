@@ -30,6 +30,6 @@ const renderBoard = [
 
 export const coordinatesY = ['J', 'I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A'];
 
-export const coordinatesX = [9, 8, 7, 6, 5, 4, 3, 2, 1];
+export const coordinatesX = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default renderBoard;
