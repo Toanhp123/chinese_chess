@@ -15,7 +15,6 @@ const Board = () => {
     // Giám sát sự thay đổi bàn cờ
     useEffect(() => {
         setIsRedTurn((prev) => !prev);
-        console.log(isRedTurn);
     }, [board]);
 
     // Giám sát sự thay đổi lượt chơi
