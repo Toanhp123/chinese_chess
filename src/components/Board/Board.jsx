@@ -102,33 +102,29 @@ const Board = () => {
 
     return (
         <div className="chinese-chess__board">
-            <div className="chinese-chess__board--wrapper">
-                <div className="chinese-chess__board--wrapper--content">
-                    {board.map((row, indexRow) => (
-                        <div
-                            key={indexRow}
-                            className="chinese-chess__board--wrapper--content--row"
-                        >
-                            {row.map((col, indexCol) => (
-                                <Square
-                                    key={indexCol}
-                                    id={indexRow + '-' + indexCol}
-                                    chess={col}
-                                    handleDragOver={handleDragOver}
-                                    handleDrop={() =>
-                                        handleDrop(indexRow, indexCol)
-                                    }
-                                    handleDragStart={() =>
-                                        handleDragStart(indexRow, indexCol)
-                                    }
-                                />
-                            ))}
-                        </div>
-                    ))}
-                </div>
+            <div className="chinese-chess__board--content">
+                {board.map((row, indexRow) => (
+                    <div
+                        key={indexRow}
+                        className="chinese-chess__board--content--row"
+                    >
+                        {row.map((col, indexCol) => (
+                            <Square
+                                key={indexCol}
+                                id={indexRow + '-' + indexCol}
+                                chess={col}
+                                handleDragOver={handleDragOver}
+                                handleDrop={() =>
+                                    handleDrop(indexRow, indexCol)
+                                }
+                                handleDragStart={() =>
+                                    handleDragStart(indexRow, indexCol)
+                                }
+                            />
+                        ))}
+                    </div>
+                ))}
             </div>
-
-            <div className="chinese-chess__board--sidebar"></div>
         </div>
     );
 };
