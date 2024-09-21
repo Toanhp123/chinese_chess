@@ -16,6 +16,7 @@ const Board = () => {
     function handleDrop(toRow, toCol) {
         if (draggedPiece) {
             const { row: fromRow, col: fromCol } = draggedPiece;
+
             const piece = board[fromRow][fromCol];
 
             //Kiểm tra nước đi có hợp lý không
@@ -61,8 +62,8 @@ const Board = () => {
     }
 
     return (
-        <div className="chinese-chess">
-            <div className="chinese-chess__board">
+        <div className="chinese-chess__board">
+            <div className="chinese-chess__board--content">
                 {/* Render chess on board */}
                 {board.map((row, indexRow) => (
                     <div key={indexRow} className="chinese-chess__board--row">
@@ -72,7 +73,7 @@ const Board = () => {
                                 id={indexRow + '-' + indexCol}
                                 typeChess={col}
                                 handleDragOver={handleDragOver}
-                                handleDrop={(e) =>
+                                handleDrop={() =>
                                     handleDrop(indexRow, indexCol)
                                 }
                                 handleDragStart={(e) =>

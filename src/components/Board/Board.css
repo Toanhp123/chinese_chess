@@ -1,10 +1,10 @@
-.chinese-chess {
+.chinese-chess__board {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.chinese-chess__board {
+.chinese-chess__board--content {
     display: flex;
     align-items: center;
     justify-content: center;
