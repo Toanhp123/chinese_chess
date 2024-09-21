@@ -9,11 +9,11 @@ import {
 } from '../setupMove';
 
 const isValidMove = (piece, fromRow, fromCol, toRow, toCol, board) => {
-    // Không cho ở lại vị trí cũ
-    if (fromRow === toRow && fromCol === toCol) return false;
-
     let pieceName = piece.name;
     let pieceColor = piece.color;
+
+    // Không cho ở lại vị trí cũ
+    if (fromRow === toRow && fromCol === toCol) return false;
 
     switch (pieceName) {
         // Quy tắc di chuyển của quân Xe (Rook)
