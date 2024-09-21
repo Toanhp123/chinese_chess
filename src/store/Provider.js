@@ -5,7 +5,6 @@ import { chessOnBoard } from '../utils';
 function Provider({ children }) {
     const [board, setBoard] = useState(chessOnBoard);
     const [isRedTurn, setIsRedTurn] = useState(true);
-    const [whoTurn, setWhoTurn] = useState(true);
 
     return (
         <Context.Provider
@@ -14,8 +13,6 @@ function Provider({ children }) {
                 setBoard,
                 isRedTurn,
                 setIsRedTurn,
-                whoTurn,
-                setWhoTurn,
             }}
         >
             {children}
