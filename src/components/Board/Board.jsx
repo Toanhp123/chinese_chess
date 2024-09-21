@@ -36,7 +36,7 @@ const Board = () => {
         if (isRedTurn === null || isRedTurn) return;
 
         const timer = setTimeout(() => {
-            AI();
+            // AI();
         }, 100);
 
         return () => clearTimeout(timer);
@@ -99,12 +99,11 @@ const Board = () => {
     }
 
     return (
-        <div className="chinese-chess__board">
-            <div className="chinese-chess__board--content">
+            <div className="chinese-chess__board">
                 {board.map((row, indexRow) => (
                     <div
                         key={indexRow}
-                        className="chinese-chess__board--content--row"
+                        className="chinese-chess__board--row"
                     >
                         {row.map((col, indexCol) => (
                             <Square
@@ -123,7 +122,6 @@ const Board = () => {
                     </div>
                 ))}
             </div>
-        </div>
     );
 };
 

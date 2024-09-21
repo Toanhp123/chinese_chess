@@ -4,6 +4,13 @@
     width: 100%;
 }
 
+.chinese-chess__game--board {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
 .chinese-chess__game--sidebar {
     display: flex;
     flex: 0.6;

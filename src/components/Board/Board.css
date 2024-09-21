@@ -1,12 +1,4 @@
 .chinese-chess__board {
-    height: 100%;
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-}
-
-.chinese-chess__board--content {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,7 +8,7 @@
     background: url('../../assets/img/board/Board.svg') no-repeat center;
 }
 
-.chinese-chess__board--content--row {
+.chinese-chess__board--row {
     display: flex;
     align-items: center;
     justify-content: center;

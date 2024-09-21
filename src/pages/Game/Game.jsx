@@ -4,7 +4,9 @@ import './Game.css';
 const Game = () => {
     return (
         <div className="chinese-chess__game">
-            <Board />
+            <div className="chinese-chess__game--board">
+                <Board />
+            </div>
 
             <div className="chinese-chess__game--sidebar"></div>
         </div>
