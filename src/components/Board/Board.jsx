@@ -2,15 +2,17 @@
 import './Board.css';
 
 import { useContext, useEffect, useState } from 'react';
-import { isValidMove, isSameColor } from '../../utils/';
+import { isValidMove, isSameColor, chessOnBoard } from '../../utils/';
 import { StoreContext } from '../../store';
 import findBestMove from '../../utils/AI/makeAiMove';
 import Square from '../Square/Square';
 
 const Board = () => {
-    const { board, setBoard, isRedTurn, setIsRedTurn } =
-        useContext(StoreContext);
+    const { isRedTurn, setIsRedTurn } = useContext(StoreContext);
+    const [board, setBoard] = useState(chessOnBoard);
     const [draggedPiece, setDraggedPiece] = useState(null);
+
+    console.log(isRedTurn);
 
     // Giám sát sự thay đổi bàn cờ
     useEffect(() => {
