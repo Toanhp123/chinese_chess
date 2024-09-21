@@ -25,6 +25,7 @@ const Board = () => {
     const AI = () => {
         if (isRedTurn === false) {
             const aiMove = findBestMove('black', board);
+            
             if (aiMove) {
                 const { from, to } = aiMove;
                 const piece = board[from.row][from.col];
