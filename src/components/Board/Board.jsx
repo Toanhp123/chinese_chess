@@ -12,11 +12,10 @@ const Board = () => {
     const [board, setBoard] = useState(chessOnBoard);
     const [draggedPiece, setDraggedPiece] = useState(null);
 
-    console.log(isRedTurn);
-
     // Giám sát sự thay đổi bàn cờ
     useEffect(() => {
         setIsRedTurn((prev) => !prev);
+        console.log(isRedTurn);
     }, [board]);
 
     // Giám sát sự thay đổi lượt chơi

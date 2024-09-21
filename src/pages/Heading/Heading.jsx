@@ -6,8 +6,6 @@ import { StoreContext } from '../../store';
 const Heading = () => {
     const { isRedTurn } = useContext(StoreContext);
 
-    console.log(isRedTurn);
-
     return (
         <div className="chinese-chess__heading">
             <h1>Cờ Tướng</h1>
