@@ -94,7 +94,7 @@ const Board = () => {
                             <Square
                                 key={indexCol}
                                 id={indexRow + '-' + indexCol}
-                                typeChess={col}
+                                chess={col}
                                 handleDragOver={handleDragOver}
                                 handleDrop={() =>
                                     handleDrop(indexRow, indexCol)

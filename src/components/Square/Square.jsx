@@ -4,7 +4,7 @@ import Chess from '../Chess/Chess';
 
 const Square = ({
     id,
-    typeChess,
+    chess,
     handleDragOver,
     handleDrop,
     handleDragStart,
@@ -18,7 +18,7 @@ const Square = ({
         >
             <Chess
                 id={id}
-                typeChess={typeChess}
+                chess={chess}
                 handleDragStart={handleDragStart}
             />
         </div>
