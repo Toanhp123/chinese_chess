@@ -10,8 +10,20 @@ const Board = () => {
     const [isRedTurn, setIsRedTurn] = useState(true);
     const [draggedPiece, setDraggedPiece] = useState(null);
 
+    // Giám sát bàn cờ có sự thay đổi không
+    useEffect(() => {
+        setIsRedTurn((prev) => !prev);
+    }, [board]);
+
+    // Giám sát lượt thuộc về AI không
+    useEffect(() => {
+        AI();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isRedTurn]);
+
+    // Lượt đi của AI
     const AI = () => {
-        if (!isRedTurn) {
+        if (isRedTurn === false) {
             const aiMove = findBestMove('black', board);
             if (aiMove) {
                 const { from, to } = aiMove;
@@ -26,24 +38,9 @@ const Board = () => {
 
                 // Render lại bảng
                 setBoard(newBoard);
-
-                // Chuyển turn
-                setIsRedTurn((prev) => !prev);
             }
         }
     };
-
-    // Giám sát bàn cờ có sự thay đổi không
-    useEffect(() => {
-        setIsRedTurn((prev) => !prev);
-        console.log(isRedTurn);
-    }, [board]);
-
-    // Giám sát lượt thuộc về AI không
-    useEffect(() => {
-        AI();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isRedTurn]);
 
     function handleDragOver(e) {
         e.preventDefault();
