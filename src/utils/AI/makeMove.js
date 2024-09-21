@@ -9,10 +9,11 @@ const minimax = (board, depth, alpha, beta, maximizingPlayer, aiColor) => {
 
     const currentColor = maximizingPlayer
         ? aiColor
-        : aiColor === 'red'
+        : aiColor === 'black'
         ? 'black'
         : 'red';
-    const allMoves = getAllValidMovesForAI(currentColor);
+
+    const allMoves = getAllValidMovesForAI(currentColor, board);
 
     if (maximizingPlayer) {
         let maxEval = -Infinity;
@@ -54,10 +55,12 @@ const minimax = (board, depth, alpha, beta, maximizingPlayer, aiColor) => {
 
 // Hàm giả lập di chuyển quân cờ.
 const simulateMove = (board, move) => {
-    const newBoard = board.map((row) => row.slice()); // Tạo một bản sao của bàn cờ.
+    const newBoard = board.map((row) => [...row]); // Tạo một bản sao của bàn cờ.
     const { from, to } = move;
+
     newBoard[to.row][to.col] = newBoard[from.row][from.col];
     newBoard[from.row][from.col] = null;
+
     return newBoard;
 };
 
@@ -69,18 +72,18 @@ const findBestMove = (aiColor, board) => {
 
     for (const move of allMoves) {
         const newBoard = simulateMove(board, move);
-        const moveValue = minimax(
-            newBoard,
-            3,
-            -Infinity,
-            Infinity,
-            false,
-            aiColor,
-        ); // Sâu tìm kiếm là 3.
-        if (moveValue > bestValue) {
-            bestValue = moveValue;
-            bestMove = move;
-        }
+        // const moveValue = minimax(
+        //     newBoard,
+        //     3,
+        //     -Infinity,
+        //     Infinity,
+        //     false,
+        //     aiColor,
+        // ); // Sâu tìm kiếm là 3.
+        // if (moveValue > bestValue) {
+        //     bestValue = moveValue;
+        //     bestMove = move;
+        // }
     }
 
     return bestMove;
