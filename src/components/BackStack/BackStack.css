@@ -1,0 +1,35 @@
+.chinese-chess__back-stack {
+    display: flex;
+    width: 100%;
+    list-style: none;
+}
+
+.chinese-chess__back-stack li {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255 251 242);
+}
+
+.chinese-chess__back-stack--index {
+    display: flex;
+    flex: 0.6;
+    justify-content: start;
+    align-items: center;
+    padding: 10px 0 10px 20px;
+    font-size: 20px;
+}
+
+.chinese-chess__back-stack--coordination {
+    display: flex;
+    height: 100%;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.active {
+    background-color: rgb(227 220 212);
+}

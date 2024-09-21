@@ -1,13 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import './Game.css';
 
-import { Board } from '../../components';
+import { BackStack, Board } from '../../components';
 import { useContext } from 'react';
 import { StoreContext } from '../../store';
-import { coordinatesY } from '../../utils/setupBoard/renderBoard';
 
 const Game = () => {
-    const { coordination } = useContext(StoreContext);
+    const { coordination, isRedTurn } = useContext(StoreContext);
     const { from, to } = coordination;
 
     return (
@@ -19,7 +18,9 @@ const Game = () => {
             <div className="chinese-chess__game--right">
                 <div className="chinese-chess__game--right--header"></div>
 
-                <div className="chinese-chess__game--right--contain"></div>
+                <div className="chinese-chess__game--right--contain">
+                    <BackStack index={1} from={from} to={to} turn={isRedTurn} />
+                </div>
 
                 <div className="chinese-chess__game--right--controller"></div>
 

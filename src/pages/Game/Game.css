@@ -25,6 +25,7 @@
 }
 
 .chinese-chess__game--right--contain {
+    width: 100%;
 }
 
 .chinese-chess__game--right--footer {
