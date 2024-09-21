@@ -20,50 +20,51 @@ import rr from '../assets/img/rr.gif';
 import thinking from '../assets/img/thinking.gif';
 
 class chess {
-    constructor(image, color, name) {
+    constructor(image, color, name, type) {
         this.image = image;
         this.color = color;
         this.name = name;
+        this.type = type;
     }
 }
 
-const obj_ba = new chess(ba, 'black', 'sĩ');
+const obj_ba = new chess(ba, 'black', 'sĩ', 'Advisor');
 
-const obj_bb = new chess(bb, 'black', 'tịnh');
+const obj_bb = new chess(bb, 'black', 'tịnh', 'Elephant');
 
-const obj_bc = new chess(bc, 'black', 'pháo');
+const obj_bc = new chess(bc, 'black', 'pháo', 'Cannon');
 
-const obj_bk = new chess(bk, 'black', 'tướng');
+const obj_bk = new chess(bk, 'black', 'tướng', 'King');
 
 const obj_bkm = new chess(bkm, 'black', 'tướng thua');
 
-const obj_bn = new chess(bn, 'black', 'mã');
+const obj_bn = new chess(bn, 'black', 'mã', 'Horse');
 
 const obj_board = new chess(board, null, null);
 
-const obj_bp = new chess(bp, 'black', 'tốt');
+const obj_bp = new chess(bp, 'black', 'tốt', 'Solder');
 
-const obj_br = new chess(br, 'black', 'xe');
+const obj_br = new chess(br, 'black', 'xe', 'Rook');
 
 const obj_oo = new chess(oo, null, null);
 
 const obj_oos = new chess(oos, null, null);
 
-const obj_ra = new chess(ra, 'red', 'sĩ');
+const obj_ra = new chess(ra, 'red', 'sĩ', 'Advisor');
 
-const obj_rb = new chess(rb, 'red', 'tịnh');
+const obj_rb = new chess(rb, 'red', 'tịnh', 'Elephant');
 
-const obj_rc = new chess(rc, 'red', 'pháo');
+const obj_rc = new chess(rc, 'red', 'pháo', 'Cannon');
 
-const obj_rk = new chess(rk, 'red', 'tướng');
+const obj_rk = new chess(rk, 'red', 'tướng', 'King');
 
 const obj_rkm = new chess(rkm, 'red', 'tướng thua');
 
-const obj_rn = new chess(rn, 'red', 'mã');
+const obj_rn = new chess(rn, 'red', 'mã', 'Horse');
 
-const obj_rp = new chess(rp, 'red', 'tốt');
+const obj_rp = new chess(rp, 'red', 'tốt', 'Solder');
 
-const obj_rr = new chess(rr, 'red', 'xe');
+const obj_rr = new chess(rr, 'red', 'xe', 'Rook');
 
 const obj_thinking = new chess(thinking, null, null);
 

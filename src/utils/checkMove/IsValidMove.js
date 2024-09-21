@@ -9,27 +9,27 @@ import {
 } from '../setupMove';
 
 const isValidMove = (piece, fromRow, fromCol, toRow, toCol, board) => {
-    let pieceName = piece.name;
+    let pieceType = piece.type;
     let pieceColor = piece.color;
 
     // Không cho ở lại vị trí cũ
     if (fromRow === toRow && fromCol === toCol) return false;
 
-    switch (pieceName) {
+    switch (pieceType) {
         // Quy tắc di chuyển của quân Xe (Rook)
-        case 'xe':
+        case 'Rook':
             return Rook(fromRow, fromCol, toRow, toCol, board);
-        case 'tốt':
+        case 'Solder':
             return Soldier(pieceColor, fromRow, fromCol, toRow, toCol);
-        case 'sĩ':
+        case 'Advisor':
             return Advisor(pieceColor, fromRow, fromCol, toRow, toCol);
-        case 'mã':
+        case 'Horse':
             return Horse(fromRow, fromCol, toRow, toCol, board);
-        case 'tịnh':
+        case 'Elephant':
             return Elephant(pieceColor, fromRow, fromCol, toRow, toCol, board);
-        case 'tướng':
+        case 'King':
             return King(pieceColor, fromRow, fromCol, toRow, toCol, board);
-        case 'pháo':
+        case 'Cannon':
             return Cannon(fromRow, fromCol, toRow, toCol, board);
         default:
             return false;

@@ -22,10 +22,11 @@ export const evaluateBoard = (board, aiColor) => {
                 if (piece.color === aiColor) {
                     score += value; // Điểm cộng cho quân của máy.
                 } else {
-                    score -= value; // Điểm trừ cho quân của đối thủ.
+                    score -= value; // Điểm trừ cho quân người chơi.
                 }
             }
         }
     }
+
     return score;
 };
