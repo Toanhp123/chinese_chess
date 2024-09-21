@@ -3,6 +3,7 @@ import './Board.css';
 import Square from '../Square/Square';
 import { useState } from 'react';
 import { chessOnBoard, isValidMove, isSameColor } from '../../utils/';
+import getValidMovesForPiece from '../../utils/checkMove/getValidMovesForPiece ';
 
 const Board = () => {
     const [board, setBoard] = useState(chessOnBoard);
@@ -18,6 +19,8 @@ const Board = () => {
             const { row: fromRow, col: fromCol } = draggedPiece;
 
             const piece = board[fromRow][fromCol];
+
+            getValidMovesForPiece(piece, fromRow, fromCol, toRow, toCol, board);
 
             //Kiểm tra nước đi có hợp lý không
             if (
