@@ -33,8 +33,16 @@ const Board = () => {
         }
     };
 
+    // Giám sát bàn cờ có sự thay đổi không
+    useEffect(() => {
+        setIsRedTurn((prev) => !prev);
+        console.log(isRedTurn);
+    }, [board]);
+
+    // Giám sát lượt thuộc về AI không
     useEffect(() => {
         AI();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isRedTurn]);
 
     function handleDragOver(e) {
@@ -60,9 +68,6 @@ const Board = () => {
 
                 // Render lại bảng
                 setBoard(newBoard);
-
-                // Chuyển turn
-                setIsRedTurn((prev) => !prev);
             }
 
             // Xóa quân cờ được kéo
