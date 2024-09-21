@@ -33,6 +33,8 @@ const Board = () => {
 
     // Giám sát sự thay đổi lượt chơi
     useEffect(() => {
+        if (isRedTurn === null || isRedTurn) return;
+
         const timer = setTimeout(() => {
             AI();
         }, 100);
@@ -55,7 +57,7 @@ const Board = () => {
 
     // Lượt đi của AI
     const AI = () => {
-        if (!isRedTurn && isRedTurn === false) {
+        {
             const aiMove = findBestMove('black', board);
 
             if (aiMove) {
