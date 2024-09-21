@@ -1,10 +1,10 @@
 import './Board.css';
 
-import Square from '../Square/Square';
 import { useContext, useEffect, useState } from 'react';
 import { isValidMove, isSameColor } from '../../utils/';
-import findBestMove from '../../utils/AI/makeAiMove';
 import { StoreContext } from '../../store';
+import findBestMove from '../../utils/AI/makeAiMove';
+import Square from '../Square/Square';
 
 const Board = () => {
     const [board, setBoard, isRedTurn, setIsRedTurn] = useContext(StoreContext);
