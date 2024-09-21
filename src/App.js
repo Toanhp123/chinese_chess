@@ -1,10 +1,10 @@
-import { Board, Heading } from './components';
+import { Game, Heading } from './pages';
 
 function App() {
     return (
         <div className="chinese-chess">
             <Heading />
-            <Board />
+            <Game />
         </div>
     );
 }
