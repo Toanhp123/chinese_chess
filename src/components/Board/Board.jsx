@@ -3,7 +3,6 @@ import './Board.css';
 import Square from '../Square/Square';
 import { useState } from 'react';
 import { chessOnBoard, isValidMove, isSameColor } from '../../utils/';
-import { getAllValidMovesForAI } from '../../utils/checkMove/getValidMovesForPiece ';
 import findBestMove from '../../utils/AI/makeMove';
 
 const Board = () => {
