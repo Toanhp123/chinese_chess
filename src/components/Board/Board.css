@@ -3,8 +3,7 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    height: 630px;
-    width: 568px;
+    width: 650px;
     background: url('../../assets/img/board/Board.svg') no-repeat center;
 }
 
@@ -12,18 +11,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transform: translate(-1.2%, 50%);
 }
 
 .coordinationsX {
-    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    transform: translateY(-100%);
+    transform: translateY(10%);
+}
+
+.coordinationsX h1 {
+    width: calc(645px / 8);
+    height: calc(645px / 8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
     opacity: 0.4;
 }
 
 .coordinationsY {
-    transform: translate(-80%, -130%);
     opacity: 0.4;
+    font-size: 24px;
 }

@@ -1,8 +1,7 @@
 .chinese-chess__board--square {
-    width: calc(560px / 8);
-    height: calc(630px / 9);
+    width: calc(645px / 8);
+    height: calc(645px / 8);
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: translate(-14%, -50%);
 }

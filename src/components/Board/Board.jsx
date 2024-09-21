@@ -103,7 +103,7 @@ const Board = () => {
         <div className="chinese-chess__board">
             {board.map((row, indexRow) => (
                 <div key={indexRow} className="chinese-chess__board--row">
-                    <h2 className="coordinationsY">{coordinatesY[indexRow]}</h2>
+                    <h1 className="coordinationsY">{coordinatesY[indexRow]}</h1>
 
                     {row.map((col, indexCol) => (
                         <Square
@@ -122,7 +122,7 @@ const Board = () => {
 
             <dir className="coordinationsX">
                 {coordinatesX.map((col, indexCol) => (
-                    <h2 key={indexCol}>{col}</h2>
+                    <h1 key={indexCol}>{col}</h1>
                 ))}
             </dir>
         </div>
