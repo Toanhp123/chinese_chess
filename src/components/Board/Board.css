@@ -6,7 +6,14 @@
     justify-content: center;
 }
 
-.chinese-chess__board--content {
+.chinese-chess__board--wrapper {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.chinese-chess__board--wrapper--content {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,11 +21,15 @@
     height: 630px;
     width: 568px;
     background: url('../../assets/img/board/Board.svg') no-repeat center;
-
 }
 
-.chinese-chess__board--row {
+.chinese-chess__board--wrapper--content--row {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.chinese-chess__board--sidebar {
+    display: flex;
+    flex: 0.7;
 }
