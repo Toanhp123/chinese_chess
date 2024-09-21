@@ -1,4 +1,4 @@
-import countPiecesInDiagonal from '../checkMove/countPieceInDiagonal';
+import { countPiecesInDiagonal } from '../checkMove/countPieceInPath';
 
 const isElephantMoveValid = (
     pieceColor,

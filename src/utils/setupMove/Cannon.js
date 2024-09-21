@@ -1,4 +1,4 @@
-import countPiecesInLine from '../checkMove/countPieceInLine';
+import { countPiecesInLine } from '../checkMove/countPieceInPath';
 import isSameColor from '../checkMove/isSameColor';
 
 const isCannonMoveValid = (fromRow, fromCol, toRow, toCol, board) => {

@@ -1,4 +1,4 @@
-import countPiecesInLine from '../checkMove/countPieceInLine';
+import { countPiecesInLine } from '../checkMove/countPieceInPath';
 
 const isRookMoveValid = (fromRow, fromCol, toRow, toCol, board) => {
     // Tính toán khoảng cách hàng và cột.
