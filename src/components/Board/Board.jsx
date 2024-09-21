@@ -13,21 +13,21 @@ const Board = () => {
         e.preventDefault();
     }
 
-    function handleDrop(e, row, col) {
+    function handleDrop(toRow, toCol) {
         if (draggedPiece) {
             const { row: fromRow, col: fromCol } = draggedPiece;
             const piece = board[fromRow][fromCol];
 
             //Kiểm tra nước đi có hợp lý không
             if (
-                isValidMove(piece, fromRow, fromCol, row, col, board) &&
-                !isSameColor(piece, board[row][col])
+                isValidMove(piece, fromRow, fromCol, toRow, toCol, board) &&
+                !isSameColor(piece, board[toRow][toCol])
             ) {
                 // Tạo bản sao bảng
                 const newBoard = board.map((row) => [...row]);
 
                 // Setup vị trí ở bảng mới
-                newBoard[row][col] = piece;
+                newBoard[toRow][toCol] = piece;
                 newBoard[fromRow][fromCol] = '';
 
                 // Render lại bảng
@@ -73,7 +73,7 @@ const Board = () => {
                                 typeChess={col}
                                 handleDragOver={handleDragOver}
                                 handleDrop={(e) =>
-                                    handleDrop(e, indexRow, indexCol)
+                                    handleDrop(indexRow, indexCol)
                                 }
                                 handleDragStart={(e) =>
                                     handleDragStart(e, indexRow, indexCol)
