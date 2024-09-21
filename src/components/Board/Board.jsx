@@ -10,17 +10,30 @@ const Board = () => {
     const [board, setBoard, isRedTurn, setIsRedTurn] = useContext(StoreContext);
     const [draggedPiece, setDraggedPiece] = useState(null);
 
-    // Giám sát bàn cờ có sự thay đổi không
+    // Giám sát sự thay đổi bàn cờ
     useEffect(() => {
         setIsRedTurn((prev) => !prev);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [board]);
 
-    // Giám sát lượt thuộc về AI không
+    // Giám sát sự thay đổi lượt chơi
     useEffect(() => {
         AI();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isRedTurn]);
+
+    // Update state game
+    const updateGameState = (fromRow, fromCol, toRow, toCol) => {
+        // Tạo bản sao bảng
+        const newBoard = board.map((row) => [...row]);
+
+        // Setup vị trí ở bảng mới
+        newBoard[toRow][toCol] = board[fromRow][fromCol];
+        newBoard[fromRow][fromCol] = '';
+
+        // Render lại bảng
+        setBoard(newBoard);
+    };
 
     // Lượt đi của AI
     const AI = () => {
@@ -29,17 +42,9 @@ const Board = () => {
 
             if (aiMove) {
                 const { from, to } = aiMove;
-                const piece = board[from.row][from.col];
 
-                // Tạo bản sao bảng
-                const newBoard = board.map((row) => [...row]);
-
-                // Setup vị trí ở bảng mới
-                newBoard[to.row][to.col] = piece;
-                newBoard[from.row][from.col] = '';
-
-                // Render lại bảng
-                setBoard(newBoard);
+                // Cập nhật trạng thái bàn cờ
+                updateGameState(from.row, from.col, to.row, to.col);
             }
         }
     };
@@ -58,15 +63,8 @@ const Board = () => {
                 isValidMove(piece, fromRow, fromCol, toRow, toCol, board) &&
                 !isSameColor(piece, board[toRow][toCol])
             ) {
-                // Tạo bản sao bảng
-                const newBoard = board.map((row) => [...row]);
-
-                // Setup vị trí ở bảng mới
-                newBoard[toRow][toCol] = piece;
-                newBoard[fromRow][fromCol] = '';
-
-                // Render lại bảng
-                setBoard(newBoard);
+                // Cập nhật trạng thái bàn cờ
+                updateGameState(fromRow, fromCol, toRow, toCol);
             }
 
             // Xóa quân cờ được kéo
