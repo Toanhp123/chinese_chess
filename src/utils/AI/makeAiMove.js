@@ -81,7 +81,7 @@ const findBestMove = (aiColor, board) => {
         const newBoard = simulateMove(board, move);
         const moveValue = minimax(
             newBoard,
-            3,
+            1,
             -Infinity,
             Infinity,
             false,
