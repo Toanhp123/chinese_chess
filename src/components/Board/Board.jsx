@@ -104,7 +104,7 @@ const Board = () => {
         }
     }
 
-    function handleDragStart(row, col) {
+    function handleDragStart(e, row, col) {
         // Kiểm tra đang ở lượt bên nào
         if (isRedTurn) {
             // Set vị trí cho quân được kéo
@@ -125,8 +125,8 @@ const Board = () => {
                             chess={col}
                             handleDragOver={handleDragOver}
                             handleDrop={() => handleDrop(indexRow, indexCol)}
-                            handleDragStart={() =>
-                                handleDragStart(indexRow, indexCol)
+                            handleDragStart={(e) =>
+                                handleDragStart(e, indexRow, indexCol)
                             }
                         />
                     ))}
