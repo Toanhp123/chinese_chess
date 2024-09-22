@@ -24,7 +24,7 @@
 
 .chinese-chess__game--right--header {
     display: flex;
-    flex: 0.2;
+    flex: 0.15;
     width: 100%;
     border-bottom: 1px solid rgb(218, 210, 202);
 }
@@ -36,10 +36,14 @@
 }
 
 .chinese-chess__game--right--controller {
+    display: flex;
+    flex: 0.1;
+    width: 100%;
+    background-color: rgb(223 215 207);
 }
 
 .chinese-chess__game--right--footer {
     display: flex;
-    flex: 0.2;
+    flex: 0.15;
     width: 100%;
 }
