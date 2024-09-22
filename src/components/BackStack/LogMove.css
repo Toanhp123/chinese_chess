@@ -1,10 +1,9 @@
-.chinese-chess__back-stack {
-    display: flex;
+.chinese-chess__log-move {
     width: 100%;
     list-style: none;
 }
 
-.chinese-chess__back-stack li {
+.chinese-chess__log-move li {
     display: flex;
     width: 100%;
     justify-content: center;
@@ -12,7 +11,7 @@
     background-color: rgb(255 251 242);
 }
 
-.chinese-chess__back-stack--index {
+.chinese-chess__log-move--index {
     display: flex;
     flex: 0.6;
     justify-content: start;
@@ -21,12 +20,13 @@
     font-size: 20px;
 }
 
-.chinese-chess__back-stack--coordination {
+.chinese-chess__log-move--coordination {
     display: flex;
     height: 100%;
     flex: 1;
     justify-content: center;
     align-items: center;
+    padding: 10px 0 10px 20px;
     font-size: 20px;
 }
 
