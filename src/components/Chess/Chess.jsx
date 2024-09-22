@@ -18,17 +18,11 @@ const Chess = ({ id, chess, handleDragStart }) => {
                         chess.color === 'red'
                             ? {
                                   backgroundImage: `url('${chess.image}')`,
-                                  backgroundSize: '60% 60%',
-                                  backgroundRepeat: 'no-repeat',
                                   backgroundColor: '#b22222',
-                                  backgroundPosition: 'center',
                               }
                             : {
                                   backgroundImage: `url('${chess.image}')`,
-                                  backgroundSize: '60% 60%',
-                                  backgroundRepeat: 'no-repeat',
                                   backgroundColor: 'black',
-                                  backgroundPosition: 'center',
                               }
                     }
                 ></div>

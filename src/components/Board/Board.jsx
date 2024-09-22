@@ -81,7 +81,7 @@ const Board = () => {
         }
     };
 
-    function handleDrop(toRow, toCol) {
+    function handleDrop(e, toRow, toCol) {
         if (draggedPiece) {
             const { row: fromRow, col: fromCol } = draggedPiece;
             const piece = board[fromRow][fromCol];
@@ -100,9 +100,11 @@ const Board = () => {
         }
     }
 
-    function handleDragStart(row, col) {
+    function handleDragStart(e, row, col) {
         // Kiểm tra đang ở lợt bên nào
         if (isRedTurn) {
+            getOffset(e);
+
             // Set vị trí cho quân được kéo
             setDraggedPiece({ row, col });
         }
@@ -119,9 +121,11 @@ const Board = () => {
                             key={indexCol}
                             id={indexRow + '-' + indexCol}
                             chess={col}
-                            handleDrop={() => handleDrop(indexRow, indexCol)}
-                            handleDragStart={() =>
-                                handleDragStart(indexRow, indexCol)
+                            handleDrop={(e) =>
+                                handleDrop(e, indexRow, indexCol)
+                            }
+                            handleDragStart={(e) =>
+                                handleDragStart(e, indexRow, indexCol)
                             }
                         />
                     ))}
