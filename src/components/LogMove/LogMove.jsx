@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import './LogMove.css';
 
-import { coordinatesY } from '../../utils/setupBoard/renderBoard';
+import { coordinatesY, coordinatesX } from '../../utils/setupBoard/renderBoard';
 import { useContext, useEffect, useState } from 'react';
 import { StoreContext } from '../../store';
 
@@ -13,8 +13,8 @@ const BackStack = () => {
         if (from.row === to.row && from.col === to.col) return;
 
         const currentMove = {
-            from: `${coordinatesY[from.row]}${from.col}`,
-            to: `${coordinatesY[to.row]}${to.col}`,
+            from: `${coordinatesY[from.row]}${coordinatesX[from.col]}`,
+            to: `${coordinatesY[to.row]}${coordinatesX[to.col]}`,
         };
 
         setMoveLog((prevLog) => {
