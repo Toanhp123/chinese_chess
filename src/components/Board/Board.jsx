@@ -81,10 +81,6 @@ const Board = () => {
         }
     };
 
-    function handleDragOver(e) {
-        e.preventDefault();
-    }
-
     function handleDrop(toRow, toCol) {
         if (draggedPiece) {
             const { row: fromRow, col: fromCol } = draggedPiece;
@@ -123,7 +119,6 @@ const Board = () => {
                             key={indexCol}
                             id={indexRow + '-' + indexCol}
                             chess={col}
-                            handleDragOver={handleDragOver}
                             handleDrop={() => handleDrop(indexRow, indexCol)}
                             handleDragStart={(e) =>
                                 handleDragStart(e, indexRow, indexCol)

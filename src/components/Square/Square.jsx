@@ -2,7 +2,11 @@ import './Square.css';
 
 import Chess from '../Chess/Chess';
 
-const Square = ({ id, chess, handleDragOver, handleDrop, handleDragStart }) => {
+const Square = ({ id, chess, handleDrop, handleDragStart }) => {
+    function handleDragOver(e) {
+        e.preventDefault();
+    }
+
     return (
         <div
             id={id}
