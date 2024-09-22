@@ -13,7 +13,7 @@ import findBestMove from '../../utils/AI/makeAiMove';
 import Square from '../Square/Square';
 
 const Board = () => {
-    const { isRedTurn, setIsRedTurn, setCoordination } =
+    const { isRedTurn, setIsRedTurn, setCoordination, distance, setDistance } =
         useContext(StoreContext);
     const [board, setBoard] = useState(renderBoard);
     const [draggedPiece, setDraggedPiece] = useState(null);
@@ -28,14 +28,11 @@ const Board = () => {
             row.forEach((cell, colIndex) => {
                 if (cell) {
                     // Lấy tọa độ `x`, `y` của ô hiện tại
-                    const { top, left, width, height } =
-                        cell.getBoundingClientRect();
+                    const { top, left } = cell.getBoundingClientRect();
 
                     boardCoordinates[rowIndex][colIndex] = {
                         top,
                         left,
-                        width,
-                        height,
                     };
                 }
             });
@@ -90,6 +87,19 @@ const Board = () => {
         setBoard(newBoard);
     };
 
+    // Tính toán quãng đường đi
+    function calculatePosition(fromRow, fromCol, toRow, toCol) {
+        const distanceX =
+            boardCoordinates[toRow][toCol].left -
+            boardCoordinates[fromRow][fromCol].left;
+
+        const distanceY =
+            boardCoordinates[toRow][toCol].top -
+            boardCoordinates[fromRow][fromCol].top;
+
+        return { distanceX, distanceY };
+    }
+
     // Lượt đi của AI
     const AI = () => {
         const aiMove = findBestMove('black', board);
@@ -105,6 +115,9 @@ const Board = () => {
 
             // Cập nhật trạng thái bàn cờ
             updateGameState(from.row, from.col, to.row, to.col);
+
+            // Tính toán quãng đường đi
+            setDistance(calculatePosition(from.row, from.col, to.row, to.col));
         }
     };
 
@@ -120,6 +133,9 @@ const Board = () => {
             ) {
                 // Cập nhật trạng thái bàn cờ
                 updateGameState(fromRow, fromCol, toRow, toCol);
+
+                // Tính toán quãng đường đi
+                setDistance(calculatePosition(fromRow, fromCol, toRow, toCol));
             }
 
             // Xóa quân cờ được kéo
@@ -130,8 +146,6 @@ const Board = () => {
     function handleDragStart(e, row, col) {
         // Kiểm tra đang ở lợt bên nào
         if (isRedTurn) {
-            console.log(e.clientX, e.clientY);
-
             // Set vị trí cho quân được kéo
             setDraggedPiece({ row, col });
         }

@@ -7,6 +7,7 @@ function Provider({ children }) {
         from: { row: null, col: null },
         to: { row: null, col: null },
     });
+    const [distance, setDistance] = useState({ x: null, y: null });
 
     return (
         <Context.Provider
@@ -15,6 +16,8 @@ function Provider({ children }) {
                 setIsRedTurn,
                 coordination,
                 setCoordination,
+                distance,
+                setDistance,
             }}
         >
             {children}
