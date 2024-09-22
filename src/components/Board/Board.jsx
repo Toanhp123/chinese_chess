@@ -13,10 +13,10 @@ import findBestMove from '../../utils/AI/makeAiMove';
 import Square from '../Square/Square';
 
 const Board = () => {
-    const { isRedTurn, setIsRedTurn, setCoordination, distance, setDistance } =
+    const { isRedTurn, setIsRedTurn, setCoordination, setDistance } =
         useContext(StoreContext);
-    const [board, setBoard] = useState(renderBoard);
     const [draggedPiece, setDraggedPiece] = useState(null);
+    const [board, setBoard] = useState(renderBoard);
     const isFirstRender = useRef(true);
     const cellsRef = useRef(
         Array.from({ length: 10 }, () => Array(9).fill(null)),
@@ -97,7 +97,12 @@ const Board = () => {
             boardCoordinates[toRow][toCol].top -
             boardCoordinates[fromRow][fromCol].top;
 
-        return { distanceX, distanceY };
+        const distance = {
+            x: distanceX,
+            y: distanceY,
+        };
+
+        return distance;
     }
 
     // Lượt đi của AI
@@ -167,6 +172,8 @@ const Board = () => {
                             <Square
                                 id={indexRow + '-' + indexCol}
                                 chess={col}
+                                row={indexRow}
+                                col={indexCol}
                                 handleDrop={(e) =>
                                     handleDrop(e, indexRow, indexCol)
                                 }

@@ -3,7 +3,9 @@ import { StoreContext } from '../../store';
 import { useContext } from 'react';
 
 const Chess = ({ id, chess, handleDragStart }) => {
-    const { coordination } = useContext(StoreContext);
+    const { distance, coordination } = useContext(StoreContext);
+
+    console.log(distance);
 
     return (
         <>
@@ -15,14 +17,21 @@ const Chess = ({ id, chess, handleDragStart }) => {
                     onDragStart={handleDragStart}
                     draggable={true}
                     style={
-                        chess.color === 'red'
-                            ? {
-                                  backgroundImage: `url('${chess.image}')`,
-                                  backgroundColor: '#b22222',
-                              }
+                        coordination.to
+                            ? chess.color === 'red'
+                                ? {
+                                      backgroundImage: `url('${chess.image}')`,
+                                      backgroundColor: '#b22222',
+                                      transform: `translate(${distance.x}px, ${distance.y}px)`,
+                                  }
+                                : {
+                                      backgroundImage: `url('${chess.image}')`,
+                                      backgroundColor: 'black',
+                                      transform: `translate(${distance.x}px, ${distance.y}px)`,
+                                  }
                             : {
                                   backgroundImage: `url('${chess.image}')`,
-                                  backgroundColor: 'black',
+                                  backgroundColor: '#b22222',
                               }
                     }
                 ></div>

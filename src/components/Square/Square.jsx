@@ -2,7 +2,7 @@ import './Square.css';
 
 import Chess from '../Chess/Chess';
 
-const Square = ({ id, chess, handleDrop, handleDragStart }) => {
+const Square = ({ id, chess, row, col, handleDrop, handleDragStart }) => {
     function handleDragOver(e) {
         e.preventDefault();
     }
@@ -11,6 +11,8 @@ const Square = ({ id, chess, handleDrop, handleDragStart }) => {
         <div
             id={id}
             className="chinese-chess__board--square"
+            row={row}
+            col={col}
             onDragOver={handleDragOver}
             onDrop={handleDrop}
         >
