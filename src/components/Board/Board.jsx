@@ -45,6 +45,13 @@ const Board = () => {
 
     // Update state game
     const updateGameState = (fromRow, fromCol, toRow, toCol) => {
+        // Log vị trí cho quân được kéo
+        setCoordination((prev) => ({
+            ...prev,
+            from: { row: fromRow, col: fromCol },
+            to: { row: toRow, col: toCol },
+        }));
+
         // Tạo bản sao bảng
         const newBoard = board.map((row) => [...row]);
 
@@ -82,12 +89,6 @@ const Board = () => {
         if (draggedPiece) {
             const { row: fromRow, col: fromCol } = draggedPiece;
             const piece = board[fromRow][fromCol];
-
-            setCoordination((prev) => ({
-                ...prev,
-                from: { row: fromRow, col: fromCol },
-                to: { row: toRow, col: toCol },
-            }));
 
             //Kiểm tra nước đi có hợp lý không
             if (
