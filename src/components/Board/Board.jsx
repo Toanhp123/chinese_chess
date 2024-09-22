@@ -3,7 +3,11 @@ import './Board.css';
 
 import { useContext, useEffect, useRef, useState } from 'react';
 import { isValidMove, isSameColor, renderBoard } from '../../utils/';
-import { coordinatesX, coordinatesY } from '../../utils/setupBoard/renderBoard';
+import {
+    boardCoordinates,
+    coordinatesX,
+    coordinatesY,
+} from '../../utils/setupBoard/renderBoard';
 import { StoreContext } from '../../store';
 import findBestMove from '../../utils/AI/makeAiMove';
 import Square from '../Square/Square';
@@ -24,7 +28,15 @@ const Board = () => {
             row.forEach((cell, colIndex) => {
                 if (cell) {
                     // Lấy tọa độ `x`, `y` của ô hiện tại
-                    const { top, left } = cell.getBoundingClientRect();
+                    const { top, left, width, height } =
+                        cell.getBoundingClientRect();
+
+                    boardCoordinates[rowIndex][colIndex] = {
+                        top,
+                        left,
+                        width,
+                        height,
+                    };
                 }
             });
         });
