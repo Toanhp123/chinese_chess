@@ -15,6 +15,7 @@
 .chinese-chess__game--right {
     display: flex;
     flex: 0.7;
+    flex-direction: column;
     height: 100%;
     width: 50%;
     background-color: rgb(246, 241, 232);
@@ -22,11 +23,23 @@
 }
 
 .chinese-chess__game--right--header {
+    display: flex;
+    flex: 0.2;
+    width: 100%;
+    border-bottom: 1px solid rgb(218, 210, 202);
 }
 
 .chinese-chess__game--right--contain {
+    flex: 1;
     width: 100%;
+    overflow-y: auto;
+}
+
+.chinese-chess__game--right--controller {
 }
 
 .chinese-chess__game--right--footer {
+    display: flex;
+    flex: 0.2;
+    width: 100%;
 }
