@@ -103,8 +103,6 @@ const Board = () => {
     function handleDragStart(e, row, col) {
         // Kiểm tra đang ở lợt bên nào
         if (isRedTurn) {
-            getOffset(e);
-
             // Set vị trí cho quân được kéo
             setDraggedPiece({ row, col });
         }

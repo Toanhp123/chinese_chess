@@ -3,7 +3,6 @@ import Context from './Context';
 
 function Provider({ children }) {
     const [isRedTurn, setIsRedTurn] = useState(null);
-    const [position, setPosition] = useState({ x: null, y: null });
     const [coordination, setCoordination] = useState({
         from: { row: null, col: null },
         to: { row: null, col: null },
@@ -16,8 +15,6 @@ function Provider({ children }) {
                 setIsRedTurn,
                 coordination,
                 setCoordination,
-                position,
-                setPosition,
             }}
         >
             {children}
