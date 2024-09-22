@@ -11,12 +11,16 @@ const Square = ({ id, chess, row, col, handleDrop, handleDragStart }) => {
         <div
             id={id}
             className="chinese-chess__board--square"
-            row={row}
-            col={col}
             onDragOver={handleDragOver}
             onDrop={handleDrop}
         >
-            <Chess id={id} chess={chess} handleDragStart={handleDragStart} />
+            <Chess
+                id={id}
+                chess={chess}
+                row={row}
+                col={col}
+                handleDragStart={handleDragStart}
+            />
         </div>
     );
 };

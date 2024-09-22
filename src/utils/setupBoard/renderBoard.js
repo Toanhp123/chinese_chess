@@ -28,10 +28,6 @@ const renderBoard = [
     [obj_rr, obj_hr, obj_er, obj_ar, obj_kr, obj_ar, obj_er, obj_hr, obj_rr],
 ];
 
-export const boardCoordinates = Array.from({ length: 10 }, () =>
-    Array(9).fill(null),
-);
-
 export const coordinatesY = ['J', 'I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A'];
 
 export const coordinatesX = [1, 2, 3, 4, 5, 6, 7, 8, 9];

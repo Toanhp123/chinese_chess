@@ -6,7 +6,7 @@ import { useContext, useEffect, useState } from 'react';
 import { StoreContext } from '../../store';
 
 const BackStack = () => {
-    const { coordination, isRedTurn } = useContext(StoreContext);
+    const { coordinate, isRedTurn } = useContext(StoreContext);
     const [moveLog, setMoveLog] = useState([]);
 
     const writeLog = (from, to) => {
@@ -50,13 +50,13 @@ const BackStack = () => {
     };
 
     useEffect(() => {
-        if (coordination.from.row === null || coordination.from.row === null)
+        if (coordinate.from.row === null || coordinate.from.row === null)
             return;
 
-        const { from, to } = coordination;
+        const { from, to } = coordinate;
 
         writeLog(from, to);
-    }, [coordination]);
+    }, [coordinate]);
 
     return (
         <ul className="chinese-chess__log-move">

@@ -3,41 +3,16 @@ import './Board.css';
 
 import { useContext, useEffect, useRef, useState } from 'react';
 import { isValidMove, isSameColor, renderBoard } from '../../utils/';
-import {
-    boardCoordinates,
-    coordinatesX,
-    coordinatesY,
-} from '../../utils/setupBoard/renderBoard';
+import { coordinatesX, coordinatesY } from '../../utils/setupBoard/renderBoard';
 import { StoreContext } from '../../store';
 import findBestMove from '../../utils/AI/makeAiMove';
 import Square from '../Square/Square';
 
 const Board = () => {
-    const { isRedTurn, setIsRedTurn, setCoordination, setDistance } =
-        useContext(StoreContext);
+    const { isRedTurn, setIsRedTurn, setCoordinate } = useContext(StoreContext);
     const [draggedPiece, setDraggedPiece] = useState(null);
     const [board, setBoard] = useState(renderBoard);
     const isFirstRender = useRef(true);
-    const cellsRef = useRef(
-        Array.from({ length: 10 }, () => Array(9).fill(null)),
-    );
-
-    // Sau khi component được render, lấy tọa độ của từng ô
-    useEffect(() => {
-        cellsRef.current.forEach((row, rowIndex) => {
-            row.forEach((cell, colIndex) => {
-                if (cell) {
-                    // Lấy tọa độ `x`, `y` của ô hiện tại
-                    const { top, left } = cell.getBoundingClientRect();
-
-                    boardCoordinates[rowIndex][colIndex] = {
-                        top,
-                        left,
-                    };
-                }
-            });
-        });
-    }, []);
 
     // Giám sát sự thay đổi bàn cờ
     useEffect(() => {
@@ -70,7 +45,7 @@ const Board = () => {
     // Update state game
     const updateGameState = (fromRow, fromCol, toRow, toCol) => {
         // Log vị trí cho quân được kéo
-        setCoordination((prev) => ({
+        setCoordinate((prev) => ({
             ...prev,
             from: { row: fromRow, col: fromCol },
             to: { row: toRow, col: toCol },
@@ -87,24 +62,6 @@ const Board = () => {
         setBoard(newBoard);
     };
 
-    // Tính toán quãng đường đi
-    function calculatePosition(fromRow, fromCol, toRow, toCol) {
-        const distanceX =
-            boardCoordinates[toRow][toCol].left -
-            boardCoordinates[fromRow][fromCol].left;
-
-        const distanceY =
-            boardCoordinates[toRow][toCol].top -
-            boardCoordinates[fromRow][fromCol].top;
-
-        const distance = {
-            x: distanceX,
-            y: distanceY,
-        };
-
-        return distance;
-    }
-
     // Lượt đi của AI
     const AI = () => {
         const aiMove = findBestMove('black', board);
@@ -112,7 +69,7 @@ const Board = () => {
         if (aiMove) {
             const { from, to } = aiMove;
 
-            setCoordination((prev) => ({
+            setCoordinate((prev) => ({
                 ...prev,
                 from: from,
                 to: to,
@@ -120,9 +77,6 @@ const Board = () => {
 
             // Cập nhật trạng thái bàn cờ
             updateGameState(from.row, from.col, to.row, to.col);
-
-            // Tính toán quãng đường đi
-            setDistance(calculatePosition(from.row, from.col, to.row, to.col));
         }
     };
 
@@ -138,9 +92,6 @@ const Board = () => {
             ) {
                 // Cập nhật trạng thái bàn cờ
                 updateGameState(fromRow, fromCol, toRow, toCol);
-
-                // Tính toán quãng đường đi
-                setDistance(calculatePosition(fromRow, fromCol, toRow, toCol));
             }
 
             // Xóa quân cờ được kéo
@@ -163,25 +114,19 @@ const Board = () => {
                     <h1 className="coordinationsY">{coordinatesY[indexRow]}</h1>
 
                     {row.map((col, indexCol) => (
-                        <div
+                        <Square
+                            id={indexRow + '-' + indexCol}
                             key={indexCol}
-                            ref={(el) =>
-                                (cellsRef.current[indexRow][indexCol] = el)
+                            chess={col}
+                            row={indexRow}
+                            col={indexCol}
+                            handleDrop={(e) =>
+                                handleDrop(e, indexRow, indexCol)
                             }
-                        >
-                            <Square
-                                id={indexRow + '-' + indexCol}
-                                chess={col}
-                                row={indexRow}
-                                col={indexCol}
-                                handleDrop={(e) =>
-                                    handleDrop(e, indexRow, indexCol)
-                                }
-                                handleDragStart={(e) =>
-                                    handleDragStart(e, indexRow, indexCol)
-                                }
-                            />
-                        </div>
+                            handleDragStart={(e) =>
+                                handleDragStart(e, indexRow, indexCol)
+                            }
+                        />
                     ))}
                 </div>
             ))}

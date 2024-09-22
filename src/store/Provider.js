@@ -3,7 +3,7 @@ import Context from './Context';
 
 function Provider({ children }) {
     const [isRedTurn, setIsRedTurn] = useState(null);
-    const [coordination, setCoordination] = useState({
+    const [coordinate, setCoordinate] = useState({
         from: { row: null, col: null },
         to: { row: null, col: null },
     });
@@ -14,8 +14,8 @@ function Provider({ children }) {
             value={{
                 isRedTurn,
                 setIsRedTurn,
-                coordination,
-                setCoordination,
+                coordinate,
+                setCoordinate,
                 distance,
                 setDistance,
             }}
