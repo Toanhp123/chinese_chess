@@ -1,6 +1,10 @@
 import './Chess.css';
+import { StoreContext } from '../../store';
+import { useContext } from 'react';
 
 const Chess = ({ id, chess, handleDragStart }) => {
+    const { coordination } = useContext(StoreContext);
+
     return (
         <>
             {chess && (
