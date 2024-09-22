@@ -14,6 +14,21 @@ const Board = () => {
     const [board, setBoard] = useState(renderBoard);
     const [draggedPiece, setDraggedPiece] = useState(null);
     const isFirstRender = useRef(true);
+    const cellsRef = useRef(
+        Array.from({ length: 10 }, () => Array(9).fill(null)),
+    );
+
+    // Sau khi component được render, lấy tọa độ của từng ô
+    useEffect(() => {
+        cellsRef.current.forEach((row, rowIndex) => {
+            row.forEach((cell, colIndex) => {
+                if (cell) {
+                    // Lấy tọa độ `x`, `y` của ô hiện tại
+                    const { top, left } = cell.getBoundingClientRect();
+                }
+            });
+        });
+    }, []);
 
     // Giám sát sự thay đổi bàn cờ
     useEffect(() => {
@@ -103,6 +118,8 @@ const Board = () => {
     function handleDragStart(e, row, col) {
         // Kiểm tra đang ở lợt bên nào
         if (isRedTurn) {
+            console.log(e.clientX, e.clientY);
+
             // Set vị trí cho quân được kéo
             setDraggedPiece({ row, col });
         }
@@ -115,17 +132,23 @@ const Board = () => {
                     <h1 className="coordinationsY">{coordinatesY[indexRow]}</h1>
 
                     {row.map((col, indexCol) => (
-                        <Square
+                        <div
                             key={indexCol}
-                            id={indexRow + '-' + indexCol}
-                            chess={col}
-                            handleDrop={(e) =>
-                                handleDrop(e, indexRow, indexCol)
+                            ref={(el) =>
+                                (cellsRef.current[indexRow][indexCol] = el)
                             }
-                            handleDragStart={(e) =>
-                                handleDragStart(e, indexRow, indexCol)
-                            }
-                        />
+                        >
+                            <Square
+                                id={indexRow + '-' + indexCol}
+                                chess={col}
+                                handleDrop={(e) =>
+                                    handleDrop(e, indexRow, indexCol)
+                                }
+                                handleDragStart={(e) =>
+                                    handleDragStart(e, indexRow, indexCol)
+                                }
+                            />
+                        </div>
                     ))}
                 </div>
             ))}
