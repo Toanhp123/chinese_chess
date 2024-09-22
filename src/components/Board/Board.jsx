@@ -22,8 +22,6 @@ const Board = () => {
             return;
         }
 
-        // setIsRedTurn(true);
-
         const timer = setTimeout(() => {
             setIsRedTurn((prev) => !prev);
         }, 100);
