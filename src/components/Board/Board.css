@@ -11,26 +11,4 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: translate(-1.2%, 50%);
-}
-
-.coordinationsX {
-    display: flex;
-    flex-direction: row;
-    transform: translateY(10%);
-}
-
-.coordinationsX h1 {
-    width: calc(645px / 8);
-    height: calc(645px / 8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    opacity: 0.4;
-}
-
-.coordinationsY {
-    opacity: 0.4;
-    font-size: 24px;
 }

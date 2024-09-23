@@ -1,4 +1,4 @@
-const isKingMoveValid = (pieceColor, fromRow, fromCol, toRow, toCol) => {
+const isKingMoveValid = (pieceColor, fromRow, fromCol, toRow, toCol, board) => {
     // Tính toán khoảng cách hàng và cột.
     const rowDiff = Math.abs(toRow - fromRow);
     const colDiff = Math.abs(toCol - fromCol);

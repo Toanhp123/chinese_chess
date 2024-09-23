@@ -1,4 +1,3 @@
-import { default as StoreProvider } from './Provider';
-import { default as StoreContext } from './Context';
+import { default as StoreGlobal } from './Global';
 
-export { StoreProvider, StoreContext };
+export { StoreGlobal };

@@ -66,7 +66,7 @@ const simulateMove = (board, move) => {
     const { from, to } = move;
 
     newBoard[to.row][to.col] = newBoard[from.row][from.col];
-    newBoard[from.row][from.col] = null;
+    newBoard[from.row][from.col] = '';
 
     return newBoard;
 };
@@ -81,12 +81,12 @@ const findBestMove = (aiColor, board) => {
         const newBoard = simulateMove(board, move);
         const moveValue = minimax(
             newBoard,
-            1,
+            3, // Độ sâu tìm kiếm
             -Infinity,
             Infinity,
             false,
             aiColor,
-        ); // Sâu tìm kiếm là 3.
+        );
 
         if (moveValue > bestValue) {
             bestValue = moveValue;

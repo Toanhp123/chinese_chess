@@ -3,10 +3,10 @@ import './LogMove.css';
 
 import { coordinatesY, coordinatesX } from '../../utils/setupBoard/renderBoard';
 import { useContext, useEffect, useState } from 'react';
-import { StoreContext } from '../../store';
+import { GlobalContext } from '../../store/Global';
 
 const BackStack = () => {
-    const { coordinate, isRedTurn } = useContext(StoreContext);
+    const { move, isRedTurn } = useContext(GlobalContext);
     const [moveLog, setMoveLog] = useState([]);
 
     const writeLog = (from, to) => {
@@ -50,13 +50,12 @@ const BackStack = () => {
     };
 
     useEffect(() => {
-        if (coordinate.from.row === null || coordinate.from.row === null)
-            return;
+        if (move.from.row === null || move.from.row === null) return;
 
-        const { from, to } = coordinate;
+        const { from, to } = move;
 
         writeLog(from, to);
-    }, [coordinate]);
+    }, [move]);
 
     return (
         <ul className="chinese-chess__log-move">
