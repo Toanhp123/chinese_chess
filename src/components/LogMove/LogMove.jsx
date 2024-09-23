@@ -24,7 +24,7 @@ const BackStack = () => {
                     ? prevLog[prevLog.length - 1]
                     : { index: prevLog.length + 1, red: null, black: null };
 
-            // Tạo log mới cho quân đỏ hoặc cập nhật log cũ cho quân đen
+            // Tạo log mới cho quân đỏ
             if (isRedTurn) {
                 return [
                     ...prevLog,
