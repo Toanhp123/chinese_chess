@@ -37,7 +37,7 @@ const Board = () => {
 
         const timer = setTimeout(() => {
             AI();
-        }, 100);
+        }, 500);
 
         return () => clearTimeout(timer);
     }, [board]);
