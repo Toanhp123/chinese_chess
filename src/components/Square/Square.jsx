@@ -17,8 +17,6 @@ const Square = memo(({ id, piece, board, setBoard, row, col }) => {
         setMove,
     } = useContext(GlobalContext);
 
-    console.log('renderSquare');
-
     const handleDrop = (e) => {
         e.preventDefault();
     };
