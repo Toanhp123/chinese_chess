@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import './Chess.css';
 
-import { GlobalContext } from '../../store/Global';
+import { GlobalContext } from '../../store/GlobalProvider';
 import { memo, useContext } from 'react';
-import { getValidMovesForPiece } from '../../utils/checkMove/getValidMovesForPiece ';
+import { getValidMovesForPiece } from '../../lib/checkMove/getValidMovesForPiece ';
 
 const Chess = memo(({ id, piece, board, row, col }) => {
     const { setValidSquare, selectedChess, setSelectedChess } =
@@ -37,6 +37,9 @@ const Chess = memo(({ id, piece, board, row, col }) => {
 
             // Lấy các move có thể đi của chess đc chọn
             const allValidMoves = getValidMovesForPiece(piece, row, col, board);
+
+            if (allValidMoves.length === 0) return;
+
             const allValidSquare = allValidMoves.map(
                 (move) => move.to.row + '-' + move.to.col,
             );

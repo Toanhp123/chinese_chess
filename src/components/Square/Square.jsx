@@ -2,8 +2,8 @@
 import './Square.css';
 
 import Chess from '../Chess/Chess';
-import { GlobalContext } from '../../store/Global';
-import { reRenderBoard } from '../../utils/setupBoard/renderBoard';
+import { GlobalContext } from '../../store/GlobalProvider';
+import { reRenderBoard } from '../../lib/setupBoard/renderBoard';
 import { memo, useContext } from 'react';
 
 const Square = memo(({ id, piece, board, setBoard, row, col }) => {
@@ -16,6 +16,8 @@ const Square = memo(({ id, piece, board, setBoard, row, col }) => {
         setIsRedTurn,
         setMove,
     } = useContext(GlobalContext);
+
+    console.log('renderSquare');
 
     const handleDrop = (e) => {
         e.preventDefault();

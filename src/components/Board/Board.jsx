@@ -2,14 +2,17 @@
 import './Board.css';
 
 import Square from '../Square/Square';
-import findBestMove from '../../utils/AI/makeAiMove';
-import renderBoard, { reRenderBoard } from '../../utils/setupBoard/renderBoard';
-import { GlobalContext } from '../../store/Global';
+import findBestMove from '../../lib/AI/makeAiMove';
+import { GlobalContext } from '../../store/GlobalProvider';
+import { StoreKingPosition } from '../../store';
+import renderBoard, { reRenderBoard } from '../../lib/setupBoard/renderBoard';
 import { useContext, useEffect, useState } from 'react';
 
 const Board = () => {
     const { isRedTurn, setIsRedTurn, setMove } = useContext(GlobalContext);
     const [board, setBoard] = useState(renderBoard);
+
+    console.log('renderBoard');
 
     // Lượt đi của AI
     const AI = () => {
@@ -44,21 +47,23 @@ const Board = () => {
 
     return (
         <div className="chinese-chess__board">
-            {board.map((row, indexRow) => (
-                <div key={indexRow} className="chinese-chess__board--row">
-                    {row.map((col, indexCol) => (
-                        <Square
-                            key={indexCol}
-                            id={indexRow + '-' + indexCol}
-                            row={indexRow}
-                            col={indexCol}
-                            piece={col}
-                            board={board}
-                            setBoard={setBoard}
-                        />
-                    ))}
-                </div>
-            ))}
+            {/* <StoreKingPosition> */}
+                {board.map((row, indexRow) => (
+                    <div key={indexRow} className="chinese-chess__board--row">
+                        {row.map((col, indexCol) => (
+                            <Square
+                                key={indexCol}
+                                id={indexRow + '-' + indexCol}
+                                row={indexRow}
+                                col={indexCol}
+                                piece={col}
+                                board={board}
+                                setBoard={setBoard}
+                            />
+                        ))}
+                    </div>
+                ))}
+            {/* </StoreKingPosition> */}
         </div>
     );
 };
