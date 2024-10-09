@@ -1,15 +1,15 @@
 import { Game, Sidebar } from './pages';
 import './App.css';
-import { StoreGlobal } from './store';
+import { StoreBoard } from './store';
 
 function App() {
     return (
         <div className="chinese-chess">
             <Sidebar />
 
-            <StoreGlobal>
+            <StoreBoard>
                 <Game />
-            </StoreGlobal>
+            </StoreBoard>
         </div>
     );
 }

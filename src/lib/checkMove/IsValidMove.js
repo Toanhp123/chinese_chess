@@ -7,7 +7,6 @@ import {
     King,
     Cannon,
 } from '../setupMove';
-import { checkFace } from './isKingDangerous';
 
 const isValidMove = (piece, fromRow, fromCol, toRow, toCol, board) => {
     let pieceName = piece.name;

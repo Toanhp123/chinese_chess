@@ -3,13 +3,13 @@ import './Board.css';
 
 import Square from '../Square/Square';
 import findBestMove from '../../lib/AI/makeAiMove';
-import { GlobalContext } from '../../store/GlobalProvider';
-import { StoreKingPosition } from '../../store';
+import { GlobalContext } from '../../store/BoardProvider';
 import renderBoard, { reRenderBoard } from '../../lib/setupBoard/renderBoard';
 import { useContext, useEffect, useState } from 'react';
 
 const Board = () => {
-    const { isRedTurn, setIsRedTurn, setMove } = useContext(GlobalContext);
+    const { isRedTurn, setIsRedTurn, setMove, updateKingPosition } =
+        useContext(GlobalContext);
     const [board, setBoard] = useState(renderBoard);
 
     // Lượt đi của AI
@@ -18,6 +18,19 @@ const Board = () => {
 
         if (aiMove) {
             const { from, to } = aiMove;
+
+            // Check nếu là quân tướng sẽ lưu vị trí mới
+            if (board[to.row][to.col].name === 'king') {
+                let newPosition = {
+                    row: 0,
+                    col: 0,
+                };
+
+                updateKingPosition(
+                    board[from.row][from.col].color,
+                    newPosition,
+                );
+            }
 
             setMove((prev) => ({
                 ...prev,
@@ -45,7 +58,6 @@ const Board = () => {
 
     return (
         <div className="chinese-chess__board">
-            <StoreKingPosition>
             {board.map((row, indexRow) => (
                 <div key={indexRow} className="chinese-chess__board--row">
                     {row.map((col, indexCol) => (
@@ -61,7 +73,6 @@ const Board = () => {
                     ))}
                 </div>
             ))}
-            </StoreKingPosition>
         </div>
     );
 };

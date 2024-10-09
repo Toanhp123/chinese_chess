@@ -3,7 +3,7 @@ import './LogMove.css';
 
 import { coordinatesY, coordinatesX } from '../../lib/setupBoard/renderBoard';
 import { useContext, useEffect, useState } from 'react';
-import { GlobalContext } from '../../store/GlobalProvider';
+import { GlobalContext } from '../../store/BoardProvider';
 
 const BackStack = () => {
     const { move, isRedTurn } = useContext(GlobalContext);

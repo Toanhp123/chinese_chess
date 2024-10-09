@@ -1,4 +1,3 @@
-import { default as StoreGlobal } from './GlobalProvider';
-import { default as StoreKingPosition } from './KingPositionProvider';
+import { default as StoreBoard } from './BoardProvider';
 
-export { StoreGlobal, StoreKingPosition };
+export { StoreBoard };

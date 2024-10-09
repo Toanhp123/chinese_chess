@@ -1,7 +1,26 @@
+import { countPiecesInLine } from './countPieceInPath';
 import { getValidMovesForPiece } from './getValidMovesForPiece ';
 
 // Quân tướng không được đối mặt nhau
-export const checkFace = () => {};
+export const checkFace = (board, kingRedPosition, kingBlackPosition) => {
+    // 2 tướng nằm trên 1 cột và không có quân ở giữa
+    if (
+        kingRedPosition.col === kingBlackPosition.col &&
+        countPiecesInLine(
+            kingRedPosition.row,
+            kingRedPosition.col,
+            kingBlackPosition.row,
+            kingBlackPosition.col,
+            board,
+        ) === 0
+    ) {
+        // Tướng hở mặt
+        return false;
+    }
+
+    // Không hở mặt
+    return true;
+};
 
 // Quân tướng có bị chiếu
 export const isKingInCheck = (board, kingPosition, kingColor) => {
