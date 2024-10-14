@@ -1,4 +1,3 @@
-import { checkFace } from './isKingDangerous';
 import isSameColor from './isSameColor';
 import isValidMove from './IsValidMove';
 
