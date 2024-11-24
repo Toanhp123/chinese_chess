@@ -10,7 +10,10 @@ import { useContext, useEffect, useState } from 'react';
 const Board = () => {
     const { isRedTurn, setIsRedTurn, setMove, updateKingPosition } =
         useContext(GlobalContext);
-    const [board, setBoard] = useState(renderBoard);
+    const [board, setBoard] = useState(renderBoard);  
+
+
+    
 
     // Lượt đi của AI
     const AI = () => {
