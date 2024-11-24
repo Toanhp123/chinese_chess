@@ -2,21 +2,20 @@
 import './Square.css';
 
 import Chess from '../Chess/Chess';
-import { GlobalContext } from '../../store/BoardProvider';
-import { reRenderBoard } from '../../lib/setupBoard/renderBoard';
-import { memo, useContext } from 'react';
+import { BoardContext } from '../../store/BoardProvider';
+import { useContext } from 'react';
+import { Xiangqi } from '../../lib/xiangqi/xiangqi.min.js';
 
-const Square = memo(({ id, piece, board, setBoard, row, col }) => {
+const Square = ({ id, piece, row, col }) => {
     const {
+        game,
+        setGame,
+        setHistory,
         validSquare,
         setValidSquare,
         selectedChess,
         setSelectedChess,
-        isRedTurn,
-        setIsRedTurn,
-        setMove,
-        updateKingPosition,
-    } = useContext(GlobalContext);
+    } = useContext(BoardContext);
 
     const handleDrop = (e) => {
         e.preventDefault();
@@ -25,68 +24,49 @@ const Square = memo(({ id, piece, board, setBoard, row, col }) => {
     // Xử lý sự kiện khi click vào square
     const handleClick = () => {
         // Nếu selectedChess tồn tại và validSquare bao gồm id ô được chọn
-        if (selectedChess.coordinate && validSquare.includes(id)) {
+        if (selectedChess.coordinate.row && validSquare.includes(col + row)) {
             // Tìm vị trí quân cờ đã chọn
-            const [selectedRow, selectedCol] = selectedChess.coordinate
-                .split('-')
-                .map(Number);
+            const [selectedRow, selectedCol] = [
+                selectedChess.coordinate.row,
+                selectedChess.coordinate.col,
+            ];
 
-            // Check nếu là quân tướng sẽ lưu vị trí mới
-            if (board[selectedRow][selectedCol].name === 'king') {
-                let newPosition = {
-                    row: 0,
-                    col: 0,
-                };
+            // Di chuyển quân
+            game.move({ from: selectedCol + selectedRow, to: col + row });
 
-                [newPosition.row, newPosition.col] = id.split('-').map(Number);
+            setHistory((prev) => [...prev, ...game.history({ verbose: true })]);
 
-                updateKingPosition(
-                    board[selectedRow][selectedCol].color,
-                    newPosition,
-                );
-            }
+            // Cập nhật trạng thái bàn cờ
+            setGame(new Xiangqi(game.fen()));
 
-            // // Render lại bảng cờ
-            reRenderBoard(board, setBoard, selectedRow, selectedCol, row, col);
-
-            // // Xóa các ô có khả năng đi từ ô được chọn
+            // // Xóa các ô có khả năng đi được từ ô được chọn
             setValidSquare([]);
 
-            // // Xóa square được chọn trước đấy
+            // // Xóa chess được chọn trước đấy
             setSelectedChess((prev) => ({
                 ...prev,
-                coordinate: null,
-                // Cập nhật màu chess có thể chọn chơi 2 người
-                // color: isRedTurn ? 'red' : 'black',
+                coordinate: { row: null, col: null },
             }));
-
-            // // Lấy log điểm đi đến chess
-            setMove({
-                from: { row: selectedRow, col: selectedCol },
-                to: { row: row, col: col },
-            });
-
-            // // Đổi lượt
-            setIsRedTurn(!isRedTurn);
         }
     };
 
     return (
         <div
             id={id}
-            className={`chinese-chess__board--square ${
-                validSquare.includes(id)
-                    ? board[row][col] === ''
-                        ? 'can-move-to-square'
-                        : 'can-capture-chess'
-                    : ''
-            }`}
+            className={`chinese-chess__board--square 
+                    ${
+                        validSquare.includes(col + row)
+                            ? game.get(col + row) === null
+                                ? 'can-move-to-square'
+                                : 'can-capture-chess'
+                            : ''
+                    }`}
             onDrop={handleDrop}
             onClick={handleClick}
         >
-            <Chess id={id} piece={piece} board={board} row={row} col={col} />
+            <Chess id={id} piece={piece} />
         </div>
     );
-});
+};
 
 export default Square;

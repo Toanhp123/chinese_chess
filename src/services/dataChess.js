@@ -6,6 +6,14 @@ import pawn from '../assets/img/chess/pawn.svg';
 import rook from '../assets/img/chess/rook.svg';
 import cannon from '../assets/img/chess/cannon.svg';
 
+import { Xiangqi } from './lib/xiangqi/xiangqi.min.js';
+
+const game = new Xiangqi();
+
+game.board().map((row, indexRow) =>
+    row.map((col, indexCol) => console.log(col)),
+);
+
 class chess {
     constructor(name, image, color, type) {
         this.name = name;

@@ -2,7 +2,6 @@
 import './Game.css';
 
 import { BackStack, Board } from '../../components';
-import { StoreBoard } from '../../store';
 
 const Game = () => {
     return (

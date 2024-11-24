@@ -2,86 +2,34 @@
 import './Board.css';
 
 import Square from '../Square/Square';
-import findBestMove from '../../lib/AI/makeAiMove';
-import { GlobalContext } from '../../store/BoardProvider';
-import renderBoard, { reRenderBoard } from '../../lib/setupBoard/renderBoard';
-import { useContext, useEffect, useState } from 'react';
+import { BoardContext } from '../../store/BoardProvider';
+import { useContext, useEffect } from 'react';
 
 const Board = () => {
-    const { isRedTurn, setIsRedTurn, setMove, updateKingPosition } =
-        useContext(GlobalContext);
-    const [board, setBoard] = useState(renderBoard);  
+    const { game, turn, setSelectedChess } = useContext(BoardContext);
 
-    
+    const coorX = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'];
+    const coorY = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
 
-
-
-
-
-
-
-
-
-    
-    
-
-    // Lượt đi của AI
-    const AI = () => {
-        const aiMove = findBestMove('black', board);
-
-        if (aiMove) {
-            const { from, to } = aiMove;
-
-            // Check nếu là quân tướng sẽ lưu vị trí mới
-            if (board[to.row][to.col].name === 'king') {
-                let newPosition = {
-                    row: 0,
-                    col: 0,
-                };
-
-                updateKingPosition(
-                    board[from.row][from.col].color,
-                    newPosition,
-                );
-            }
-
-            setMove((prev) => ({
-                ...prev,
-                from: from,
-                to: to,
-            }));
-
-            // Cập nhật trạng thái bàn cờ
-            reRenderBoard(board, setBoard, from.row, from.col, to.row, to.col);
-
-            // Đổi turn
-            setIsRedTurn(!isRedTurn);
-        }
-    };
-
+    // Chế độ 2 người chơi
     useEffect(() => {
-        if (!isRedTurn || isRedTurn === false) return;
-
-        const timer = setTimeout(() => {
-            AI();
-        }, 500);
-
-        return () => clearTimeout(timer);
-    }, [board]);
+        setSelectedChess((prev) => ({
+            ...prev,
+            color: turn === 'r' ? 'r' : 'b',
+        }));
+    }, [turn]);
 
     return (
         <div className="chinese-chess__board">
-            {board.map((row, indexRow) => (
+            {game.board().map((row, indexRow) => (
                 <div key={indexRow} className="chinese-chess__board--row">
                     {row.map((col, indexCol) => (
                         <Square
                             key={indexCol}
-                            id={indexRow + '-' + indexCol}
-                            row={indexRow}
-                            col={indexCol}
+                            id={coorX[indexCol] + '-' + coorY[indexRow]}
                             piece={col}
-                            board={board}
-                            setBoard={setBoard}
+                            row={coorY[indexRow]}
+                            col={coorX[indexCol]}
                         />
                     ))}
                 </div>

@@ -1,5 +1,3 @@
-import { checkFace } from '../checkMove/isKingDangerous';
-
 // Hàm giả lập di chuyển quân cờ.
 const simulateMove = (board, move) => {
     const newBoard = board.map((row) => [...row]); // Tạo một bản sao của bàn cờ.
