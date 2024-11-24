@@ -4,6 +4,7 @@
     justify-content: center;
     flex-wrap: wrap;
     width: 650px;
+    font-size: 20px;
     background: url('../../assets/img/board/Board.svg') no-repeat center;
 }
 

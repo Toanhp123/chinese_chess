@@ -1,20 +1,24 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import './LogMove.css';
 
-import { coordinatesY, coordinatesX } from '../../lib/setupBoard/renderBoard';
 import { useContext, useEffect, useState } from 'react';
-import { GlobalContext } from '../../store/BoardProvider';
+import { BoardContext } from '../../store/BoardProvider';
 
 const BackStack = () => {
-    const { move, isRedTurn } = useContext(GlobalContext);
+    const { history, turn } = useContext(BoardContext);
     const [moveLog, setMoveLog] = useState([]);
 
+    const move = {
+        from: null,
+        to: null,
+    };
+
     const writeLog = (from, to) => {
-        if (from.row === to.row && from.col === to.col) return;
+        if (from === to) return;
 
         const currentMove = {
-            from: `${coordinatesY[from.row]}${coordinatesX[from.col]}`,
-            to: `${coordinatesY[to.row]}${coordinatesX[to.col]}`,
+            from: from.toUpperCase(),
+            to: to.toUpperCase(),
         };
 
         setMoveLog((prevLog) => {
@@ -25,7 +29,7 @@ const BackStack = () => {
                     : { index: prevLog.length + 1, red: null, black: null };
 
             // Tạo log mới cho quân đỏ
-            if (isRedTurn) {
+            if (turn === 'b') {
                 return [
                     ...prevLog,
                     {
@@ -50,12 +54,13 @@ const BackStack = () => {
     };
 
     useEffect(() => {
-        if (move.from.row === null || move.from.row === null) return;
+        if (history.length === 0) return;
 
-        const { from, to } = move;
+        move.from = history[history.length - 1].from;
+        move.to = history[history.length - 1].to;
 
-        writeLog(from, to);
-    }, [move]);
+        writeLog(move.from, move.to);
+    }, [history]);
 
     return (
         <ul className="chinese-chess__log-move">
@@ -72,7 +77,7 @@ const BackStack = () => {
                                 : 'chinese-chess__log-move--coordination active'
                         }
                     >
-                        {move.red ? `${move.red.from}${move.red.to}` : ''}
+                        {move.red ? `${move.red.from} - ${move.red.to}` : ''}
                     </div>
 
                     <div
@@ -83,7 +88,9 @@ const BackStack = () => {
                                 : 'chinese-chess__log-move--coordination '
                         }
                     >
-                        {move.black ? `${move.black.from}${move.black.to}` : ''}
+                        {move.black
+                            ? `${move.black.from} - ${move.black.to}`
+                            : ''}
                     </div>
                 </li>
             ))}

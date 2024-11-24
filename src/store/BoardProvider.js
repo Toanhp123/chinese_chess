@@ -1,53 +1,36 @@
-import { useCallback, useState } from 'react';
-import { createContext } from 'react';
+import { useState, createContext } from 'react';
+import { Xiangqi } from '../lib/xiangqi/xiangqi.min.js';
 
-export const GlobalContext = createContext();
+export const BoardContext = createContext();
 
-const Global = ({ children }) => {
-    const [isRedTurn, setIsRedTurn] = useState(null);
+const Board = ({ children }) => {
+    const [game, setGame] = useState(new Xiangqi());
     const [validSquare, setValidSquare] = useState([]);
-    const [moveValid, setMoveValid] = useState([]);
+    const [history, setHistory] = useState([]);
     const [selectedChess, setSelectedChess] = useState({
-        coordinate: null,
-        color: 'red',
-    });
-    const [move, setMove] = useState({
-        from: { row: null, col: null },
-        to: { row: null, col: null },
-    });
-    const [kingPositions, setKingPositions] = useState({
-        redKing: { row: 9, col: 4 },
-        blackKing: { row: 0, col: 4 },
+        coordinate: { row: null, col: null },
+        color: 'r',
     });
 
-    // Cập nhật vị trí của tướng khi di chuyển
-    const updateKingPosition = useCallback((color, newPosition) => {
-        setKingPositions((prevState) => ({
-            ...prevState,
-            [color === 'red' ? 'redKing' : 'blackKing']: newPosition,
-        }));
-    }, []);
+    const turn = game.turn();
 
     return (
-        <GlobalContext.Provider
+        <BoardContext.Provider
             value={{
-                isRedTurn,
-                setIsRedTurn,
-                move,
-                setMove,
+                game,
+                setGame,
+                turn,
+                history,
+                setHistory,
                 validSquare,
                 setValidSquare,
-                moveValid,
-                setMoveValid,
                 selectedChess,
                 setSelectedChess,
-                kingPositions,
-                updateKingPosition,
             }}
         >
             {children}
-        </GlobalContext.Provider>
+        </BoardContext.Provider>
     );
 };
 
-export default Global;
+export default Board;

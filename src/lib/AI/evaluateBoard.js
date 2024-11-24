@@ -1,6 +1,6 @@
 import { pieceValues } from '../../services/dataPieceValue';
 
-export const evaluateBoard = (board, aiColor) => {
+const evaluateBoard = (board, aiColor) => {
     let score = 0;
 
     for (let row = 0; row < 10; row++) {
@@ -21,3 +21,5 @@ export const evaluateBoard = (board, aiColor) => {
 
     return score;
 };
+
+export default evaluateBoard;
