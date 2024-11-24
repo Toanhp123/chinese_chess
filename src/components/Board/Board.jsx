@@ -12,7 +12,17 @@ const Board = () => {
         useContext(GlobalContext);
     const [board, setBoard] = useState(renderBoard);  
 
+    
 
+
+
+
+
+
+
+
+
+    
     
 
     // Lượt đi của AI
