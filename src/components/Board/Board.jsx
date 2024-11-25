@@ -29,13 +29,11 @@ const Board = () => {
 
             // // Cập nhật trạng thái bàn cờ
             setGame(new Xiangqi(game.fen()));
-
-            // Cập nhật trạng thái bàn cờ
-            // reRenderBoard(board, setBoard, from.row, from.col, to.row, to.col);
         }
     };
 
     useEffect(() => {
+        // Chế độ đấu máy
         if (turn === 'r') return;
 
         const timer = setTimeout(() => {

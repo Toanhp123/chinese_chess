@@ -19,6 +19,8 @@ const evaluateBoard = (board, aiColor) => {
         }
     }
 
+    console.log(score);
+
     return score;
 };
 

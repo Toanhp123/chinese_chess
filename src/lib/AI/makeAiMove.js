@@ -1,112 +1,32 @@
-import { Xiangqi } from '../../lib/xiangqi/xiangqi.min.js';
-
 import simulateMove from './simulateMove';
 import evaluateBoard from './evaluateBoard';
 
+const coorX = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'];
+const coorY = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
+
 // Thuật toán Minimax kết hợp Alpha-Beta Pruning.
-const minimax = (board, depth, alpha, beta, maximizingPlayer, aiColor) => {
-    if (depth === 0) {
-        return evaluateBoard(board, aiColor);
-    }
-
-    const currentColor = maximizingPlayer
-        ? aiColor
-        : aiColor === 'b'
-        ? 'b'
-        : 'r';
-
-    const allMoves = getAllValidMovesForAI2(aiColor, board);
-
-    if (maximizingPlayer) {
-        let maxEval = -Infinity;
-        for (const move of allMoves) {
-            const newBoard = simulateMove(board, move); // Tạo một bàn cờ giả lập với nước đi mới.
-            const eva = minimax(
-                newBoard,
-                depth - 1,
-                alpha,
-                beta,
-                false,
-                aiColor,
-            );
-
-            maxEval = Math.max(maxEval, eva);
-            alpha = Math.max(alpha, eva);
-
-            // Cắt tỉa alpha-beta
-            if (beta <= alpha) break;
-        }
-
-        return maxEval;
-    } else {
-        let minEval = Infinity;
-        for (const move of allMoves) {
-            const newBoard = simulateMove(board, move); // Tạo một bàn cờ giả lập với nước đi mới.
-            const eva = minimax(
-                newBoard,
-                depth - 1,
-                alpha,
-                beta,
-                true,
-                aiColor,
-            );
-
-            minEval = Math.min(minEval, eva);
-            beta = Math.min(beta, eva);
-
-            // Cắt tỉa alpha-beta
-            if (beta <= alpha) break;
-        }
-
-        return minEval;
-    }
-};
+const minimax = () => {};
 
 // Hàm tìm tất cả các nước đi hợp lệ cho phe máy.
-const getAllValidMovesForAI = (game) => {
+const getAllValidMovesForAI = (board) => {
     const validMoves = [];
 
-    validMoves.push(...game.moves());
-
-    return validMoves;
-};
-
-const getAllValidMovesForAI2 = (color, board) => {
-    const validMoves = [];
-
-    // Cờ tướng có 10 hàng.
-    for (let row = 0; row < 10; row++) {
-        // Cờ tướng có 9 cột.
-        for (let col = 0; col < 9; col++) {
-            const piece = board[row][col];
-            // Chỉ xét quân cờ của phe máy.
-            if (piece && piece.color === color) {
-                validMoves.push();
-            }
-        }
-    }
+    validMoves.push(...board.moves());
 
     return validMoves;
 };
 
 // Hàm tìm nước đi tốt nhất cho AI.
-const findBestMove = (aiColor, game) => {
-    const allMoves = getAllValidMovesForAI(game);
+const findBestMove = (aiColor, board) => {
+    const allMoves = getAllValidMovesForAI(board);
 
     let bestMove = null;
     let bestValue = -Infinity;
 
     for (const move of allMoves) {
-        const newBoard = simulateMove(game, move);
+        const newBoard = simulateMove(board, move);
 
-        const moveValue = minimax(
-            newBoard,
-            1, // Độ sâu tìm kiếm
-            -Infinity,
-            Infinity,
-            false,
-            aiColor,
-        );
+        const moveValue = minimax();
         if (moveValue > bestValue) {
             bestValue = moveValue;
             bestMove = move;
