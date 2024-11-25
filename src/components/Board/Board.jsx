@@ -8,6 +8,10 @@ import { useContext, useEffect } from 'react';
 const Board = () => {
     const { game, turn, setSelectedChess } = useContext(BoardContext);
 
+
+
+
+    
     const coorX = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'];
     const coorY = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
 
