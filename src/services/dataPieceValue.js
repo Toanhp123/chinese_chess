@@ -1,9 +1,9 @@
 export const pieceValues = {
-    rook: 5,
-    cannon: 3,
-    pawn: 1,
-    king: 1000,
-    advisor: 2,
-    elephant: 2,
-    horse: 3,
+    r: 5,
+    c: 3,
+    p: 1,
+    k: 1000,
+    a: 2,
+    b: 2,
+    n: 3,
 };

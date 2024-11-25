@@ -1,4 +1,4 @@
-import { Xiangqi } from '../lib/xiangqi/xiangqi.min.js';
+import { Xiangqi } from '../../lib/xiangqi/xiangqi.min.js';
 
 import simulateMove from './simulateMove';
 import evaluateBoard from './evaluateBoard';
@@ -11,11 +11,11 @@ const minimax = (board, depth, alpha, beta, maximizingPlayer, aiColor) => {
 
     const currentColor = maximizingPlayer
         ? aiColor
-        : aiColor === 'black'
-        ? 'black'
-        : 'red';
+        : aiColor === 'b'
+        ? 'b'
+        : 'r';
 
-    const allMoves = getAllValidMovesForAI(currentColor, board);
+    const allMoves = getAllValidMovesForAI2(aiColor, board);
 
     if (maximizingPlayer) {
         let maxEval = -Infinity;
@@ -63,7 +63,15 @@ const minimax = (board, depth, alpha, beta, maximizingPlayer, aiColor) => {
 };
 
 // Hàm tìm tất cả các nước đi hợp lệ cho phe máy.
-const getAllValidMovesForAI = (color, board) => {
+const getAllValidMovesForAI = (game) => {
+    const validMoves = [];
+
+    validMoves.push(...game.moves());
+
+    return validMoves;
+};
+
+const getAllValidMovesForAI2 = (color, board) => {
     const validMoves = [];
 
     // Cờ tướng có 10 hàng.
@@ -73,9 +81,7 @@ const getAllValidMovesForAI = (color, board) => {
             const piece = board[row][col];
             // Chỉ xét quân cờ của phe máy.
             if (piece && piece.color === color) {
-                validMoves.push(
-                    ...getValidMovesForPiece(piece, row, col, board),
-                );
+                validMoves.push();
             }
         }
     }
@@ -84,13 +90,15 @@ const getAllValidMovesForAI = (color, board) => {
 };
 
 // Hàm tìm nước đi tốt nhất cho AI.
-const findBestMove = (aiColor, board) => {
-    const allMoves = getAllValidMovesForAI(aiColor, board);
+const findBestMove = (aiColor, game) => {
+    const allMoves = getAllValidMovesForAI(game);
+
     let bestMove = null;
     let bestValue = -Infinity;
 
     for (const move of allMoves) {
-        const newBoard = simulateMove(board, move);
+        const newBoard = simulateMove(game, move);
+
         const moveValue = minimax(
             newBoard,
             1, // Độ sâu tìm kiếm
@@ -99,7 +107,6 @@ const findBestMove = (aiColor, board) => {
             false,
             aiColor,
         );
-
         if (moveValue > bestValue) {
             bestValue = moveValue;
             bestMove = move;

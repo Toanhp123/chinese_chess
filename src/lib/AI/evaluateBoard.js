@@ -8,7 +8,7 @@ const evaluateBoard = (board, aiColor) => {
             const piece = board[row][col];
 
             if (piece) {
-                const value = pieceValues[piece.name];
+                const value = pieceValues[piece.type];
 
                 if (piece.color === aiColor) {
                     score += value; // Điểm cộng cho quân của máy.

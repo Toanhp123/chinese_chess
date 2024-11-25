@@ -1,10 +1,7 @@
 // Hàm giả lập di chuyển quân cờ.
-const simulateMove = (board, move) => {
-    const newBoard = board.map((row) => [...row]); // Tạo một bản sao của bàn cờ.
-    const { from, to } = move;
-
-    newBoard[to.row][to.col] = newBoard[from.row][from.col];
-    newBoard[from.row][from.col] = '';
+const simulateMove = (game, move) => {
+    game.move(move);
+    const newBoard = game.board();
 
     return newBoard;
 };
