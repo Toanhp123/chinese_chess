@@ -6,63 +6,25 @@ import pawn from '../assets/img/chess/pawn.svg';
 import rook from '../assets/img/chess/rook.svg';
 import cannon from '../assets/img/chess/cannon.svg';
 
-import { Xiangqi } from './lib/xiangqi/xiangqi.min.js';
-
-const game = new Xiangqi();
-
-game.board().map((row, indexRow) =>
-    row.map((col, indexCol) => console.log(col)),
-);
-
 class chess {
-    constructor(name, image, color, type) {
-        this.name = name;
+    constructor(type, image) {
+        this.type = type;
         this.image = image;
-        this.color = color;
     }
 }
 
-const obj_ab = new chess('advisor', advisor, 'black');
+const obj_a = new chess('a', advisor);
 
-const obj_eb = new chess('elephant', elephant, 'black');
+const obj_b = new chess('b', elephant);
 
-const obj_hb = new chess('horse', horse, 'black');
+const obj_n = new chess('n', horse);
 
-const obj_kb = new chess('king', king, 'black');
+const obj_k = new chess('k', king);
 
-const obj_pb = new chess('pawn', pawn, 'black');
+const obj_p = new chess('p', pawn);
 
-const obj_rb = new chess('rook', rook, 'black');
+const obj_r = new chess('r', rook);
 
-const obj_cb = new chess('cannon', cannon, 'black');
+const obj_c = new chess('c', cannon);
 
-const obj_ar = new chess('advisor', advisor, 'red');
-
-const obj_er = new chess('elephant', elephant, 'red');
-
-const obj_hr = new chess('horse', horse, 'red');
-
-const obj_kr = new chess('king', king, 'red');
-
-const obj_pr = new chess('pawn', pawn, 'red');
-
-const obj_rr = new chess('rook', rook, 'red');
-
-const obj_cr = new chess('cannon', cannon, 'red');
-
-export {
-    obj_ab,
-    obj_eb,
-    obj_hb,
-    obj_kb,
-    obj_pb,
-    obj_rb,
-    obj_cb,
-    obj_ar,
-    obj_er,
-    obj_hr,
-    obj_kr,
-    obj_pr,
-    obj_rr,
-    obj_cr,
-};
+export { obj_a, obj_b, obj_n, obj_k, obj_p, obj_r, obj_c };

@@ -3,10 +3,39 @@ import './Chess.css';
 
 import { BoardContext } from '../../store/BoardProvider';
 import { useContext } from 'react';
+import {
+    obj_a,
+    obj_b,
+    obj_n,
+    obj_k,
+    obj_p,
+    obj_r,
+    obj_c,
+} from '../../services/dataChess';
 
 const Chess = ({ id, piece }) => {
     const { game, setValidSquare, selectedChess, setSelectedChess } =
         useContext(BoardContext);
+
+    const type = [
+        obj_a.type,
+        obj_b.type,
+        obj_n.type,
+        obj_k.type,
+        obj_p.type,
+        obj_r.type,
+        obj_c.type,
+    ];
+
+    const image = [
+        obj_a.image,
+        obj_b.image,
+        obj_n.image,
+        obj_k.image,
+        obj_p.image,
+        obj_r.image,
+        obj_c.image,
+    ];
 
     // Xử lí sự kiện khi ấn vào chess
     const handleClick = (e) => {
@@ -76,7 +105,10 @@ const Chess = ({ id, piece }) => {
                     className="chinese__chess--piece"
                     onClick={handleClick}
                     style={{
-                        backgroundImage: `url('${piece.image}')`,
+                        backgroundImage: `url('${
+                            type.includes(piece.type) &&
+                            image[type.indexOf(piece.type)]
+                        }')`,
                         backgroundColor:
                             piece.color === 'r' ? '#b22222' : 'black',
                     }}
