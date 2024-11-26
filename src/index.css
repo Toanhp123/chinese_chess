@@ -3,3 +3,7 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+html {
+    scrollbar-color: rgb(211, 211, 211) transparent;
+}

@@ -14,16 +14,22 @@ const Welcome = () => {
             {!login && (
                 <div className="welcome">
                     <Sidebar />
-                    
+
                     <div className="welcome__contain">
                         <h1>
                             <span className="title">Cờ Tướng</span>
                         </h1>
 
-                        <Card />
-                        <Card />
-                        <Card />
-                        <Card />
+                        <Card
+                            title={'Người đấu người'}
+                            description={'Đấu với những người chơi khác'}
+                            image={''}
+                        />
+                        <Card
+                            title={'Đấu với máy'}
+                            description={'Thử thách kỹ năng với AI'}
+                            image={''}
+                        />
                     </div>
                 </div>
             )}
