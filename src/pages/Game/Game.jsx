@@ -14,7 +14,14 @@ import {
     btnUndo,
 } from '../../services/dataButton.js';
 
+import { BoardContext } from '../../store/BoardProvider';
+import { useContext } from 'react';
+
 const Game = () => {
+    const { history } = useContext(BoardContext);
+
+    console.log(history);
+
     return (
         <div className="chinese-chess__game">
             <div className="chinese-chess__game--left">

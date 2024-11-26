@@ -16,7 +16,7 @@ const Board = () => {
 
     // Lượt đi của AI
     const AI = () => {
-        const aiMove = findBestMove(game, 'b', 4);
+        const aiMove = findBestMove(game, 'b', 1);
 
         if (aiMove) {
             // Di chuyển quân
