@@ -64,6 +64,11 @@ const Game = ({ pvp, setLogin }) => {
         setSur(true);
     };
 
+    const handleChangeDiffs = (depth) => {
+        setAILevel(depth);
+        setMenu(false);
+    };
+
     return (
         <div className="chinese-chess__game">
             <div className="chinese-chess__game--left">
@@ -116,19 +121,27 @@ const Game = ({ pvp, setLogin }) => {
                                     <p>Độ khó AI</p>
 
                                     <ul className="sub-list">
-                                        <li onClick={() => setAILevel(2)}>
+                                        <li
+                                            onClick={() => handleChangeDiffs(2)}
+                                        >
                                             Dễ
                                         </li>
 
-                                        <li onClick={() => setAILevel(3)}>
+                                        <li
+                                            onClick={() => handleChangeDiffs(3)}
+                                        >
                                             Trung bình
                                         </li>
 
-                                        <li onClick={() => setAILevel(4)}>
+                                        <li
+                                            onClick={() => handleChangeDiffs(4)}
+                                        >
                                             Khó
                                         </li>
 
-                                        <li onClick={() => setAILevel(5)}>
+                                        <li
+                                            onClick={() => handleChangeDiffs(5)}
+                                        >
                                             Khổ dâm
                                         </li>
                                     </ul>

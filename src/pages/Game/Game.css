@@ -105,18 +105,17 @@
     z-index: 10;
 }
 
+.chinese-chess__game--left--controller--menu .sub-list li {
+    font-size: 18px;
+    color: rgb(101, 79, 77);
+    margin-bottom: 10px;
+}
+
 .chinese-chess__game--left--controller--menu
     .list
     li:last-child:hover
     .sub-list {
     display: block;
-}
-
-.chinese-chess__game--left--controller--menu
-    .list
-    li:last-child:active
-    .sub-list {
-    display: none;
 }
 
 .chinese-chess_game--left--loss {
