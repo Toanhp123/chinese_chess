@@ -10,7 +10,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(255 252 246 / 50%);
+    background: url('../../assets/img/light-bg.svg') no-repeat center bottom /
+            contain,
+        url('../../assets/img/light-cloud-bg.svg') rgb(255 252 246 / 50%)
+            no-repeat center / cover;
 }
 
 .welcome__contain {
