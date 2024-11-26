@@ -4,10 +4,10 @@ import './Board.css';
 import Square from '../Square/Square';
 import findBestMove from '../../lib/AI/makeAiMove';
 import { BoardContext } from '../../store/BoardProvider';
-import { useContext, useEffect } from 'react';
+import { memo, useContext, useEffect } from 'react';
 import { Xiangqi } from '../../lib/xiangqi/xiangqi.min';
 
-const Board = ({ pvp, setLoss, aiLevel }) => {
+const Board = memo(({ pvp, setLoss, aiLevel }) => {
     const { game, turn, setSelectedChess, history, setHistory, setGame } =
         useContext(BoardContext);
 
@@ -76,6 +76,6 @@ const Board = ({ pvp, setLoss, aiLevel }) => {
             ))}
         </div>
     );
-};
+});
 
 export default Board;

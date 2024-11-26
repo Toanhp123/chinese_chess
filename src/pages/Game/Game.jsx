@@ -40,11 +40,7 @@ const Game = ({ pvp, setLogin }) => {
     const handleAfterMove = () => {};
 
     const handleSetting = () => {
-        if (pvp) {
-            handleReturnHome();
-        } else {
-            setMenu((prev) => !prev);
-        }
+        setMenu((prev) => !prev);
     };
 
     const handleReturnHome = () => {
@@ -116,36 +112,46 @@ const Game = ({ pvp, setLogin }) => {
                                     <p>Về trang chủ</p>
                                 </li>
 
-                                <li>
-                                    <img src={cardAI} alt="difficult" />
-                                    <p>Độ khó AI</p>
+                                {!pvp && (
+                                    <li>
+                                        <img src={cardAI} alt="difficult" />
+                                        <p>Độ khó AI</p>
 
-                                    <ul className="sub-list">
-                                        <li
-                                            onClick={() => handleChangeDiffs(2)}
-                                        >
-                                            Dễ
-                                        </li>
+                                        <ul className="sub-list">
+                                            <li
+                                                onClick={() =>
+                                                    handleChangeDiffs(2)
+                                                }
+                                            >
+                                                Dễ
+                                            </li>
 
-                                        <li
-                                            onClick={() => handleChangeDiffs(3)}
-                                        >
-                                            Trung bình
-                                        </li>
+                                            <li
+                                                onClick={() =>
+                                                    handleChangeDiffs(3)
+                                                }
+                                            >
+                                                Trung bình
+                                            </li>
 
-                                        <li
-                                            onClick={() => handleChangeDiffs(4)}
-                                        >
-                                            Khó
-                                        </li>
+                                            <li
+                                                onClick={() =>
+                                                    handleChangeDiffs(4)
+                                                }
+                                            >
+                                                Khó
+                                            </li>
 
-                                        <li
-                                            onClick={() => handleChangeDiffs(5)}
-                                        >
-                                            Khổ dâm
-                                        </li>
-                                    </ul>
-                                </li>
+                                            <li
+                                                onClick={() =>
+                                                    handleChangeDiffs(5)
+                                                }
+                                            >
+                                                Khổ dâm
+                                            </li>
+                                        </ul>
+                                    </li>
+                                )}
                             </ul>
                         </div>
                     )}
@@ -175,10 +181,12 @@ const Game = ({ pvp, setLogin }) => {
 
             <div className="chinese-chess__game--right">
                 <div className="chinese-chess__game--right--header">
-                    <div className="chinese-chess__game--right--header--profile">
-                        <p>AI (Level {aiLevel - 1})</p>
-                        <img src={aiAvatar} alt="AI" />
-                    </div>
+                    {!pvp && (
+                        <div className="chinese-chess__game--right--header--profile">
+                            <p>AI (Level {aiLevel - 1})</p>
+                            <img src={aiAvatar} alt="AI" />
+                        </div>
+                    )}
                 </div>
 
                 <div className="chinese-chess__game--right--contain">
