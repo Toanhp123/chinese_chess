@@ -13,6 +13,7 @@ const minimax = (game, depth, alpha, beta, maximizingPlayer, aiColor) => {
 
         for (const move of moves) {
             game.move(move); // Thực hiện nước đi
+
             const evals = minimax(game, depth - 1, alpha, beta, false, aiColor);
             game.undo(); // Hoàn tác nước đi
 
@@ -28,6 +29,7 @@ const minimax = (game, depth, alpha, beta, maximizingPlayer, aiColor) => {
 
         for (const move of moves) {
             game.move(move); // Thực hiện nước đi
+
             const evals = minimax(game, depth - 1, alpha, beta, true, aiColor);
             game.undo(); // Hoàn tác nước đi
 
