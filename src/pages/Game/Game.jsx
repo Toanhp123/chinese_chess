@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import './Game.css';
 
-import { BackStack, Board, Button } from '../../components';
 import {
     btnArrowFirst,
     btnArrowLast,
@@ -12,8 +11,11 @@ import {
     btnSetting,
     btnUndo,
     btnReset,
+    btnHome,
 } from '../../services/dataButton.js';
+import { cardAI } from '../../services/dataCard.js';
 
+import { BackStack, Board, Button } from '../../components';
 import { BoardContext } from '../../store/BoardProvider';
 import { useContext, useState } from 'react';
 import { Xiangqi } from '../../lib/xiangqi/xiangqi.min.js';
@@ -74,6 +76,7 @@ const Game = ({ pvp, setLogin }) => {
                             ) : (
                                 <h2>Bạn đã đầu hàng!!!</h2>
                             )}
+
                             <Button
                                 text={'Đấu lại'}
                                 image={btnReset}
@@ -93,12 +96,21 @@ const Game = ({ pvp, setLogin }) => {
                         <div className="chinese-chess__game--left--controller--menu">
                             <div className="title">
                                 <h2>Cài Đặt</h2>
-                                <img src={btnClose} alt="Close" />
+                                <img
+                                    src={btnClose}
+                                    alt="Close"
+                                    onClick={() => setMenu(false)}
+                                />
                             </div>
                             <ul className="content">
-                                <li className="home" onClick={handleReturnHome}>
-                                    <div className="image"></div>
+                                <li onClick={handleReturnHome}>
+                                    <img src={btnHome} alt="home" />
                                     <p>Về trang chủ</p>
+                                </li>
+
+                                <li>
+                                    <img src={cardAI} alt="difficult" />
+                                    <p>Độ khó AI</p>
                                 </li>
                             </ul>
                         </div>

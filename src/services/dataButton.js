@@ -8,6 +8,7 @@ import btnResign from '../assets/img/button/resign.svg';
 import btnSetting from '../assets/img/button/settings-red.svg';
 import btnUndo from '../assets/img/button/undo.svg';
 import btnReset from '../assets/img/button/rematch-icon-red.svg';
+import btnHome from '../assets/img/button/home.svg';
 
 export {
     btnArrowFirst,
@@ -20,4 +21,5 @@ export {
     btnSetting,
     btnUndo,
     btnReset,
+    btnHome,
 };

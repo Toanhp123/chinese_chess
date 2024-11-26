@@ -5,7 +5,7 @@ const Button = ({ image, text = null, onClick, type = null }) => {
         <div
             className={`chinese-chess__button 
                     ${type && 'outline'} 
-                    ${text === '' ? '' : 'hover'} 
+                    ${text === null ? '' : 'hover'} 
                 `}
             onClick={onClick}
         >
