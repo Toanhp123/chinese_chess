@@ -14,6 +14,7 @@ import {
     btnHome,
 } from '../../services/dataButton.js';
 import { cardAI } from '../../services/dataCard.js';
+import { aiAvatar } from '../../services/dataProfile.js';
 
 import { BackStack, Board, Button } from '../../components';
 import { BoardContext } from '../../store/BoardProvider';
@@ -163,7 +164,7 @@ const Game = ({ pvp, setLogin }) => {
                 <div className="chinese-chess__game--right--header">
                     <div className="chinese-chess__game--right--header--profile">
                         <p>AI (Level {aiLevel - 1})</p>
-                        <img src="../../assets/img/meow.svg" alt="AI" />
+                        <img src={aiAvatar} alt="AI" />
                     </div>
                 </div>
 
