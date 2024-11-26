@@ -57,12 +57,12 @@
     cursor: pointer;
 }
 
-.chinese-chess__game--left--controller--menu .content {
+.chinese-chess__game--left--controller--menu .list {
     list-style: none;
     padding: 24px 20px;
 }
 
-.chinese-chess__game--left--controller--menu .content li {
+.chinese-chess__game--left--controller--menu .list li {
     display: flex;
     align-items: center;
     margin-bottom: 25px;
@@ -70,16 +70,16 @@
     padding: 5px 5px;
 }
 
-.chinese-chess__game--left--controller--menu .content li:last-child {
+.chinese-chess__game--left--controller--menu .list li:last-child {
     margin-bottom: 0;
 }
 
-.chinese-chess__game--left--controller--menu .content li:hover {
+.chinese-chess__game--left--controller--menu .list li:hover {
     cursor: pointer;
     background-color: rgb(237, 230, 222);
 }
 
-.chinese-chess__game--left--controller--menu .content img {
+.chinese-chess__game--left--controller--menu .list img {
     width: 35px;
     height: 35px;
     border-radius: 50%;
@@ -87,9 +87,33 @@
     margin-right: 10px;
 }
 
-.chinese-chess__game--left--controller--menu .content p {
+.chinese-chess__game--left--controller--menu .list p {
     color: rgb(101, 79, 77);
     font-size: 18px;
+}
+.chinese-chess__game--left--controller--menu .sub-list {
+    display: none;
+    padding: 24px 20px;
+    list-style: none;
+    position: absolute;
+    min-width: 80px;
+    right: -70px;
+    bottom: 0;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    background-color: rgb(246 241 232);
+    z-index: 10;
+}
+
+.chinese-chess__game--left--controller--menu
+    .list
+    li:last-child:hover
+    .sub-list {
+    display: block;
+}
+
+.chinese-chess__game--left--controller--menu .sub-list:active {
+    display: block;
 }
 
 .chinese-chess_game--left--loss {
@@ -104,6 +128,7 @@
 }
 
 .chinese-chess_game--left--loss .content {
+    position: relative;
     min-width: 500px;
     min-height: 250px;
     display: flex;

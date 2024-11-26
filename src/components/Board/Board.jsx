@@ -7,7 +7,7 @@ import { BoardContext } from '../../store/BoardProvider';
 import { useContext, useEffect } from 'react';
 import { Xiangqi } from '../../lib/xiangqi/xiangqi.min';
 
-const Board = ({ pvp, setLoss }) => {
+const Board = ({ pvp, setLoss, aiLevel }) => {
     const { game, turn, setSelectedChess, history, setHistory, setGame } =
         useContext(BoardContext);
 
@@ -16,7 +16,7 @@ const Board = ({ pvp, setLoss }) => {
 
     // Lượt đi của AI
     const AI = () => {
-        const aiMove = findBestMove(game, 'b', 1);
+        const aiMove = findBestMove(game, 'b', aiLevel);
 
         if (aiMove) {
             // Di chuyển quân

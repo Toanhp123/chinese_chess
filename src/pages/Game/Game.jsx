@@ -26,6 +26,7 @@ const Game = ({ pvp, setLogin }) => {
     const [menu, setMenu] = useState(false);
     const [loss, setLoss] = useState(false);
     const [sur, setSur] = useState(false);
+    const [aiLevel, setAILevel] = useState(2);
 
     const handleUndo = () => {};
 
@@ -88,7 +89,7 @@ const Game = ({ pvp, setLogin }) => {
                 )}
 
                 <div className="chinese-chess__game--left--contain">
-                    <Board pvp={pvp} setLoss={setLoss} />
+                    <Board pvp={pvp} setLoss={setLoss} aiLevel={aiLevel} />
                 </div>
 
                 <div className="chinese-chess__game--left--controller">
@@ -102,8 +103,8 @@ const Game = ({ pvp, setLogin }) => {
                                     onClick={() => setMenu(false)}
                                 />
                             </div>
-                            
-                            <ul className="content">
+
+                            <ul className="list">
                                 <li onClick={handleReturnHome}>
                                     <img src={btnHome} alt="home" />
                                     <p>Về trang chủ</p>
@@ -112,6 +113,24 @@ const Game = ({ pvp, setLogin }) => {
                                 <li>
                                     <img src={cardAI} alt="difficult" />
                                     <p>Độ khó AI</p>
+
+                                    <ul className="sub-list">
+                                        <li onClick={() => setAILevel(2)}>
+                                            Dễ
+                                        </li>
+
+                                        <li onClick={() => setAILevel(3)}>
+                                            Trung bình
+                                        </li>
+
+                                        <li onClick={() => setAILevel(4)}>
+                                            Khó
+                                        </li>
+
+                                        <li onClick={() => setAILevel(5)}>
+                                            Khổ dâm
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
                         </div>
