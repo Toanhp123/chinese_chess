@@ -1,9 +1,12 @@
 import './Button.css';
 
-const Button = ({ image, text = '', onClick }) => {
+const Button = ({ image, text = null, onClick, type = null }) => {
     return (
         <div
-            className={`chinese-chess__button ${text === '' ? '' : 'hover'}`}
+            className={`chinese-chess__button 
+                    ${type && 'outline'} 
+                    ${text === '' ? '' : 'hover'} 
+                `}
             onClick={onClick}
         >
             <img src={image} alt={text} />

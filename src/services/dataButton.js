@@ -7,6 +7,7 @@ import btnDraw from '../assets/img/button/draw.svg';
 import btnResign from '../assets/img/button/resign.svg';
 import btnSetting from '../assets/img/button/settings-red.svg';
 import btnUndo from '../assets/img/button/undo.svg';
+import btnReset from '../assets/img/button/rematch-icon-red.svg';
 
 export {
     btnArrowFirst,
@@ -18,4 +19,5 @@ export {
     btnResign,
     btnSetting,
     btnUndo,
+    btnReset,
 };

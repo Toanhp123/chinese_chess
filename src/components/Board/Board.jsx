@@ -7,8 +7,8 @@ import { BoardContext } from '../../store/BoardProvider';
 import { useContext, useEffect } from 'react';
 import { Xiangqi } from '../../lib/xiangqi/xiangqi.min';
 
-const Board = ({ pvp }) => {
-    const { game, turn, setSelectedChess, setHistory, setGame } =
+const Board = ({ pvp, setLoss }) => {
+    const { game, turn, setSelectedChess, history, setHistory, setGame } =
         useContext(BoardContext);
 
     const coorX = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'];
@@ -30,6 +30,17 @@ const Board = ({ pvp }) => {
     };
 
     useEffect(() => {
+        // Trạng thái bàn cờ
+        if (history.length > 0) {
+            if (game.in_check()) {
+                setLoss((prev) => !prev);
+
+                console.log('check');
+            } else if (game.in_checkmate()) {
+                setLoss(true);
+            }
+        }
+
         if (pvp) {
             // Chế độ 2 người chơi
             setSelectedChess((prev) => ({

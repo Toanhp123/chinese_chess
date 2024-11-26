@@ -7,11 +7,11 @@ import {
     btnArrowLast,
     btnArrowLeft,
     btnArrowRight,
-    btnDraw,
     btnClose,
     btnResign,
     btnSetting,
     btnUndo,
+    btnReset,
 } from '../../services/dataButton.js';
 
 import { BoardContext } from '../../store/BoardProvider';
@@ -21,6 +21,7 @@ import { Xiangqi } from '../../lib/xiangqi/xiangqi.min.js';
 const Game = ({ pvp, setLogin }) => {
     const { game, setGame, history, setHistory } = useContext(BoardContext);
     const [menu, setMenu] = useState(false);
+    const [loss, setLoss] = useState(false);
 
     const handleUndo = () => {};
 
@@ -46,18 +47,34 @@ const Game = ({ pvp, setLogin }) => {
 
     const handleRestart = () => {
         game.reset();
-
         setHistory([]);
         setGame(new Xiangqi(game.fen()));
+        setLoss(false);
     };
 
-    const handleResign = () => {};
+    const handleResign = () => {
+        setLoss(true);
+    };
 
     return (
         <div className="chinese-chess__game">
             <div className="chinese-chess__game--left">
+                {loss && (
+                    <div className="chinese-chess_game--left--loss">
+                        <div className="content">
+                            <h2>Bạn đã thắng !!!</h2>
+                            <Button
+                                text={'Đấu lại'}
+                                image={btnReset}
+                                type={'special'}
+                                onClick={handleRestart}
+                            />
+                        </div>
+                    </div>
+                )}
+
                 <div className="chinese-chess__game--left--contain">
-                    <Board pvp={pvp} />
+                    <Board pvp={pvp} setLoss={setLoss} />
                 </div>
 
                 <div className="chinese-chess__game--left--controller">
@@ -88,7 +105,7 @@ const Game = ({ pvp, setLogin }) => {
                     />
                     <Button
                         text={'Restart'}
-                        image={btnDraw}
+                        image={btnReset}
                         onClick={handleRestart}
                     />
                     <Button
