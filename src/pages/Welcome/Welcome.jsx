@@ -5,6 +5,7 @@ import Sidebar from '../Sidebar/Sidebar';
 import { StoreBoard } from '../../store';
 import { useState } from 'react';
 import { Card } from '../../components';
+import { cardAI, cardHuman } from '../../services/dataCard';
 
 const Welcome = () => {
     const [login, setLogin] = useState(false);
@@ -23,12 +24,12 @@ const Welcome = () => {
                         <Card
                             title={'Người đấu người'}
                             description={'Đấu với những người chơi khác'}
-                            image={''}
+                            image={cardHuman}
                         />
                         <Card
                             title={'Đấu với máy'}
                             description={'Thử thách kỹ năng với AI'}
-                            image={''}
+                            image={cardAI}
                         />
                     </div>
                 </div>
