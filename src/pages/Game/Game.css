@@ -96,8 +96,8 @@
     padding: 24px 20px;
     list-style: none;
     position: absolute;
-    min-width: 80px;
-    right: -70px;
+    min-width: 150px;
+    right: -120px;
     bottom: 0;
     border-radius: 8px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -112,8 +112,11 @@
     display: block;
 }
 
-.chinese-chess__game--left--controller--menu .sub-list:active {
-    display: block;
+.chinese-chess__game--left--controller--menu
+    .list
+    li:last-child:active
+    .sub-list {
+    display: none;
 }
 
 .chinese-chess_game--left--loss {
