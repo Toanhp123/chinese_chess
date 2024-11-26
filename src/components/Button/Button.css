@@ -4,4 +4,15 @@
     align-items: center;
     gap: 10px;
     color: #b22222;
+    height: 100%;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.chinese-chess__button.hover:hover {
+    background-color: rgb(237, 230, 222);
+}
+
+.chinese-chess__button.disable {
+    cursor: default;
 }

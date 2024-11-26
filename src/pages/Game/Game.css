@@ -53,9 +53,10 @@
 }
 
 .chinese-chess__game--right--controller {
+    width: 100%;
     display: flex;
     flex: 0.1;
-    width: 100%;
+    justify-content: space-around;
     background-color: rgb(223 215 207);
 }
 

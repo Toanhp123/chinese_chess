@@ -36,7 +36,13 @@ const Game = () => {
                     <BackStack />
                 </div>
 
-                <div className="chinese-chess__game--right--controller"></div>
+                <div className="chinese-chess__game--right--controller">
+                    <Button image={btnArrowFirst} />
+                    <Button image={btnArrowLeft} />
+
+                    <Button image={btnArrowRight} />
+                    <Button image={btnArrowLast} />
+                </div>
 
                 <div className="chinese-chess__game--right--footer"></div>
             </div>
