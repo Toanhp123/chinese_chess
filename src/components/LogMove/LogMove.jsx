@@ -54,6 +54,12 @@ const BackStack = () => {
     };
 
     useEffect(() => {
+        // Làm trống danh sách log khi restart game
+        if (history.length === 0 && moveLog.length > 0) {
+            setMoveLog([]);
+            return;
+        }
+
         if (history.length === 0) return;
 
         move.from = history[history.length - 1].from;

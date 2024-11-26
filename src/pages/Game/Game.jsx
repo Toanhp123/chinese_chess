@@ -15,11 +15,24 @@ import {
 
 import { BoardContext } from '../../store/BoardProvider';
 import { useContext } from 'react';
+import { Xiangqi } from '../../lib/xiangqi/xiangqi.min.js';
 
 const Game = () => {
-    const { history } = useContext(BoardContext);
+    const { game, setGame, history, setHistory } = useContext(BoardContext);
 
-    console.log(history);
+    const handleUndo = () => {};
+    const handleFirstMove = () => {};
+    const handleLastMove = () => {};
+    const handleBeforeMove = () => {};
+    const handleAfterMove = () => {};
+    const handleSetting = () => {};
+    const handleRestart = () => {
+        game.reset();
+
+        setHistory([]);
+        setGame(new Xiangqi(game.fen()));
+    };
+    const handleResign = () => {};
 
     return (
         <div className="chinese-chess__game">
@@ -28,10 +41,26 @@ const Game = () => {
                     <Board />
                 </div>
                 <div className="chinese-chess__game--left--controller">
-                    <Button text={'Settings'} image={btnSetting} />
-                    <Button text={'Undo'} image={btnUndo} />
-                    <Button text={'Draw'} image={btnDraw} />
-                    <Button text={'Resign'} image={btnResign} />
+                    <Button
+                        text={'Settings'}
+                        image={btnSetting}
+                        onClick={handleSetting}
+                    />
+                    <Button
+                        text={'Undo'}
+                        image={btnUndo}
+                        onClick={handleUndo}
+                    />
+                    <Button
+                        text={'Restart'}
+                        image={btnDraw}
+                        onClick={handleRestart}
+                    />
+                    <Button
+                        text={'Resign'}
+                        image={btnResign}
+                        onClick={handleResign}
+                    />
                 </div>
             </div>
 
@@ -43,11 +72,10 @@ const Game = () => {
                 </div>
 
                 <div className="chinese-chess__game--right--controller">
-                    <Button image={btnArrowFirst} />
-                    <Button image={btnArrowLeft} />
-
-                    <Button image={btnArrowRight} />
-                    <Button image={btnArrowLast} />
+                    <Button image={btnArrowFirst} onClick={handleFirstMove} />
+                    <Button image={btnArrowLeft} onClick={handleBeforeMove} />
+                    <Button image={btnArrowRight} onClick={handleAfterMove} />
+                    <Button image={btnArrowLast} onClick={handleLastMove} />
                 </div>
 
                 <div className="chinese-chess__game--right--footer"></div>
