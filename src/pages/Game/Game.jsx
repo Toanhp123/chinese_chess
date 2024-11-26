@@ -160,7 +160,12 @@ const Game = ({ pvp, setLogin }) => {
             </div>
 
             <div className="chinese-chess__game--right">
-                <div className="chinese-chess__game--right--header"></div>
+                <div className="chinese-chess__game--right--header">
+                    <div className="chinese-chess__game--right--header--profile">
+                        <p>AI (Level {aiLevel - 1})</p>
+                        <img src="../../assets/img/meow.svg" alt="AI" />
+                    </div>
+                </div>
 
                 <div className="chinese-chess__game--right--contain">
                     <BackStack />
