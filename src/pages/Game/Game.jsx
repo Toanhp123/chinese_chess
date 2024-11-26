@@ -8,6 +8,9 @@ const Game = () => {
         <div className="chinese-chess__game">
             <div className="chinese-chess__game--left">
                 <Board />
+                <div className="chinese-chess__game--left--controller">
+                    
+                </div>
             </div>
 
             <div className="chinese-chess__game--right">

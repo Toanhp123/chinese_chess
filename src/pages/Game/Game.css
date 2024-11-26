@@ -6,15 +6,25 @@
 
 .chinese-chess__game--left {
     display: flex;
+    flex-direction: column;
     flex: 1;
+    gap: 20px;
     justify-content: center;
     align-items: center;
     background-color: rgb(255, 251, 242);
 }
 
+.chinese-chess__game--left--controller {
+    display: flex;
+    height: 50px;
+    width: 100%;
+
+    background-color: rgb(223 215 207);
+}
+
 .chinese-chess__game--right {
     display: flex;
-    flex: 0.7;
+    flex: 0.75;
     flex-direction: column;
     height: 100%;
     width: 50%;
