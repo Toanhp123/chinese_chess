@@ -2,6 +2,17 @@
 import './Game.css';
 
 import { BackStack, Board, Button } from '../../components';
+import {
+    btnArrowFirst,
+    btnArrowLast,
+    btnArrowLeft,
+    btnArrowRight,
+    btnClose,
+    btnDraw,
+    btnResign,
+    btnSetting,
+    btnUndo,
+} from '../../services/dataButton.js';
 
 const Game = () => {
     return (
@@ -9,8 +20,10 @@ const Game = () => {
             <div className="chinese-chess__game--left">
                 <Board />
                 <div className="chinese-chess__game--left--controller">
-                    <Button />
-                    <Button />
+                    <Button text={'Settings'} image={btnSetting} />
+                    <Button text={'Undo'} image={btnUndo} />
+                    <Button text={'Draw'} image={btnDraw} />
+                    <Button text={'Resign'} image={btnResign} />
                 </div>
             </div>
 
