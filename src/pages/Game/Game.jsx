@@ -7,7 +7,6 @@ import {
     btnArrowLast,
     btnArrowLeft,
     btnArrowRight,
-    btnClose,
     btnDraw,
     btnResign,
     btnSetting,
