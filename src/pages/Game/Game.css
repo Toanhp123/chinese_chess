@@ -111,6 +111,10 @@
     background-color: rgb(246, 241, 232);
 }
 
+.chinese-chess_game--left--loss .content h2{
+    margin-bottom: 20px;
+}
+
 .chinese-chess__game--right {
     display: flex;
     flex: 0.75;

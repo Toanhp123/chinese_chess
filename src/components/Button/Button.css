@@ -13,6 +13,18 @@
     background-color: rgb(237, 230, 222);
 }
 
+.chinese-chess__button.outline {
+    min-width: 150px;
+    margin: 4px;
+    padding: 12px 16px;
+    border: 2px solid rgb(194, 53, 46);
+    border-radius: 4px;
+    background-color: rgb(255, 251, 242);
+    line-height: 1;
+    box-shadow: 0 7px 14px 0 rgb(65 69 88 / 10%);
+    font-size: 20px;
+}
+
 .chinese-chess__button.disable {
     cursor: default;
 }
