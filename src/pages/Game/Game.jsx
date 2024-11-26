@@ -102,6 +102,7 @@ const Game = ({ pvp, setLogin }) => {
                                     onClick={() => setMenu(false)}
                                 />
                             </div>
+                            
                             <ul className="content">
                                 <li onClick={handleReturnHome}>
                                     <img src={btnHome} alt="home" />
