@@ -8,17 +8,19 @@ import {
     btnArrowLeft,
     btnArrowRight,
     btnDraw,
+    btnClose,
     btnResign,
     btnSetting,
     btnUndo,
 } from '../../services/dataButton.js';
 
 import { BoardContext } from '../../store/BoardProvider';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Xiangqi } from '../../lib/xiangqi/xiangqi.min.js';
 
 const Game = ({ pvp, setLogin }) => {
     const { game, setGame, history, setHistory } = useContext(BoardContext);
+    const [menu, setMenu] = useState(false);
 
     const handleUndo = () => {};
 
@@ -34,7 +36,7 @@ const Game = ({ pvp, setLogin }) => {
         if (pvp) {
             setLogin(false);
         } else {
-            
+            setMenu((prev) => !prev);
         }
     };
 
@@ -53,7 +55,23 @@ const Game = ({ pvp, setLogin }) => {
                 <div className="chinese-chess__game--left--contain">
                     <Board pvp={pvp} />
                 </div>
+
                 <div className="chinese-chess__game--left--controller">
+                    {menu && (
+                        <div className="chinese-chess__game--left--controller--menu">
+                            <div className="title">
+                                <h2>Cài Đặt</h2>
+                                <img src={btnClose} alt="Close" />
+                            </div>
+                            <ul className="content">
+                                <li className="home">
+                                    <div className="image"></div>
+                                    <p>Về trang chủ</p>
+                                </li>
+                            </ul>
+                        </div>
+                    )}
+
                     <Button
                         text={'Settings'}
                         image={btnSetting}
