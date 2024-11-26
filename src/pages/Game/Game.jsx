@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import './Game.css';
 
-import { BackStack, Board } from '../../components';
+import { BackStack, Board, Button } from '../../components';
 
 const Game = () => {
     return (
@@ -9,7 +9,8 @@ const Game = () => {
             <div className="chinese-chess__game--left">
                 <Board />
                 <div className="chinese-chess__game--left--controller">
-                    
+                    <Button />
+                    <Button />
                 </div>
             </div>
 
