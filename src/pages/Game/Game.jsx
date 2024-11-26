@@ -19,9 +19,11 @@ import { useContext, useState } from 'react';
 import { Xiangqi } from '../../lib/xiangqi/xiangqi.min.js';
 
 const Game = ({ pvp, setLogin }) => {
-    const { game, setGame, history, setHistory } = useContext(BoardContext);
+    const { game, setGame, history, setHistory, turn } =
+        useContext(BoardContext);
     const [menu, setMenu] = useState(false);
     const [loss, setLoss] = useState(false);
+    const [sur, setSur] = useState(false);
 
     const handleUndo = () => {};
 
@@ -50,10 +52,12 @@ const Game = ({ pvp, setLogin }) => {
         setHistory([]);
         setGame(new Xiangqi(game.fen()));
         setLoss(false);
+        setSur(false);
     };
 
     const handleResign = () => {
         setLoss(true);
+        setSur(true);
     };
 
     return (
@@ -62,7 +66,14 @@ const Game = ({ pvp, setLogin }) => {
                 {loss && (
                     <div className="chinese-chess_game--left--loss">
                         <div className="content">
-                            <h2>Bạn đã thắng !!!</h2>
+                            {!sur ? (
+                                <h2>
+                                    Bên {turn === 'r' ? 'đen' : 'đỏ'} đã chiến
+                                    thắng!!!
+                                </h2>
+                            ) : (
+                                <h2>Bạn đã đầu hàng!!!</h2>
+                            )}
                             <Button
                                 text={'Đấu lại'}
                                 image={btnReset}

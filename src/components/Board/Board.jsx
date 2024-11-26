@@ -22,9 +22,10 @@ const Board = ({ pvp, setLoss }) => {
             // Di chuyển quân
             game.move(aiMove);
 
+            // Ghi lại lịch sử nước đi
             setHistory((prev) => [...prev, ...game.history({ verbose: true })]);
 
-            // // Cập nhật trạng thái bàn cờ
+            // Cập nhật trạng thái bàn cờ
             setGame(new Xiangqi(game.fen()));
         }
     };
@@ -33,11 +34,10 @@ const Board = ({ pvp, setLoss }) => {
         // Trạng thái bàn cờ
         if (history.length > 0) {
             if (game.in_check()) {
-                setLoss((prev) => !prev);
-
                 console.log('check');
-            } else if (game.in_checkmate()) {
+            } else if (game.in_checkmate() || game.in_stalemate()) {
                 setLoss(true);
+                return;
             }
         }
 

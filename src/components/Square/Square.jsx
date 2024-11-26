@@ -34,6 +34,7 @@ const Square = ({ id, piece, row, col }) => {
             // Di chuyển quân
             game.move({ from: selectedCol + selectedRow, to: col + row });
 
+            // Ghi lại lịch sử nước đi
             setHistory((prev) => [...prev, ...game.history({ verbose: true })]);
 
             // Cập nhật trạng thái bàn cờ
