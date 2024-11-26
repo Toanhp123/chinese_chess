@@ -7,7 +7,7 @@ import { BoardContext } from '../../store/BoardProvider';
 import { useContext, useEffect } from 'react';
 import { Xiangqi } from '../../lib/xiangqi/xiangqi.min';
 
-const Board = () => {
+const Board = ({ pvp }) => {
     const { game, turn, setSelectedChess, setHistory, setGame } =
         useContext(BoardContext);
 
@@ -30,20 +30,22 @@ const Board = () => {
     };
 
     useEffect(() => {
-        // Chế độ đấu máy
-        if (turn === 'r') return;
+        if (pvp) {
+            // Chế độ 2 người chơi
+            setSelectedChess((prev) => ({
+                ...prev,
+                color: turn === 'r' ? 'r' : 'b',
+            }));
+        } else {
+            // Chế độ đấu máy
+            if (turn === 'r') return;
 
-        const timer = setTimeout(() => {
-            AI();
-        }, 500);
+            const timer = setTimeout(() => {
+                AI();
+            }, 500);
 
-        return () => clearTimeout(timer);
-
-        // Chế độ 2 người chơi
-        // setSelectedChess((prev) => ({
-        //     ...prev,
-        //     color: turn === 'r' ? 'r' : 'b',
-        // }));
+            return () => clearTimeout(timer);
+        }
     }, [turn]);
 
     return (

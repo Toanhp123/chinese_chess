@@ -17,28 +17,41 @@ import { BoardContext } from '../../store/BoardProvider';
 import { useContext } from 'react';
 import { Xiangqi } from '../../lib/xiangqi/xiangqi.min.js';
 
-const Game = () => {
+const Game = ({ pvp, setLogin }) => {
     const { game, setGame, history, setHistory } = useContext(BoardContext);
 
     const handleUndo = () => {};
+
     const handleFirstMove = () => {};
+
     const handleLastMove = () => {};
+
     const handleBeforeMove = () => {};
+
     const handleAfterMove = () => {};
-    const handleSetting = () => {};
+
+    const handleSetting = () => {
+        if (pvp) {
+            setLogin(false);
+        } else {
+            
+        }
+    };
+
     const handleRestart = () => {
         game.reset();
 
         setHistory([]);
         setGame(new Xiangqi(game.fen()));
     };
+
     const handleResign = () => {};
 
     return (
         <div className="chinese-chess__game">
             <div className="chinese-chess__game--left">
                 <div className="chinese-chess__game--left--contain">
-                    <Board />
+                    <Board pvp={pvp} />
                 </div>
                 <div className="chinese-chess__game--left--controller">
                     <Button

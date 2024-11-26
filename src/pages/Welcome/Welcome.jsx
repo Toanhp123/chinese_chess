@@ -9,10 +9,21 @@ import { cardAI, cardHuman } from '../../services/dataCard';
 
 const Welcome = () => {
     const [login, setLogin] = useState(false);
+    const [pvp, setPvP] = useState(null);
+
+    const handlePvP = () => {
+        setLogin(true);
+        setPvP(true);
+    };
+
+    const handlePvAI = () => {
+        setLogin(true);
+        setPvP(false);
+    };
 
     return (
         <>
-            {!login && (
+            {!login ? (
                 <div className="welcome">
                     <Sidebar />
 
@@ -25,22 +36,22 @@ const Welcome = () => {
                             title={'Người đấu người'}
                             description={'Đấu với những người chơi khác'}
                             image={cardHuman}
+                            onClick={handlePvP}
                         />
                         <Card
                             title={'Đấu với máy'}
                             description={'Thử thách kỹ năng với AI'}
                             image={cardAI}
+                            onClick={handlePvAI}
                         />
                     </div>
                 </div>
-            )}
-
-            {login && (
+            ) : (
                 <div className="chinese-chess">
                     <Sidebar />
 
                     <StoreBoard>
-                        <Game />
+                        <Game pvp={pvp} setLogin={setLogin} />
                     </StoreBoard>
                 </div>
             )}
