@@ -1,18 +1,35 @@
 import './Welcome.css';
 
-import { StoreBoard } from '../../store';
 import Game from '../Game/Game';
 import Sidebar from '../Sidebar/Sidebar';
+import { StoreBoard } from '../../store';
+import { useState } from 'react';
 
 const Welcome = () => {
+    const [login, setLogin] = useState(false);
     return (
-        <div className="chinese-chess">
-            <Sidebar />
+        <>
+            {!login && (
+                <div className="welcome">
+                    <Sidebar />
+                    <div className="welcome__contain">
+                        <h1>
+                            <span className="title">Cờ Tướng</span>
+                        </h1>
+                    </div>
+                </div>
+            )}
 
-            <StoreBoard>
-                <Game />
-            </StoreBoard>
-        </div>
+            {login && (
+                <div className="chinese-chess">
+                    <Sidebar />
+
+                    <StoreBoard>
+                        <Game />
+                    </StoreBoard>
+                </div>
+            )}
+        </>
     );
 };
 
