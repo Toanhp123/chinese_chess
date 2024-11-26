@@ -34,10 +34,14 @@ const Game = ({ pvp, setLogin }) => {
 
     const handleSetting = () => {
         if (pvp) {
-            setLogin(false);
+            handleReturnHome();
         } else {
             setMenu((prev) => !prev);
         }
+    };
+
+    const handleReturnHome = () => {
+        setLogin(false);
     };
 
     const handleRestart = () => {
@@ -64,7 +68,7 @@ const Game = ({ pvp, setLogin }) => {
                                 <img src={btnClose} alt="Close" />
                             </div>
                             <ul className="content">
-                                <li className="home">
+                                <li className="home" onClick={handleReturnHome}>
                                     <div className="image"></div>
                                     <p>Về trang chủ</p>
                                 </li>
