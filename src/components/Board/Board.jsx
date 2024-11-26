@@ -16,14 +16,11 @@ const Board = () => {
 
     // Lượt đi của AI
     const AI = () => {
-        const aiMove = findBestMove('b', game);
+        const aiMove = findBestMove(game, 'b', 3);
 
         if (aiMove) {
-            const from = aiMove.slice(0, 2);
-            const to = aiMove.slice(2);
-
             // Di chuyển quân
-            game.move({ from: from, to: to });
+            game.move(aiMove);
 
             setHistory((prev) => [...prev, ...game.history({ verbose: true })]);
 
