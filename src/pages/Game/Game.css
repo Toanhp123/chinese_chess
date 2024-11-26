@@ -5,22 +5,28 @@
 }
 
 .chinese-chess__game--left {
+    position: relative;
     display: flex;
     flex-direction: column;
     flex: 1;
-    gap: 20px;
     justify-content: center;
     align-items: center;
     background-color: rgb(255, 251, 242);
 }
 
+.chinese-chess__game--left--contain {
+    height: calc(100% - 80px);
+}
+
 .chinese-chess__game--left--controller {
+    position: absolute;
+    bottom: 27px;
     height: 50px;
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
-    background-color: rgb(223 215 207);
+    background-color: rgb(246, 241, 232);
 }
 
 .chinese-chess__game--right {

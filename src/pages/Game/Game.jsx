@@ -18,7 +18,9 @@ const Game = () => {
     return (
         <div className="chinese-chess__game">
             <div className="chinese-chess__game--left">
-                <Board />
+                <div className="chinese-chess__game--left--contain">
+                    <Board />
+                </div>
                 <div className="chinese-chess__game--left--controller">
                     <Button text={'Settings'} image={btnSetting} />
                     <Button text={'Undo'} image={btnUndo} />
