@@ -1,12 +1,62 @@
-# React + Vite
+♟️ Chinese Chess AI - React Frontend
+Một ứng dụng web chơi Cờ Tướng viết bằng ReactJS, có tích hợp AI đối thủ sử dụng thuật toán Minimax kết hợp cắt tỉa Alpha-Beta để tăng hiệu quả tìm kiếm nước đi.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚀 Tính năng
+🎮 Giao diện cờ tướng tương tác bằng React.
 
-Currently, two official plugins are available:
+    🧠 AI tự động đánh bằng thuật toán Minimax + Alpha-Beta Pruning.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+    🔄 Undo / Redo các bước đi.
 
-## Expanding the ESLint configuration
+    ♻️ Reset bàn cờ, chơi lại từ đầu.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+    🌗 Phân biệt quân đen – đỏ rõ ràng.
+
+    ✅ Hỗ trợ cho PC.
+
+🧠 Thuật toán
+AI sử dụng thuật toán Minimax với giới hạn độ sâu.
+Để tăng hiệu quả, tích hợp thêm Alpha-Beta Pruning giúp loại bỏ nhánh không cần thiết.
+
+function minimax(position, depth, alpha, beta, isMaximizingPlayer)
+depth: số tầng tìm kiếm.
+
+alpha, beta: giới hạn cắt tỉa.
+
+Đánh giá nước đi bằng hàm lượng giá dựa trên giá trị quân cờ
+
+⚙️ Cài đặt và chạy
+bash
+Copy
+Edit
+
+# 1. Clone repo
+
+git clone https://github.com/Toanhp123/chinese_chess.git
+
+# 2. Cài đặt dependencies
+
+npm install
+
+# 3. Khởi động ứng dụng
+
+npm run dev
+Sau đó mở trình duyệt tại: http://localhost:5173/
+
+📌 Công nghệ sử dụng
+⚛️ ReactJS (with Hooks + Context API)
+
+    🎨 CSS Modules
+
+    ♟️ Dùng xiangqi.js
+
+💡 TODO / Gợi ý nâng cấp
+🎭 Thêm chế độ 2 người chơi
+
+    🌐 Triển khai backend lưu ván cờ
+
+    ☁️ Đưa lên Vercel/Netlify
+
+    🔧 Tối ưu hiệu năng thuật toán AI
+
+    📱 Giao diện mobile friendly
