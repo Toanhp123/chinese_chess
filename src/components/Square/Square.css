@@ -1,0 +1,27 @@
+.chinese-chess__board--square {
+    width: calc(600px / 8);
+    height: calc(600px / 8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chinese-chess__board--square.can-move-to-square::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background: rgb(159, 0, 255);
+    z-index: 0;
+}
+
+.chinese-chess__board--square.can-capture-chess::after {
+    content: '';
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    border-radius: 100%;
+    background: rgb(159, 0, 255);
+    z-index: 0;
+}

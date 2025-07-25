@@ -1,0 +1,9 @@
+.chinese-chess__sidebar {
+    height: 100%;
+    width: 68px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: url('../../assets/img/red-bg.jpg');
+}

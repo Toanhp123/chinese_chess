@@ -1,0 +1,46 @@
+.chinese-chess__log-move {
+    width: 100%;
+    list-style: none;
+}
+
+.chinese-chess__log-move li {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.chinese-chess__log-move li:nth-child(odd) {
+    background-color: rgb(255 251 242);
+}
+
+.chinese-chess__log-move li:nth-child(even) {
+    background-color: rgb(246 241 232);
+}
+
+.chinese-chess__log-move li:last-child {
+    border-bottom: 1px solid rgb(218, 210, 202);
+}
+
+.chinese-chess__log-move--index {
+    display: flex;
+    flex: 0.6;
+    justify-content: start;
+    align-items: center;
+    padding: 10px 0 10px 20px;
+    font-size: 20px;
+}
+
+.chinese-chess__log-move--coordination {
+    display: flex;
+    height: 100%;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0 10px 20px;
+    font-size: 20px;
+}
+
+.chinese-chess__log-move--coordination.active {
+    background-color: rgb(227 220 212);
+}

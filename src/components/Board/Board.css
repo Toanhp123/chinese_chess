@@ -1,0 +1,15 @@
+.chinese-chess__board {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 600px;
+    font-size: 20px;
+    background: url('../../assets/img/board/Board.svg') no-repeat center;
+}
+
+.chinese-chess__board--row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

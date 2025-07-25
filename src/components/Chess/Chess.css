@@ -1,0 +1,28 @@
+.chinese__chess--piece {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	height: 80%;
+	width: 80%;
+
+	border-radius: 100%;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3),
+		inset 0 5px 6px rgba(255, 255, 255, 0.3);
+
+	background-size: 60% 60%;
+	background-repeat: no-repeat;
+	background-position: center;
+
+	cursor: grab;
+	z-index: 1;
+}
+
+.chinese__chess--piece--image {
+	height: 60%;
+	width: 60%;
+}
+
+.chinese__chess--piece.selected {
+	border: 3px solid rgb(233, 150, 0);
+}

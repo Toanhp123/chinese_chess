@@ -1,0 +1,30 @@
+.chinese-chess__card {
+    width: 390px;
+    display: flex;
+    align-items: center;
+    margin: 12px auto;
+    border: 1px solid rgb(194, 53, 46);
+    background-color: rgb(255, 251, 242);
+    cursor: pointer;
+    padding: 16px 24px;
+    border-radius: 8px;
+}
+
+.chinese-chess__card:hover {
+    background-color: rgb(227, 220, 212);
+}
+
+.chinese-chess__card img {
+    width: 32px;
+    height: 32px;
+}
+
+.chinese-chess__card--text {
+    text-align: left;
+    margin-left: 10px;
+    width: 100%;
+}
+
+.chinese-chess__card--text h2 {
+    color: #b22222;
+}
